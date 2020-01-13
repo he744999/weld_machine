@@ -7,16 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using EasyModbus;
-using Stateless;
+
 
 namespace WindowsFormsApplication2
 {
     public partial class Form1 : Form
     {
+        Model MVC_M;
+
         public Form1()
         {
+            
             InitializeComponent();
+            MVC_M = new Model();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

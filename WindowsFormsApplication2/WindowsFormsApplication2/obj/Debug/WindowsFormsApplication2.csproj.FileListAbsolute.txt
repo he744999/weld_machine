@@ -10,3 +10,6 @@ C:\Users\heli7\Desktop\l2\WindowsFormsApplication2\WindowsFormsApplication2\bin\
 C:\Users\heli7\Desktop\l2\WindowsFormsApplication2\WindowsFormsApplication2\bin\Debug\Stateless.xml
 C:\Users\heli7\Desktop\l2\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
 C:\Users\heli7\Desktop\l2\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form1.resources
+C:\Users\heli7\Desktop\project\WindowsFormsApplication2\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
+C:\Users\heli7\Desktop\project\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
+C:\Users\heli7\Desktop\project\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
