@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EasyModbus;
 using System.Threading;
+using System.IO.Ports;
 
 namespace WindowsFormsApplication2
 {
@@ -18,6 +19,12 @@ namespace WindowsFormsApplication2
         private int Loop_Interrupt = 10;
         private Thread thd;
         public bool state = false;
+        public bool isRunning = true;
+
+        //public delegate void SendMessageDelegate(bool s);
+        //public static event SendMessageDelegate SendMessageEvent;
+
+        public string[] ports;
 
         public Model()
         {
@@ -28,65 +35,60 @@ namespace WindowsFormsApplication2
             DOS[1] = new bool[] { false, false, false, false };
 
             AIS[0] = new int[]  { 0, 0, 100, 0, 0, 0, 0, 0 };
-
-            //if (MbsInit())
-            //{
-                //Console.WriteLine("222222222222222");
-            //}
-
             thd = new Thread(new ThreadStart(DataUpdate_Thread));
-            //thd.Start();
-
+            ports = SerialPort.GetPortNames();
         }
 
-        public bool MbsInit()
+        public void Close_Serial()
         {
-            bool isSucess = true;
-
-            mdb = new ModbusClient("COM13");
-            mdb.Baudrate = 9600;
-            mdb.StopBits = System.IO.Ports.StopBits.One;
-            mdb.Parity = System.IO.Ports.Parity.None;
-            mdb.ConnectionTimeout = 500;
-            mdb.Connect();
-            if (isSucess)
-            { 
-                thd.Start();
+            if (mdb.Available(100))
+            {
+                mdb.Disconnect();
+                isRunning = false;
             }
-            this.state = true;
-            return isSucess;
         }
 
         public bool MbsInit(string port)
         {
-            bool isSucess = true;
-
             mdb = new ModbusClient(port);
-            Console.WriteLine(port);
             mdb.Baudrate = 9600;
             mdb.StopBits = System.IO.Ports.StopBits.One;
             mdb.Parity = System.IO.Ports.Parity.None;
-            mdb.ConnectionTimeout = 500;
-            mdb.Connect();
-            if (isSucess)
-            { 
+            mdb.ConnectionTimeout = 1200;
+            try
+            {
+                mdb.Connect();
                 thd.Start();
+                isRunning = true;
             }
-            this.state = true;
-            return isSucess;
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                isRunning = false;
+            }
+            return isRunning;
         }
 
         public void DataUpdate_Thread()
         {
             while (true)
             {
-                DataUpdate();
+                if (isRunning)
+                {
+                    DataUpdate();
+                }
+                else
+                {
+                    Console.WriteLine("out 0-0000000000000000000");
+                    break;
+                }
             }
         
         }
 
         private void DataUpdate()
         {
+
             mdb.UnitIdentifier = 120;
             DIS[0] = mdb.ReadDiscreteInputs(0x64, 4);
             mdb.WriteMultipleCoils(0, DOS[0]);

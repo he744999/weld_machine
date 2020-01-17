@@ -13,39 +13,85 @@ namespace WindowsFormsApplication2
 {
     public partial class Form1 : Form
     {
+        // MVC_M　封装数据，并线程化更新输入＼出数据
         Model MVC_M;
+
+        // 状态机对象，通过事件通知控制器对象
         Machine MVC_C0;
 
         public Form1()
         {
             
             InitializeComponent();
-            MVC_C0 = new Machine("weld");
+            MVC_C0 = new Machine();
+            MVC_C0.title = "weld";
             
             MVC_M = new Model();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            button1.Text = "DDDD";
+            Machine.SendMessageEvent += Test;
+            Serial_Port_Init();
             timer_ui_update.Start();
             timerBlink.Start();
+            // timer_start_serial.Start();
+        }
+        // 在comBox1中列出当前系统可用port号
+        private void Serial_Port_Init()
+        {
+            foreach (string port in MVC_M.ports)
+            {
+                comBox_ports.Items.Add(port);
+            }
+            if (MVC_M.ports.Length == 0)
+            {
+                comBox_ports.Text = "无可用端口";
+                btn_open_serial.Enabled = false;
+                btn_close_serial.Enabled = false;
+                
+            }
+            else 
+            { 
+                comBox_ports.Text = MVC_M.ports[0];
+            }
+            btn_close_serial.Enabled = false;
         }
 
+        public bool Test(bool s)
+        {
+            Model.DOS[0][0] = s;
+            return true;
+        }
+
+        // 关闭软件时，禁止所有输出
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Model.DOS[0] = new bool[] {false, false, false, false };
-            Model.DOS[1] = new bool[] {false, false, false, false };
-            this.MVC_M.CloseOutput(MVC_M.state);
-        }
+            DialogResult dr = MessageBox.Show("是否关闭窗体","提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dr == DialogResult.Yes)
+            {
+                Model.DOS[0] = new bool[] { false, false, false, false };
+                Model.DOS[1] = new bool[] { false, false, false, false };
+                this.MVC_M.CloseOutput(MVC_M.state);
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
 
+        }
+        // 手动启动串口
         private void button2_Click(object sender, EventArgs e)
         {
-            string port = "COM" +  textBox1.Text.ToString();
+            // timer_start_serial.Stop();
+            string port = comBox_ports.Text;
             if (this.MVC_M.MbsInit(port))
             {
-                button2.Enabled = false;
+                btn_open_serial.Enabled = false;
+                btn_close_serial.Enabled = true;
             }
+
         }
         // Model -> View
         private void timer_ui_update_Tick(object sender, EventArgs e)
@@ -104,8 +150,34 @@ namespace WindowsFormsApplication2
 
         private void timerBlink_Tick(object sender, EventArgs e)
         {
-            MVC_C0._machine.Fire(Machine.Trigger.tick);
+            MVC_C0._machine.Fire(Machine.Trigger.TIMEOUT);
+            timerBlink.Stop();
 
+        }
+        // 自动串口启动定时器相应函数， 串口启动button不可用
+        private void timer_start_serial_Tick(object sender, EventArgs e)
+        {
+            timer_start_serial.Stop();
+            string port = "COM" +  comBox_ports.Text.ToString();
+            if (this.MVC_M.MbsInit(port))
+            {
+                btn_open_serial.Enabled = false;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Form2 frm2 = new Form2();
+            frm2.Show();
+            frm2.MdiParent = this;
+
+        }
+
+        private void btn_close_serial_Click(object sender, EventArgs e)
+        {
+            this.MVC_M.Close_Serial();
+            btn_close_serial.Enabled = false;
+            btn_open_serial.Enabled = false;
         }
 
     }
