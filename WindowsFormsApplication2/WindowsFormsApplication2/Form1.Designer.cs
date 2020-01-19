@@ -72,6 +72,12 @@
             this.comBox_ports = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btn_close_serial = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -108,12 +114,11 @@
             // 
             // Y0
             // 
-            this.Y0.Appearance = System.Windows.Forms.Appearance.Button;
             this.Y0.AutoSize = true;
             this.Y0.Location = new System.Drawing.Point(566, 63);
             this.Y0.Margin = new System.Windows.Forms.Padding(2);
             this.Y0.Name = "Y0";
-            this.Y0.Size = new System.Drawing.Size(33, 22);
+            this.Y0.Size = new System.Drawing.Size(42, 16);
             this.Y0.TabIndex = 4;
             this.Y0.Text = "do0";
             this.Y0.UseVisualStyleBackColor = true;
@@ -121,12 +126,11 @@
             // 
             // Y1
             // 
-            this.Y1.Appearance = System.Windows.Forms.Appearance.Button;
             this.Y1.AutoSize = true;
             this.Y1.Location = new System.Drawing.Point(636, 63);
             this.Y1.Margin = new System.Windows.Forms.Padding(2);
             this.Y1.Name = "Y1";
-            this.Y1.Size = new System.Drawing.Size(33, 22);
+            this.Y1.Size = new System.Drawing.Size(42, 16);
             this.Y1.TabIndex = 5;
             this.Y1.Text = "do1";
             this.Y1.UseVisualStyleBackColor = true;
@@ -134,12 +138,11 @@
             // 
             // Y2
             // 
-            this.Y2.Appearance = System.Windows.Forms.Appearance.Button;
             this.Y2.AutoSize = true;
             this.Y2.Location = new System.Drawing.Point(689, 63);
             this.Y2.Margin = new System.Windows.Forms.Padding(2);
             this.Y2.Name = "Y2";
-            this.Y2.Size = new System.Drawing.Size(33, 22);
+            this.Y2.Size = new System.Drawing.Size(42, 16);
             this.Y2.TabIndex = 6;
             this.Y2.Text = "do2";
             this.Y2.UseVisualStyleBackColor = true;
@@ -147,12 +150,11 @@
             // 
             // Y3
             // 
-            this.Y3.Appearance = System.Windows.Forms.Appearance.Button;
             this.Y3.AutoSize = true;
             this.Y3.Location = new System.Drawing.Point(748, 63);
             this.Y3.Margin = new System.Windows.Forms.Padding(2);
             this.Y3.Name = "Y3";
-            this.Y3.Size = new System.Drawing.Size(33, 22);
+            this.Y3.Size = new System.Drawing.Size(42, 16);
             this.Y3.TabIndex = 7;
             this.Y3.Text = "do3";
             this.Y3.UseVisualStyleBackColor = true;
@@ -160,48 +162,44 @@
             // 
             // X3
             // 
-            this.X3.Appearance = System.Windows.Forms.Appearance.Button;
             this.X3.AutoSize = true;
             this.X3.Location = new System.Drawing.Point(748, 121);
             this.X3.Margin = new System.Windows.Forms.Padding(2);
             this.X3.Name = "X3";
-            this.X3.Size = new System.Drawing.Size(33, 22);
+            this.X3.Size = new System.Drawing.Size(42, 16);
             this.X3.TabIndex = 12;
             this.X3.Text = "di3";
             this.X3.UseVisualStyleBackColor = true;
             // 
             // X2
             // 
-            this.X2.Appearance = System.Windows.Forms.Appearance.Button;
             this.X2.AutoSize = true;
             this.X2.Location = new System.Drawing.Point(689, 121);
             this.X2.Margin = new System.Windows.Forms.Padding(2);
             this.X2.Name = "X2";
-            this.X2.Size = new System.Drawing.Size(33, 22);
+            this.X2.Size = new System.Drawing.Size(42, 16);
             this.X2.TabIndex = 11;
             this.X2.Text = "di2";
             this.X2.UseVisualStyleBackColor = true;
             // 
             // X1
             // 
-            this.X1.Appearance = System.Windows.Forms.Appearance.Button;
             this.X1.AutoSize = true;
             this.X1.Location = new System.Drawing.Point(636, 121);
             this.X1.Margin = new System.Windows.Forms.Padding(2);
             this.X1.Name = "X1";
-            this.X1.Size = new System.Drawing.Size(33, 22);
+            this.X1.Size = new System.Drawing.Size(42, 16);
             this.X1.TabIndex = 10;
             this.X1.Text = "di1";
             this.X1.UseVisualStyleBackColor = true;
             // 
             // X0
             // 
-            this.X0.Appearance = System.Windows.Forms.Appearance.Button;
             this.X0.AutoSize = true;
             this.X0.Location = new System.Drawing.Point(566, 121);
             this.X0.Margin = new System.Windows.Forms.Padding(2);
             this.X0.Name = "X0";
-            this.X0.Size = new System.Drawing.Size(33, 22);
+            this.X0.Size = new System.Drawing.Size(42, 16);
             this.X0.TabIndex = 9;
             this.X0.Text = "di0";
             this.X0.UseVisualStyleBackColor = true;
@@ -228,60 +226,55 @@
             // 
             // X13
             // 
-            this.X13.Appearance = System.Windows.Forms.Appearance.Button;
             this.X13.AutoSize = true;
             this.X13.Location = new System.Drawing.Point(748, 230);
             this.X13.Margin = new System.Windows.Forms.Padding(2);
             this.X13.Name = "X13";
-            this.X13.Size = new System.Drawing.Size(33, 22);
+            this.X13.Size = new System.Drawing.Size(42, 16);
             this.X13.TabIndex = 21;
             this.X13.Text = "di3";
             this.X13.UseVisualStyleBackColor = true;
             // 
             // X12
             // 
-            this.X12.Appearance = System.Windows.Forms.Appearance.Button;
             this.X12.AutoSize = true;
             this.X12.Location = new System.Drawing.Point(689, 230);
             this.X12.Margin = new System.Windows.Forms.Padding(2);
             this.X12.Name = "X12";
-            this.X12.Size = new System.Drawing.Size(33, 22);
+            this.X12.Size = new System.Drawing.Size(42, 16);
             this.X12.TabIndex = 20;
             this.X12.Text = "di2";
             this.X12.UseVisualStyleBackColor = true;
             // 
             // X11
             // 
-            this.X11.Appearance = System.Windows.Forms.Appearance.Button;
             this.X11.AutoSize = true;
             this.X11.Location = new System.Drawing.Point(636, 230);
             this.X11.Margin = new System.Windows.Forms.Padding(2);
             this.X11.Name = "X11";
-            this.X11.Size = new System.Drawing.Size(33, 22);
+            this.X11.Size = new System.Drawing.Size(42, 16);
             this.X11.TabIndex = 19;
             this.X11.Text = "di1";
             this.X11.UseVisualStyleBackColor = true;
             // 
             // X10
             // 
-            this.X10.Appearance = System.Windows.Forms.Appearance.Button;
             this.X10.AutoSize = true;
             this.X10.Location = new System.Drawing.Point(566, 230);
             this.X10.Margin = new System.Windows.Forms.Padding(2);
             this.X10.Name = "X10";
-            this.X10.Size = new System.Drawing.Size(33, 22);
+            this.X10.Size = new System.Drawing.Size(42, 16);
             this.X10.TabIndex = 18;
             this.X10.Text = "di0";
             this.X10.UseVisualStyleBackColor = true;
             // 
             // Y13
             // 
-            this.Y13.Appearance = System.Windows.Forms.Appearance.Button;
             this.Y13.AutoSize = true;
             this.Y13.Location = new System.Drawing.Point(748, 168);
             this.Y13.Margin = new System.Windows.Forms.Padding(2);
             this.Y13.Name = "Y13";
-            this.Y13.Size = new System.Drawing.Size(33, 22);
+            this.Y13.Size = new System.Drawing.Size(42, 16);
             this.Y13.TabIndex = 17;
             this.Y13.Text = "do3";
             this.Y13.UseVisualStyleBackColor = true;
@@ -289,12 +282,11 @@
             // 
             // Y12
             // 
-            this.Y12.Appearance = System.Windows.Forms.Appearance.Button;
             this.Y12.AutoSize = true;
             this.Y12.Location = new System.Drawing.Point(689, 172);
             this.Y12.Margin = new System.Windows.Forms.Padding(2);
             this.Y12.Name = "Y12";
-            this.Y12.Size = new System.Drawing.Size(33, 22);
+            this.Y12.Size = new System.Drawing.Size(42, 16);
             this.Y12.TabIndex = 16;
             this.Y12.Text = "do2";
             this.Y12.UseVisualStyleBackColor = true;
@@ -302,12 +294,11 @@
             // 
             // Y11
             // 
-            this.Y11.Appearance = System.Windows.Forms.Appearance.Button;
             this.Y11.AutoSize = true;
             this.Y11.Location = new System.Drawing.Point(636, 172);
             this.Y11.Margin = new System.Windows.Forms.Padding(2);
             this.Y11.Name = "Y11";
-            this.Y11.Size = new System.Drawing.Size(33, 22);
+            this.Y11.Size = new System.Drawing.Size(42, 16);
             this.Y11.TabIndex = 15;
             this.Y11.Text = "do1";
             this.Y11.UseVisualStyleBackColor = true;
@@ -315,12 +306,11 @@
             // 
             // Y10
             // 
-            this.Y10.Appearance = System.Windows.Forms.Appearance.Button;
             this.Y10.AutoSize = true;
             this.Y10.Location = new System.Drawing.Point(566, 172);
             this.Y10.Margin = new System.Windows.Forms.Padding(2);
             this.Y10.Name = "Y10";
-            this.Y10.Size = new System.Drawing.Size(33, 22);
+            this.Y10.Size = new System.Drawing.Size(42, 16);
             this.Y10.TabIndex = 14;
             this.Y10.Text = "do0";
             this.Y10.UseVisualStyleBackColor = true;
@@ -545,19 +535,85 @@
             // 
             // btn_close_serial
             // 
-            this.btn_close_serial.Location = new System.Drawing.Point(923, 36);
+            this.btn_close_serial.Location = new System.Drawing.Point(928, 36);
             this.btn_close_serial.Name = "btn_close_serial";
-            this.btn_close_serial.Size = new System.Drawing.Size(75, 23);
+            this.btn_close_serial.Size = new System.Drawing.Size(65, 23);
             this.btn_close_serial.TabIndex = 45;
-            this.btn_close_serial.Text = "Close ";
+            this.btn_close_serial.Text = "Close";
             this.btn_close_serial.UseVisualStyleBackColor = true;
-            this.btn_close_serial.Click += new System.EventHandler(this.btn_close_serial_Click);
+            this.btn_close_serial.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(217, 59);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 46;
+            this.button2.Text = "STOP_SIG";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_2);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(217, 96);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 47;
+            this.button3.Text = "NEXT_SIG";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(217, 161);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 48;
+            this.button4.Text = "START_SIG";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(217, 132);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 49;
+            this.button5.Text = "ROLLBACK_SIG";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(217, 205);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 50;
+            this.button6.Text = "BACK_SIG";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(217, 234);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 51;
+            this.button7.Text = "TIMEOUT_SIG";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 442);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_close_serial);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.comBox_ports);
@@ -600,7 +656,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "6";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -653,6 +709,12 @@
         private System.Windows.Forms.ComboBox comBox_ports;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btn_close_serial;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }
 

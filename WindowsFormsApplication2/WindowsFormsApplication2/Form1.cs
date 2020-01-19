@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -27,10 +28,12 @@ namespace WindowsFormsApplication2
             MVC_C0.title = "weld";
             
             MVC_M = new Model();
+            Console.WriteLine();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Console.WriteLine( Thread.CurrentThread.ManagedThreadId.ToString("00"));
             Machine.SendMessageEvent += Test;
             Serial_Port_Init();
             timer_ui_update.Start();
@@ -48,31 +51,50 @@ namespace WindowsFormsApplication2
             {
                 comBox_ports.Text = "无可用端口";
                 btn_open_serial.Enabled = false;
-                btn_close_serial.Enabled = false;
-                
             }
             else 
             { 
                 comBox_ports.Text = MVC_M.ports[0];
             }
-            btn_close_serial.Enabled = false;
         }
 
-        public bool Test(bool s)
+        public void Test(string data)
         {
-            Model.DOS[0][0] = s;
-            return true;
+            switch (data)
+            { 
+                case "OnExitBuffer":
+                    Console.WriteLine("1111111111111111111");
+                    break;
+                case "OnEntryReset":
+                    Console.WriteLine("2222222222222222");
+                    break;
+                case "OnEnterReady":
+                    Console.WriteLine("22222223333333");
+                    break;
+                case "OnEntryLock1":
+                    Console.WriteLine("333333333333");
+                    break;
+                case "OnEntryLock2":
+                    Console.WriteLine("444444444");
+                    break;
+                case "OnEntryLock3":
+                    Console.WriteLine("5555555555555");
+                    break;
+                case "OnEntryLock4":
+                    Console.WriteLine("66666666666");
+                    break;   
+            }
         }
 
         // 关闭软件时，禁止所有输出
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dr = MessageBox.Show("是否关闭窗体","提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dr = MessageBox.Show("是否关闭窗体，关闭窗体后将复位所有输出","提示", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)
             {
                 Model.DOS[0] = new bool[] { false, false, false, false };
                 Model.DOS[1] = new bool[] { false, false, false, false };
-                this.MVC_M.CloseOutput(MVC_M.state);
+                MVC_M.CloseOutput();
                 e.Cancel = false;
             }
             else
@@ -86,11 +108,12 @@ namespace WindowsFormsApplication2
         {
             // timer_start_serial.Stop();
             string port = comBox_ports.Text;
-            if (this.MVC_M.MbsInit(port))
+            if (MVC_M.MbsInit(port))
             {
-                btn_open_serial.Enabled = false;
-                btn_close_serial.Enabled = true;
+                Console.WriteLine("22222222222222222");
             }
+            btn_open_serial.Enabled = false;
+            btn_close_serial.Enabled = true;
 
         }
         // Model -> View
@@ -133,7 +156,9 @@ namespace WindowsFormsApplication2
             string SenderName = ((CheckBox)sender).Name;
             switch (SenderName)
             {
-                case "Y0":{ Model.DOS[0][0] = Y0.CheckState == CheckState.Checked ? true : false;break;}
+                case "Y0": { Model.DOS[0][0] = Y0.CheckState == CheckState.Checked ? true : false; break; }
+
+
                 case "Y1":{ Model.DOS[0][1] = Y1.CheckState == CheckState.Checked ? true : false;break;}
                 case "Y2":{ Model.DOS[0][2] = Y2.CheckState == CheckState.Checked ? true : false;break;}
                 case "Y3":{ Model.DOS[0][3] = Y3.CheckState == CheckState.Checked ? true : false;break;}
@@ -175,9 +200,45 @@ namespace WindowsFormsApplication2
 
         private void btn_close_serial_Click(object sender, EventArgs e)
         {
-            this.MVC_M.Close_Serial();
-            btn_close_serial.Enabled = false;
+            //this.MVC_M.Close_Serial();
             btn_open_serial.Enabled = false;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.MVC_M.Close_Serial();
+            btn_open_serial.Enabled = true;
+            btn_close_serial.Enabled = false;
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            MVC_C0._machine.Fire(Machine.Trigger.STOP1);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MVC_C0._machine.Fire(Machine.Trigger.NEXT1);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MVC_C0._machine.Fire(Machine.Trigger.ROLLLBACK1);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MVC_C0._machine.Fire(Machine.Trigger.RUN1);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MVC_C0._machine.Fire(Machine.Trigger.BACK1);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            MVC_C0._machine.Fire(Machine.Trigger.TIMEOUT);
         }
 
     }
