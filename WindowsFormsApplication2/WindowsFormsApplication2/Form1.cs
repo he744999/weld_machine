@@ -129,15 +129,15 @@ namespace WindowsFormsApplication2
             X12.Text = Model.DIS[1][2].ToString();
             X13.Text = Model.DIS[1][3].ToString();
 
-            Y0.Text = Model.DOS[0][0].ToString();
-            Y1.Text = Model.DOS[0][1].ToString();
-            Y2.Text = Model.DOS[0][2].ToString();
-            Y3.Text = Model.DOS[0][3].ToString();
+            Y0.Text = Model.DOS_COILS[0][0].ToString();
+            Y1.Text = Model.DOS_COILS[0][1].ToString();
+            Y2.Text = Model.DOS_COILS[0][2].ToString();
+            Y3.Text = Model.DOS_COILS[0][3].ToString();
 
-            Y10.Text = Model.DOS[1][0].ToString();
-            Y11.Text = Model.DOS[1][1].ToString();
-            Y12.Text = Model.DOS[1][2].ToString();
-            Y13.Text = Model.DOS[1][3].ToString();
+            Y10.Text = Model.DOS_COILS[1][0].ToString();
+            Y11.Text = Model.DOS_COILS[1][1].ToString();
+            Y12.Text = Model.DOS_COILS[1][2].ToString();
+            Y13.Text = Model.DOS_COILS[1][3].ToString();
 
             AX0.Text = Model.AIS[0][0].ToString();
             AX1.Text = Model.AIS[0][1].ToString();

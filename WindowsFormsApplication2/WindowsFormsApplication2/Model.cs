@@ -13,6 +13,7 @@ namespace WindowsFormsApplication2
     {
         public volatile static bool[][] DIS = new bool[2][];
         public volatile static bool[][] DOS = new bool[2][];
+        public volatile static bool[][] DOS_COILS = new bool[2][];
         public volatile static int[][] AIS  = new int[2][];
 
         private static ModbusClient mdb;
@@ -33,6 +34,9 @@ namespace WindowsFormsApplication2
 
             DOS[0] = new bool[] { false, false, false, false };
             DOS[1] = new bool[] { false, false, false, false };
+
+            DOS_COILS[0] = new bool[] { false, false, false, false };
+            DOS_COILS[1] = new bool[] { false, false, false, false };
 
             AIS[0] = new int[]  { 0, 0, 100, 0, 0, 0, 0, 0 };
             thd = new Thread(new ThreadStart(DataUpdate_Thread));
@@ -79,13 +83,28 @@ namespace WindowsFormsApplication2
                     mdb.UnitIdentifier = 120;
                     DIS[0] = mdb.ReadDiscreteInputs(0x64, 4);
                     mdb.WriteMultipleCoils(0, DOS[0]);
+                    DOS_COILS[0] = mdb.ReadCoils(0, 4);
 
                     mdb.UnitIdentifier = 121;
                     DIS[1] = mdb.ReadDiscreteInputs(0x64, 4);
                     mdb.WriteMultipleCoils(0, DOS[1]);
+                    DOS_COILS[1] = mdb.ReadCoils(0, 4);
 
                     mdb.UnitIdentifier = 100;
                     //AIS[0] = mdb.ReadInputRegisters(256, 8);
+                    for (int i = 0; i < DOS.Length; i++)
+                    {
+                        if (DOS[0][i] != DOS_COILS[0][i])
+                        {
+                            mdb.UnitIdentifier = 120;
+                            mdb.WriteSingleCoil(i, DOS_COILS[0][i]);
+                        }
+                        if (DOS[1][i] != DOS_COILS[1][i])
+                        {
+                            mdb.UnitIdentifier = 121;
+                            mdb.WriteSingleCoil(i, DOS_COILS[0][i] );
+                        }
+                    }
                 }
             }
         
