@@ -35,6 +35,7 @@ namespace WindowsFormsApplication2
         {
             Console.WriteLine( Thread.CurrentThread.ManagedThreadId.ToString("00"));
             Machine.SendMessageEvent += Test;
+            Model.CoilsError += CoilsErrorHandler;
             Serial_Port_Init();
             timer_ui_update.Start();
             timerBlink.Start();
@@ -60,6 +61,7 @@ namespace WindowsFormsApplication2
 
         public void Test(string data)
         {
+            Console.WriteLine("infor === " + data);
             switch (data)
             { 
                 case "OnExitBuffer":
@@ -239,6 +241,10 @@ namespace WindowsFormsApplication2
         private void button7_Click(object sender, EventArgs e)
         {
             MVC_C0._machine.Fire(Machine.Trigger.TIMEOUT);
+        }
+        private void CoilsErrorHandler(string data_)
+        {
+            Console.WriteLine(data_);
         }
 
     }

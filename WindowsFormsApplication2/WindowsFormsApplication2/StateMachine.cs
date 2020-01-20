@@ -25,6 +25,7 @@ namespace WindowsFormsApplication2
         {
             // 初始状态buffer -> 系统准备
             _machine = new StateMachine<States, Trigger>(() => _state, s => _state = s);
+            _machine.OnUnhandledTrigger((state, trigger) => { });
 
             // [buffer] -(TIMEOUT)> [reset] -> 检测滑台是否到位
             _machine.Configure(States.buffer).Permit(Trigger.TIMEOUT, States.reset)
@@ -32,11 +33,11 @@ namespace WindowsFormsApplication2
 
             // [reset] -(STOP1)> [ready] -> 滑台复位完成
             _machine.Configure(States.reset).Permit(Trigger.STOP1, States.ready)
-                .OnExit(t => OnEntryReady()).OnEntry(t => OnEntryReset());
+                .OnExit(t => OnExitReset()).OnEntry(t => OnEntryReset());
 
             // [ready] -(NEXT1)> [lock1] -> 夹紧气缸1作用
-            _machine.Configure(States.ready).Permit(Trigger.NEXT1, States.lock1).Ignore(Trigger.ROLLLBACK1)
-                .OnEntry(t => OnEntryLock1());
+            _machine.Configure(States.ready).Permit(Trigger.NEXT1, States.lock1)
+                .OnEntry(t => OnEntryReady()).OnExit(t => OnEntryLock1());
 
             // [lock1] -(NEXT1)> [lock2] -> 夹紧气缸1作用 
             _machine.Configure(States.lock1).Permit(Trigger.NEXT1, States.lock2)
@@ -58,7 +59,7 @@ namespace WindowsFormsApplication2
             _machine.Configure(States.lock3).Permit(Trigger.ROLLLBACK1, States.lock2)
                 .OnEntry(t => OnEntryLock2());
 
-            _machine.Configure(States.lock4).Permit(Trigger.RUN1, States.right).Ignore(Trigger.NEXT1)
+            _machine.Configure(States.lock4).Permit(Trigger.RUN1, States.right)
                 .OnEntry(t => OnEntryRight());
             _machine.Configure(States.lock4).Permit(Trigger.ROLLLBACK1, States.lock3)
                 .OnEntry(t => OnEntryLock3());
