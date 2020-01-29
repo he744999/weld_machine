@@ -7,6 +7,9 @@ using EasyModbus;
 using System.Threading;
 using System.IO.Ports;
 using System.Diagnostics;
+using System.Xml.Linq;
+
+
 namespace WindowsFormsApplication2
 {
     class Model
@@ -22,14 +25,20 @@ namespace WindowsFormsApplication2
 
         public bool isRunning = false;
 
+        /*
         public delegate void SendMessageDelegate(bool s);
-        // public static event SendMessageDelegate SendMessageEvent;
+        public static event SendMessageDelegate SendMessageEvent;
 
         public delegate void SendCoilsErrorDelegate(string data);
         public static event SendCoilsErrorDelegate CoilsError;
+        */
 
 
         public string[] ports;
+        /*
+        private static string path = @"C:\Users\heli7\\Desktop\\weld_machine\\WindowsFormsApplication2\\WindowsFormsApplication2\\XMLFile1.xml";
+        XDocument document = XDocument.Load(path);
+        */
 
         public Model()
         {
@@ -58,7 +67,7 @@ namespace WindowsFormsApplication2
             mdb.StopBits = System.IO.Ports.StopBits.One;
             mdb.Parity = System.IO.Ports.Parity.None;
             mdb.ConnectionTimeout = 200;
-            mdb.Connect();
+            // mdb.Connect();
             // Serial 只连接一次, View关闭btn只是停止输出了 :)
             if (OneConnceted)
             {
@@ -84,6 +93,9 @@ namespace WindowsFormsApplication2
             {
                 if (isRunning)
                 {
+                    Thread.Sleep(1000);
+                    Console.WriteLine("hello world");
+                    /*
                     // 模块1-  DI和DO 及读取线圈状态
                     mdb.UnitIdentifier = 120;
                     DIS[0] = mdb.ReadDiscreteInputs(0x64, 4);
@@ -116,6 +128,7 @@ namespace WindowsFormsApplication2
                             mdb.WriteSingleCoil(i, DOS_COILS[0][i] );
                         }
                     }
+                    */
                 }
             }
         
@@ -137,7 +150,7 @@ namespace WindowsFormsApplication2
                 Thread.Sleep(1000);
             }
              */
-            mdb.Disconnect();
+            //mdb.Disconnect();
             thd.Abort();
         }
         public void Close_Serial()
