@@ -97,6 +97,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.testDataSet = new WindowsFormsApplication2.testDataSet();
+            this.table1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -120,7 +124,7 @@
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
-           // 
+            // 
             // btn_open_serial
             // 
             this.btn_open_serial.Location = new System.Drawing.Point(1123, 45);
@@ -797,7 +801,7 @@
             this.button15.Location = new System.Drawing.Point(47, 242);
             this.button15.Margin = new System.Windows.Forms.Padding(4);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(100, 29);
+            this.button15.Size = new System.Drawing.Size(91, 29);
             this.button15.TabIndex = 68;
             this.button15.Text = "test";
             this.button15.UseVisualStyleBackColor = true;
@@ -813,6 +817,16 @@
             this.button16.Text = "new form";
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // testDataSet
+            // 
+            this.testDataSet.DataSetName = "testDataSet";
+            this.testDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // table1BindingSource
+            // 
+            this.table1BindingSource.DataMember = "Table_1";
+            this.table1BindingSource.DataSource = this.testDataSet;
             // 
             // Form1
             // 
@@ -883,12 +897,15 @@
             this.Controls.Add(this.btn_open_serial);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.table1BindingSource, "Name", true));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "6";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -964,6 +981,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
+        private testDataSet testDataSet;
+        private System.Windows.Forms.BindingSource table1BindingSource;
     }
 }
 

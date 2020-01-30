@@ -6,18 +6,11 @@ using System.Threading.Tasks;
 using Stateless;
 using System.Timers;
 
+
 namespace WindowsFormsApplication2
 {
     public partial class Machine2
     {
-        /*
-        public delegate void SendMessageDelegate(string data);
-        public static event SendMessageDelegate SendMessageEvent;
-
-        public delegate void IngredientsOverDelegate(string data);
-        public static event IngredientsOverDelegate IngredientsOverEvent;
-        */
-
         public delegate void OutputDelegate(string data);
         public static event OutputDelegate OutputEvent;
 
@@ -31,7 +24,6 @@ namespace WindowsFormsApplication2
         public States _state = States.ready;
         public StateMachine<States, Trigger> _machine;
 
-
         public string _id { get; set; }
 
         int target;
@@ -43,7 +35,6 @@ namespace WindowsFormsApplication2
         Timer t2 = new Timer();
         Random r = new Random();
 
-        st setup = new st();
 
         public Machine2(string id)
         {
@@ -63,16 +54,13 @@ namespace WindowsFormsApplication2
             t2.AutoReset = false;
             t2.Elapsed += Tick2Event;
 
-            // 初始状态buffer -> 系统准备
             _machine = new StateMachine<States, Trigger>(() => _state, s => _state = s);
             _machine.OnUnhandledTrigger((state, trigger) => { });
 
-            // 配料启动后，先大小门同时开，进入slow状态后 小门点动的开,最后全关
             _machine.Configure(States.ready).Permit(Trigger.start, States.fast)
                 .OnEntry(t => OnEntryReady());
                   
 
-            // [reset] -(STOP1)> [ready] -> 滑台复位完成
             _machine.Configure(States.fast).Permit(Trigger.almost, States.slow_t)
                 .OnEntry(t => OnEntryFast());
 
@@ -93,10 +81,6 @@ namespace WindowsFormsApplication2
             t2.Start();
         }
 
-        private void Tick1Event(object sender, ElapsedEventArgs e)
-        {
-            _machine.Fire(Trigger.TIMEOUT);
-        }
 
         private void Tick2Event(object sender, ElapsedEventArgs e)
         {
@@ -156,6 +140,7 @@ namespace WindowsFormsApplication2
             OutputEvent("OnEntryReady");
         }
 
+
         public void run()
         {
             int temp = target -current;
@@ -185,7 +170,9 @@ namespace WindowsFormsApplication2
             }
         }
 
-
-
+        private void Tick1Event(object sender, ElapsedEventArgs e)
+        {
+            _machine.Fire(Trigger.TIMEOUT);
+        }
     }
 }

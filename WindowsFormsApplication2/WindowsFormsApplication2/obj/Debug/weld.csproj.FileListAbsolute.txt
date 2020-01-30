@@ -32,6 +32,7 @@ C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplica
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\bin\Debug\EasyModbus.dll
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\bin\Debug\Stateless.dll
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\bin\Debug\Stateless.xml
+C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\weld.csprojResolveAssemblyReference.cache
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form1.resources
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form2.resources
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Properties.Resources.resources
@@ -40,4 +41,3 @@ C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplica
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.application
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
-C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\weld.csprojResolveAssemblyReference.cache

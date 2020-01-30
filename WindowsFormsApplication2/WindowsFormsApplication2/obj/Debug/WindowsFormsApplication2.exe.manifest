@@ -83,24 +83,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WindowsFormsApplication2.exe" size="40960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WindowsFormsApplication2.exe" size="74752">
       <assemblyIdentity name="WindowsFormsApplication2" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2wCRL4bDTCzv7kfW+v96zGbA8Pwr0SA/mgUEsZKmO04=</dsig:DigestValue>
+        <dsig:DigestValue>B93LyiB2pZHKY5A3gU4VNxtFM74Mboi0H9MupbAM6RQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="WindowsFormsApplication2.exe.config" size="385">
+  <file name="WindowsFormsApplication2.exe.config" size="678">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>uc6eVEwdX2cESK2o9yi5RYcSzJm8UwjX0jblnM/XwC0=</dsig:DigestValue>
+      <dsig:DigestValue>jQVBOojyFxsfhpnYkFiZnzM8NlGyZRs/zM4iKaHYg6w=</dsig:DigestValue>
     </hash>
   </file>
   <file name="XMLFile1.xml" size="45" writeableType="applicationData">
