@@ -17,12 +17,13 @@ namespace WindowsFormsApplication2
         public delegate void Output2Delegate(string data1, int data2);
         public static event Output2Delegate OutputEvent2;
 
-        public enum States  {ready, fast, slow_t, slow_k, over};
+        public enum States {on, off, forward, back};
 
-        public enum Trigger {start, almost, TIMEOUT, ook, restart};
+        public enum Trigger {turn, f, b};
 
-        public States _state = States.ready;
+        public States _state = States.off;
         public StateMachine<States, Trigger> _machine;
+
 
         public string _id { get; set; }
 
@@ -48,131 +49,74 @@ namespace WindowsFormsApplication2
 
             t1.Interval = 500;
             t1.AutoReset = true;
-            t1.Elapsed += Tick1Event;
 
             t2.Interval = 100;
             t2.AutoReset = false;
-            t2.Elapsed += Tick2Event;
 
             _machine = new StateMachine<States, Trigger>(() => _state, s => _state = s);
             _machine.OnUnhandledTrigger((state, trigger) => { });
 
-            _machine.Configure(States.ready).Permit(Trigger.start, States.fast)
-                .OnEntry(t => OnEntryReady());
+            _machine.Configure(States.off).Permit(Trigger.turn, States.on)
+                .OnEntry(t => OnEntryOff())
+                .OnExit(t => OnExitOff());
+
+
+            _machine.Configure(States.on).Permit(Trigger.turn, States.off)
+                .OnEntry(t => OnEntryOn())
+                .OnExit(t => OnExitOn());
+
+            _machine.Configure(States.on).Permit(Trigger.f, States.forward);
+
+            _machine.Configure(States.on).Permit(Trigger.b, States.back);
                   
+            _machine.Configure(States.forward).Permit(Trigger.b, States.back)
+                .SubstateOf(States.on)
+                .OnEntry(t => OnEntryForward())
+                .OnExit(t => OnExitForward());
 
-            _machine.Configure(States.fast).Permit(Trigger.almost, States.slow_t)
-                .OnEntry(t => OnEntryFast());
-
-            _machine.Configure(States.slow_t).Permit(Trigger.TIMEOUT, States.slow_k)
-                .OnEntry(t => OnEntrySlowt());
-            _machine.Configure(States.slow_k).Permit(Trigger.TIMEOUT, States.slow_t)
-                .OnEntry(t => OnEntrySlowk());
-
-            _machine.Configure(States.slow_t).Permit(Trigger.ook, States.over);
-            _machine.Configure(States.slow_k).Permit(Trigger.ook, States.over);
-
-            _machine.Configure(States.over).Permit(Trigger.restart, States.ready)
-                .OnEntry(t => OnEntryOver());
+            _machine.Configure(States.back).Permit(Trigger.f, States.forward)
+                .SubstateOf(States.on)
+                .OnEntry(t => OnEntryBack())
+                .OnExit(t => OnExitBack());
         }
 
-        public void s()
+        private void OnEntryOff()
         {
-            t2.Start();
-        }
-
-
-        private void Tick2Event(object sender, ElapsedEventArgs e)
-        {
-            int t = Math.Abs(target - current);
-            if (t > slow_value)
-            {
-                _machine.Fire(Trigger.start);
-                return;
-            }
-            if (t < slow_value && t > ook_value)
-            {
-                _machine.Fire(Trigger.almost);
-                return;
-            }
-            if (t < ook_value)
-            {
-                _machine.Fire(Trigger.ook);
-                t2.Stop();
-                return;
-            }
-        }
-
-        private void OnEntrySlowk()
-        {
-            OutputEvent("OnEntrySlowk");
+            OutputEvent("OnEntryOff");
             t1.Start();
         }
 
-        private void OnEntrySlowt()
+        private void OnEntryOn()
         {
-            OutputEvent("OnEntrySlowt");
+            OutputEvent("OnEntryOn");
             t1.Start();
         }
 
-        private void OnEntryOver()
+        private void OnEntryForward()
         {
-            OutputEvent("OnEntryOver");
+            OutputEvent("OnEntryForward");
         }
 
-        private void OnEntryOkk()
+        private void OnEntryBack()
         {
-            OutputEvent("OnEntryOkk");
+            OutputEvent("OnEntryBack");
+        }
+        private void OnExitOff()
+        {
+            OutputEvent("OnExitOff");
+        }
+        private void OnExitOn()
+        {
+            OutputEvent("OnExitOn");
+        }
+        private void OnExitBack()
+        {
+            OutputEvent("OnExitBack");
         }
 
-        private void OnEntrySlow()
+        private void OnExitForward()
         {
-            OutputEvent("OnEntrySlow");
-        }
-
-        private void OnEntryFast()
-        {
-            OutputEvent("OnEntryFast");
-        }
-
-        private void OnEntryReady()
-        {
-            OutputEvent("OnEntryReady");
-        }
-
-
-        public void run()
-        {
-            int temp = target -current;
-            if (temp > slow_value)
-            { 
-                _machine.Fire(Trigger.start);
-            }
-            if (slow_value > temp && temp > ook_value)
-            { 
-                _machine.Fire(Trigger.almost);
-            }
-            if (temp < ook_value)
-            { 
-                _machine.Fire(Trigger.ook);
-            }
-        }
-        public void randomAdd(string data)
-        {
-            int value = r.Next(0,20);
-            if (data == "add")
-            { 
-                OutputEvent2("add" , value);
-            }
-            if (data == "sub")
-            { 
-                OutputEvent2("sub" , value);
-            }
-        }
-
-        private void Tick1Event(object sender, ElapsedEventArgs e)
-        {
-            _machine.Fire(Trigger.TIMEOUT);
+            OutputEvent("OnExitForward");
         }
     }
 }

@@ -708,7 +708,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(100, 29);
             this.button8.TabIndex = 60;
-            this.button8.Text = "START_SIG";
+            this.button8.Text = "TURN_SIG";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -719,18 +719,18 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(100, 29);
             this.button9.TabIndex = 61;
-            this.button9.Text = "SLOW_SIG";
+            this.button9.Text = "f_SIG";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(598, 343);
+            this.button10.Location = new System.Drawing.Point(598, 338);
             this.button10.Margin = new System.Windows.Forms.Padding(4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(100, 29);
             this.button10.TabIndex = 62;
-            this.button10.Text = "OOK_SIG";
+            this.button10.Text = "b_SIG";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
@@ -785,7 +785,6 @@
             // timer_data_update
             // 
             this.timer_data_update.Interval = 10;
-            this.timer_data_update.Tick += new System.EventHandler(this.timer_data_update_Tick);
             // 
             // label15
             // 

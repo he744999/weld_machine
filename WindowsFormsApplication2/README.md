@@ -1,35 +1,38 @@
 # Stateless 项目 Readme 个人中文翻译
 
-*直接使用.NET 框架创建状态机或基于此技术的轻量级工程流程*
+*这是一个基于.NET实现状态机理论的库,可直接嵌入你的项目中*
+
 
 ```
 
-var phoneCall = new StateMachine<State, Trigger>(State.OffHook);
+/// 这里有一个拉绳开关的灯，我们建模其拉一下灯亮，再拉一下灯灭的行为
 
-phoneCall.Configure(State.OffHook)
-    .Permit(Triiger.CallDialled, State.Ringing);
 
-phoneCall.Configure(State.Ringing)
-    .Permit(Triiger.CallConnected, State.Connected);
+//  一个灯有两种状态，开(on)和关(off).
+enum State {on, off};
+//  灯采用拉绳开关，有一个拉绳动作(turn)
+enum Trigger {turn};
 
-phoneCall.Configure(State.Connected)
-    .OnEntry(() => StartCallTimer())
-    .OnExit(() => StopCallTimer())
-    .Permit(Triiger.LeftMessage, State.OffHook)
-    .Permit(Triiger.PlacedOnHold, State.OnHold);
+// 灯初始化状态为关灯
+StateMachine _machine = new StateMachine<State, Trigger>(State.off);
+
+// 配置状态State.on在触发器Trigger.turn下转换到状态State.off。在状态进入State.on时，执行OnEntryLightOn()动作
+_machine.Configure(State.on).Permit(Trigger.turn, State.off)
+	.OnEntry(t => OnEntryLightOn());
+
+// 配置状态State.off在触发器Trigger.turn下转换到状态State.on。在状态进入State.off时，执行OnEntryLightOff()动作
+_machine.Configure(State.off).Permit(Trigger.turn, State.on)
+	.OnEntry(t => OnEntryLightOff());
 
 // ...
-
-phoneCall.Fire(Trigger.CallDialled);
-Assert.AreEqual(State.Ringing, phoneCall.State);
+// 触发Trigger.turn
+_machine.Fire(Trigger.turn);
 
 ```
-
-该项目和例子灵感来源于[Simple State Machine](https://archive.codeplex.com/?p=simplestatemachine)
-
+[]
 ## 特点
 
-状态机中多数的功能都是支持的
+状态机是一种数学计算模型，不同的实现方式有不同的特点，Stateless如下：
 
 * 对状态机的通用支持和 .NET 所有数据类型的支持 (numbers, strings, enums, etc.)
 * 层次状态机
@@ -46,107 +49,144 @@ Assert.AreEqual(State.Ringing, phoneCall.State);
 
 ## 层次状态机
 
-下面这个例子中， OnHold 状态属于 Connected 状态的子状态，意味着 Onhold 状态活动时，Connected状态同时处于活动状态
+下面这个例子中， 状态Read和Write属于On的子状态，意味着 Read或Write状态活动时，On状态同时处于活动状态（开着灯才能看书和写作, 突然的关灯需要看书或写作的退出动作）
 
 ```
 
-phoneCall.Configure(State.OnHold)
-    .SubstateOf(State.Connnected)
-    .Permit(Trigger.TakenOffHold, State.Connected)
-    .Permit(Trigger.PhoneHurledAgainsWall, State.PhoneDestroyed);
+_machine.Configure(State.Read)
+    .SubstateOf(State.on)
+    .Permit(Trigger.W, State.Write);
+
+_machine.Configure(State.Write)
+    .SubstateOf(State.on)
+    .Permit(Trigger.R, State.Read);
+
+_machine.Configure(State.on)
+    .Permit(Trigger.R, State.Read);
+
+_machine.Configure(State.on)
+    .Permit(Trigger.W, State.Write);
 
 ```
 
-IsInState(State) 方法可以判断两个状态是否有层次关系, 在上述例子处于 OnHold 状态时， IsInState(State.Connected) 将会得到 true .
+子状态不会屏蔽超状态的触发条件，即在Write中，turn条件触发后，Off状态将触发
+
+在Stateless中，有IsInState(State)可以判断两个状态的层次关系，上个例子中处于State.Write时，_machine.IsInState(State.On)返回true.
 
 ## 进入/退出动作
 
-在例子中，在 Call 连接后 StartCallTimer() 将会调用， StopCallTimer() 将会在 Call 挂掉后调用
 
-Call 可在 Connected 和 OnHold 状态中切换，不必使用 StartCallTimer() 和 StopCallTimer() 方法的反复调用，因为OnHold是Connected的子状态
+当状态进入Write时，我们需要笔和纸等，Read时，我们需要一本书，设计出一个状态必然有区别于其他状态的动作，.OnEntry()和.OnExit()等是进入/退出动作
+
+的连接方法。以前大While+If的方式构建模型，需要我们精心的放置If的位置以达到我们的目标，现在你只需要一次构造状态机，然后专心处理状态机的输入和输出
+
+```
+
+_machine.Configure(State.Write)
+    .SubstateOf(State.on)
+    .Permit(Trigger.R, State.Read)
+	.OnEntry(t => OnEntryWrite())  // 进入动作
+	.OnExit(t => OnExitWrite());   // 退出动作
+
+```
 
 进入/退出动作可由带参数的描述触发者、触发源状态和触发目标状态的 Transition 触发，
 
-## 外部状态储存
+## 外部检查
 
-Stateless 被设计成可嵌入在各种应用模式中，一些ORM对映射数据的存储位置提出了要求，UI框架通常要求将状态存储在特殊的“可绑定”属性中。 为此，StateMachine 构造函数可以接受将用于读取和写入状态值的函数参数：
+状态机嵌入到你的程序后，你有了绑定当前状态到某个属性到中的需求，Stateless未采用类似_machine.CurrentState()的方法, 而是绑定到状态机初始化参数的变量中
+
 
 ```
 
 var stateMachine = new StateMachine<State, Trigger>(
-    () => myState.Value,
-    s  => myState.Value = s
+    () => _state,
+    s  => _state = s
 );
+
+/* 
+
+StateMachine(Func<TState> stateAccessor, Action<TState> stateMutator);
+
+stateAccessor: 初始化状态
+
+stateMutator: 委托 委托到当前到状态到某变量，（通常是初始化变量中）
+
+
+string CurrentState = _machine._state.toString();  //获取当前状态到变量中
+*/
 
 ```
 
-在这个例子中， 状态机储存在 myState 对象中
 
 ## 自我检查
 
-通过 StateMachine.PermittedTriigers 属性可得到当前状态运行的触发事件，使用 StateMachine.GetInfo() 获取当前状态的配置信息
+通过 StateMachine.PermittedTriigers 属性可得到当前状态可触发事件，使用 StateMachine.GetInfo() 获取当前状态的配置信息
 
-## 前置条件
+## 前置条件?
 
-一个状态可在同一触发事件下由不同的前置条件进入不同的状态
 
-```
+这是我个人不推荐使用的功能，这功能是在触发条件下增加一个If判断，状态机的存在就是消除显式的If，以得到清晰易梳理的控制。
 
-phoneCall.Configure(State.OffHold)
-    .PermitIf(Trigger.CallDialled, State.Ringing, () => IsValidNumber)
-    .PermitIf(Trigger.CallDialled, State.Beeping, () => !IsValidNumber)
 
 ```
 
-前置条件应该是互斥的，子状态可通过重新指定以覆盖触发器， 子状态不会屏蔽超状态的触发条件的(层次状态机的基础),
+_machine.Configure(State.off)
+	.PermitIf(Trigger.turn, State.on, () => IsEvectricity()) // 拉绳动作后判断当前是否有电费， 没电费不能开灯辣：）
+	.OnEntry(t => OnEntryLightOff());
+
+```
+
+同一个状态的前置条件应该是互斥的，子状态可通过重新指定以覆盖触发器， 
 
 在触发条件触发后才会检查前置条件，所以前置条件是安全的
 
 ## 带参的触发器
 
-可指派带参数的触发器
+
+触发条件可指派带参数的
+
 
 ```
 
-var assignTriiger = stateMachine.SetTriggerParameters<string>(Trigger.Assign)
+var WriteSomething= stateMachine.SetTriggerParameters<string>(Trigger.Assign)
+
 stateMachine.Configure(State.Assigned)
-    .OnEntryFrom(assignTriiger, email => OnAssigned(email))
+    .OnEntryFrom(WriteSomething, text => OnAssigned(text))
 
-stateMachine.Fire(assignTrigger, "joe@example.com")
+stateMachine.Fire(WriteSomething, "Hello, world！")
 
 ```
-带参触发器可动态的选择目标状态，使用 PermitDynamic() 方法即可
+
 
 ## 忽略触发器和自身转换
 
-当触发某个状态未指定的触发器时，框架将会报错，使用 Ignore(Trigger) 可忽略特定的触发器,
+
+当触发器是状态未订阅的时，Stateless将默认会引发一个Exception，这可不行鸭！Ignore() 忽略单个触发器
+
+_machine.OnUnhandledTrigger((state, trigger) => { }) // 将忽略所有的未订阅触发器
 
 ```
 
-phoneCall.Configure(State.Connected)
-    .Ignore(Trigger.CallDialled)
+
+_machine.Configure(State.off).Permit(Trigger.turn, State.on)
+	.OnEntry(t => OnEntryLightOff())
+	.Ignore(Trigger.W);  // 忽略单个触发器
+
+_machine.OnUnhandledTrigger((state, trigger) => { }); // 忽略所有未订阅触发器
 
 ```
 
-同时一个状态可选择自己作为下一个状态，当然进入和退出事件依然会有效
+一个状态可选择自己作为下一个状态，进入和退出事件依然会有效
 
 ```
 
-stateMachine.Configure(State.Assigned)
-    .PermitReentry(Trigger.Assigned)
-    .OnEntry(() => SendEmailToAssignee());
+stateMachine.Configure(State.on)
+    .PermitReentry(Trigger.check)
+    .OnEntry(() => OnEntryOn());
 
 ```
 
-默认情况下，你想忽略的触发器需显式的声明，为了方便的屏蔽默认功能，你可以配置一个状态机的 OnUnHandledTrigger 方法：
-
-```
-
-stateMachine.OnUnHandledTriiger((state, trigger) => {});
-
-```
-
-## 输出 DOT 图形化
 
 TODO
 

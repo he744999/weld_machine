@@ -83,6 +83,7 @@ namespace WindowsFormsApplication2
 
         void Test2(string data)
         {
+            Console.WriteLine(data);
             switch (data)
             {
                 case "OnEntryReady":
@@ -316,53 +317,40 @@ namespace WindowsFormsApplication2
 
         private void button8_Click(object sender, EventArgs e)
         {
-            MVC_C1._machine.Fire(Machine2.Trigger.start);
+            MVC_C1._machine.Fire(Machine2.Trigger.turn);
+
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            MVC_C1._machine.Fire(Machine2.Trigger.almost);
+            MVC_C1._machine.Fire(Machine2.Trigger.f);
 
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            MVC_C1._machine.Fire(Machine2.Trigger.ook);
+            MVC_C1._machine.Fire(Machine2.Trigger.b);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            MVC_C1._machine.Fire(Machine2.Trigger.restart);
         }
 
         private void timer_loop_Tick(object sender, EventArgs e)
         {
-            if (MVC_C1._machine.State != Machine2.States.ready)
-            {
-                MVC_C1.run();
-            }
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            MVC_C1.randomAdd("add");
         }
 
 
         private void button13_Click(object sender, EventArgs e)
         {
-            MVC_C1.randomAdd("sub");
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            MVC_C1.s();
-            timer_data_update.Start();
-        }
-
-        private void timer_data_update_Tick(object sender, EventArgs e)
-        {
-            MVC_C1.current = Model.AIS[0][0];
         }
 
         private void button15_Click(object sender, EventArgs e)
