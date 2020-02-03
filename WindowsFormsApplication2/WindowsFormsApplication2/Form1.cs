@@ -355,10 +355,9 @@ namespace WindowsFormsApplication2
 
         private void button15_Click(object sender, EventArgs e)
         {
-            if (sql.test())
-            {
-                button15.Enabled = false;
-            }
+            Func<int, int, int> func = (a, b) => { return a * b; };
+            Console.WriteLine( func(2, 3));
+
         }
 
         private void button16_Click(object sender, EventArgs e)

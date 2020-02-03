@@ -1,0 +1,8 @@
+C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\bin\Debug\DXApplication4.exe
+C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\bin\Debug\DXApplication4.pdb
+C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\obj\Debug\DXApplication4.Form1.resources
+C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\obj\Debug\DXApplication4.Properties.Resources.resources
+C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\obj\Debug\DXApplication4.csproj.GenerateResource.Cache
+C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\obj\Debug\DXApplication4.exe.licenses
+C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\obj\Debug\DXApplication4.exe
+C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\obj\Debug\DXApplication4.pdb

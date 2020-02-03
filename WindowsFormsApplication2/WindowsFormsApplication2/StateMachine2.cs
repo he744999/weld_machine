@@ -79,7 +79,6 @@ namespace WindowsFormsApplication2
                 .OnEntry(t => OnEntryBack())
                 .OnExit(t => OnExitBack());
         }
-
         private void OnEntryOff()
         {
             OutputEvent("OnEntryOff");

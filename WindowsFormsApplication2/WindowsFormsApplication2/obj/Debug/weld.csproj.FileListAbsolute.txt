@@ -40,3 +40,4 @@ C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplica
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.application
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
 C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
+C:\Users\heli7\Desktop\weld_machine\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\weld.csprojResolveAssemblyReference.cache
