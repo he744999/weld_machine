@@ -9,3 +9,13 @@ C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\obj\Release\DXApplicatio
 C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\obj\Release\DXApplication4.csprojResolveAssemblyReference.cache
 C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\obj\Release\DXApplication4.XtraForm1.resources
 C:\Users\heli7\Desktop\22\DXApplication4\DXApplication4\bin\Release\DXApplication4.exe.config
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Release\DXApplication4.exe.config
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Release\DXApplication4.exe
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Release\DXApplication4.pdb
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Release\DXApplication4.Form1.resources
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Release\DXApplication4.Properties.Resources.resources
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Release\DXApplication4.XtraForm1.resources
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Release\DXApplication4.csproj.GenerateResource.Cache
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Release\DXApplication4.exe.licenses
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Release\DXApplication4.exe
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Release\DXApplication4.pdb

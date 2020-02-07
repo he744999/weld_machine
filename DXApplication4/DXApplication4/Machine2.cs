@@ -17,9 +17,9 @@ namespace DXApplication4
         public delegate void Output2Delegate(string data1, int data2);
         public static event Output2Delegate OutputEvent2;
 
-        public enum States { on, off, forward, back };
+        public enum States { on, off, read, write };
 
-        public enum Trigger { turn, f, b };
+        public enum Trigger { turn, W, R};
 
         public States _state = States.off;
         public StateMachine<States, Trigger> _machine;
@@ -27,10 +27,6 @@ namespace DXApplication4
 
         public string _id { get; set; }
 
-        int target;
-        public int current;
-        int slow_value;
-        int ook_value;
 
         Timer t1 = new Timer();
         Timer t2 = new Timer();
@@ -42,10 +38,6 @@ namespace DXApplication4
             // 配料机标识符
             _id = id;
 
-            target = 300;
-            current = 0;
-            slow_value = 30;
-            ook_value = 3;
 
             t1.Interval = 500;
             t1.AutoReset = true;
@@ -65,19 +57,19 @@ namespace DXApplication4
                 .OnEntry(t => OnEntryOn())
                 .OnExit(t => OnExitOn());
 
-            _machine.Configure(States.on).Permit(Trigger.f, States.forward);
+            _machine.Configure(States.on).Permit(Trigger.R, States.read);
 
-            _machine.Configure(States.on).Permit(Trigger.b, States.back);
+            _machine.Configure(States.on).Permit(Trigger.W, States.write);
 
-            _machine.Configure(States.forward).Permit(Trigger.b, States.back)
+            _machine.Configure(States.read).Permit(Trigger.W, States.write)
                 .SubstateOf(States.on)
-                .OnEntry(t => OnEntryForward())
-                .OnExit(t => OnExitForward());
+                .OnEntry(t => OnEntryread())
+                .OnExit(t => OnExitread());
 
-            _machine.Configure(States.back).Permit(Trigger.f, States.forward)
+            _machine.Configure(States.write).Permit(Trigger.R, States.read)
                 .SubstateOf(States.on)
-                .OnEntry(t => OnEntryBack())
-                .OnExit(t => OnExitBack());
+                .OnEntry(t => OnEntrywrite())
+                .OnExit(t => OnExitwrite());
         }
         private void OnEntryOff()
         {
@@ -91,14 +83,14 @@ namespace DXApplication4
             t1.Start();
         }
 
-        private void OnEntryForward()
+        private void OnEntryread()
         {
-            OutputEvent("OnEntryForward");
+            OutputEvent("OnEntryread");
         }
 
-        private void OnEntryBack()
+        private void OnEntrywrite()
         {
-            OutputEvent("OnEntryBack");
+            OutputEvent("OnEntrywrite");
         }
         private void OnExitOff()
         {
@@ -108,14 +100,14 @@ namespace DXApplication4
         {
             OutputEvent("OnExitOn");
         }
-        private void OnExitBack()
+        private void OnExitwrite()
         {
-            OutputEvent("OnExitBack");
+            OutputEvent("OnExitwrite");
         }
 
-        private void OnExitForward()
+        private void OnExitread()
         {
-            OutputEvent("OnExitForward");
+            OutputEvent("OnExitread");
         }
     }
 }

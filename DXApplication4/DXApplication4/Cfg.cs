@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SharpConfig;
+using System.Management;
 
 namespace DXApplication4
 {
     class Cfg
     {
-        static string filename = "2.cfg";
+        static string filename = @"C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\2.cfg";
         static Configuration config = Configuration.LoadFromFile(filename);
 
         Section sec = config["General"];
@@ -30,6 +31,8 @@ namespace DXApplication4
         {
             int IsAuto = config["Start"]["IsAutoConnect"].IntValue;
             Console.WriteLine(IsAuto);
+            ManagementObject searcher = new ManagementObject("SELECT * FROM Win32_PhysicalMedia");
+
         }
 
 

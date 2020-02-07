@@ -13,6 +13,7 @@ namespace DXApplication4
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
         Model MVC_M = new Model();
+        Machine2 MVC_C2 = new Machine2("light");
         Cfg cfg = new Cfg();
 
         XtraForm1 Model_View_form = new XtraForm1();
@@ -37,13 +38,20 @@ namespace DXApplication4
             Model.SendMessageEvent += SerialUpdate;
             checkEdit1.CheckState = (cfg.ttt == 1)?CheckState.Checked:CheckState.Unchecked;
 
+            // 
+            timerUI.Start();
+            Machine2.OutputEvent += m2func;
+        }
+
+        private void m2func(string data)
+        {
+            Console.WriteLine(data);
         }
 
         private void SerialUpdate(bool data)
         {
             simpleButton2.BeginInvoke((Action)(() => {simpleButton2.Text = data.ToString();}));
         }
-
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
@@ -60,9 +68,6 @@ namespace DXApplication4
 
 
 
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-        }
 
 
 
@@ -72,27 +77,6 @@ namespace DXApplication4
             MVC_M.MbsInit(comboBox1.Text);
             simpleButton3.Enabled = true;
             simpleButton333.Enabled = false;
-        }
-
-        private void simpleButton5_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void simpleButton2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simpleButton3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void xtraTabControl1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void toggleSwitch1_Toggled(object sender, EventArgs e)
@@ -109,10 +93,7 @@ namespace DXApplication4
             }
         }
 
-        private void xtraTabPage1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+ 
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
@@ -123,5 +104,52 @@ namespace DXApplication4
         {
             cfg.ChangeEvent(checkEdit1.CheckState == CheckState.Checked);
         }
+
+
+
+        private void timerUI_Tick(object sender, EventArgs e)
+        {
+            labelControl5.BeginInvoke(new Action(() => { labelControl5.Text = MVC_C2._state.ToString(); }));
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            MVC_C2._machine.Fire(Machine2.Trigger.turn);
+        }
+
+
+
+
+        private void simpleButton6_Click_1(object sender, EventArgs e)
+        {
+            MVC_C2._machine.Fire(Machine2.Trigger.turn);
+        }
+
+        private void simpleButton8_Click_1(object sender, EventArgs e)
+        {
+            MVC_C2._machine.Fire(Machine2.Trigger.R);
+
+        }
+
+        private void simpleButton7_Click_1(object sender, EventArgs e)
+        {
+            MVC_C2._machine.Fire(Machine2.Trigger.W);
+
+        }
+
+        private void timerUI_Tick_1(object sender, EventArgs e)
+        {
+            labelControl5.BeginInvoke(new Action(() => { labelControl5.Text = MVC_C2._state.ToString(); }));
+        }
+
+        private void xtraTabPage1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+
+
+
     }
 }
