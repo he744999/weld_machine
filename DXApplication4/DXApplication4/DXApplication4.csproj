@@ -57,10 +57,7 @@
       <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v14.1">
-      <Private>True</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -108,6 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cfg.cs" />
+    <Compile Include="Controls.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +119,16 @@
     <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XtraForm1.cs">
+    <Compile Include="View.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="XtraForm1.Designer.cs">
-      <DependentUpon>XtraForm1.cs</DependentUpon>
+    <Compile Include="ViewData.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ViewData.Designer.cs">
+      <DependentUpon>ViewData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelTEMP.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,8 +143,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="XtraForm1.resx">
-      <DependentUpon>XtraForm1.cs</DependentUpon>
+    <EmbeddedResource Include="ViewData.resx">
+      <DependentUpon>ViewData.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="2.cfg" />
     <None Include="App.config">
@@ -152,6 +156,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\Model.datasource" />
+    <None Include="Properties\DataSources\Model.SendMessageDelegate.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

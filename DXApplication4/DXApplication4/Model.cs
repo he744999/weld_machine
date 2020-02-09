@@ -8,7 +8,7 @@ using System.Threading;
 using System.IO.Ports;
 using System.Diagnostics;
 using System.Xml.Linq;
-
+using System.ComponentModel;
 
 namespace DXApplication4
 {
@@ -19,16 +19,26 @@ namespace DXApplication4
         public volatile static bool[][] DOS_COILS = new bool[2][];
         public volatile static int[][] AIS = new int[2][];
 
+        public string ts
+        {
+            get { return DOS[0][0].ToString(); }
+            set {}
+        }
+
         private static ModbusClient mdb;
         private Thread thd = null;
+     
 
         private bool OneConnceted = true;
 
+        [Bindable(true)]
         public bool isRunning = false;
 
         public delegate void SendMessageDelegate(bool s);
         public static event SendMessageDelegate SendMessageEvent;
 
+        public delegate void SendInputMessageDelegate(string data);
+        public static event SendInputMessageDelegate InputEvent;
         /*
         public delegate void SendCoilsErrorDelegate(string data);
         public static event SendCoilsErrorDelegate CoilsError;
@@ -49,9 +59,18 @@ namespace DXApplication4
 
             AIS[0] = new int[] { 0, 0, 100, 0, 0, 0, 0, 0 };
             thd = new Thread(new ThreadStart(DataUpdate_Thread));
+
+       
+
             ports = SerialPort.GetPortNames();
             mdb = new ModbusClient();
+      
 
+        }
+        ~Model()
+        {
+
+      
         }
 
         public bool MbsInit(string port)
@@ -133,11 +152,11 @@ namespace DXApplication4
             }
 
         }
-        public void Test()
-        {
 
+        private void test()
+        { 
+            
         }
-
         public void CloseOutput()
         {
             /*

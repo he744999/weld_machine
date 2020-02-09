@@ -46,6 +46,8 @@ _machine.Fire(Trigger.turn);
 * 含参数的触发器(事件)
 * 重入状态
 * 输出 DOT图(Graph description language)
+## 状态
+
 
 ## 层次状态机
 

@@ -15,7 +15,6 @@ C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevE
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.Sparkline.v14.1.Core.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.Utils.v14.1.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraBars.v14.1.dll
-C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraEditors.v14.1.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraGrid.v14.1.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraLayout.v14.1.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraPrinting.v14.1.dll
@@ -27,7 +26,6 @@ C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevE
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.Utils.v14.1.xml
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.Sparkline.v14.1.Core.xml
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraBars.v14.1.xml
-C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraEditors.v14.1.xml
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraGrid.v14.1.xml
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraLayout.v14.1.xml
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\DevExpress.XtraPrinting.v14.1.xml
@@ -53,10 +51,6 @@ C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\de\D
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\es\DevExpress.XtraBars.v14.1.resources.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\ja\DevExpress.XtraBars.v14.1.resources.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\ru\DevExpress.XtraBars.v14.1.resources.dll
-C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\de\DevExpress.XtraEditors.v14.1.resources.dll
-C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\es\DevExpress.XtraEditors.v14.1.resources.dll
-C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\ja\DevExpress.XtraEditors.v14.1.resources.dll
-C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\ru\DevExpress.XtraEditors.v14.1.resources.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\de\DevExpress.XtraGrid.v14.1.resources.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\es\DevExpress.XtraGrid.v14.1.resources.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\ja\DevExpress.XtraGrid.v14.1.resources.dll
@@ -71,9 +65,9 @@ C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\ja\D
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\bin\Debug\ru\DevExpress.XtraPrinting.v14.1.resources.dll
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Debug\DXApplication4.Form1.resources
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Debug\DXApplication4.Properties.Resources.resources
-C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Debug\DXApplication4.XtraForm1.resources
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Debug\DXApplication4.csproj.GenerateResource.Cache
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Debug\DXApplication4.exe.licenses
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Debug\DXApplication4.exe
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Debug\DXApplication4.pdb
+C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Debug\DXApplication4.ViewData.resources
 C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\obj\Debug\DXApplication4.csprojResolveAssemblyReference.cache

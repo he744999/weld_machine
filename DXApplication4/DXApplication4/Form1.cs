@@ -6,26 +6,56 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace DXApplication4
 {
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
+        /// <summary>
+        /// MVC controller 只能写控制
+        /// </summary>
         Model MVC_M = new Model();
+        ModelTemp MVC_MT = new ModelTemp();
         Machine2 MVC_C2 = new Machine2("light");
         Cfg cfg = new Cfg();
 
-        XtraForm1 Model_View_form = new XtraForm1();
+        ViewData Model_View_form = new ViewData();
 
         public Form1()
         {
             InitializeComponent();
         }
+        private void BindEvent()
+        {
+            turn_sig.Text = "turn";
+            turn_sig.CheckStateChanged += InputHandler;
 
+            r_sig.Text = "r";
+            r_sig.CheckStateChanged += InputHandler;
+
+            w_sig.Text = "w";
+            w_sig.CheckStateChanged += InputHandler;
+        }
+
+        private void InputHandler(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            string text = cb.Text;
+            switch (text)
+            {
+                case "turn":
+                    MVC_C2._machine.Fire(Machine2.Trigger.turn);
+                    break;
+                case "r":
+                    MVC_C2._machine.Fire(Machine2.Trigger.R);
+                    break;
+                case "w":
+                    MVC_C2._machine.Fire(Machine2.Trigger.W);
+                    break;
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Model.SendMessageEvent += SerialUpdate;
             for (int i = 0; i < MVC_M.ports.Length; i++ )
             {
                 comboBox1.Items.Add(MVC_M.ports[i]);
@@ -35,18 +65,42 @@ namespace DXApplication4
                     simpleButton3.Enabled = false;
                 }
             }
+
             Model.SendMessageEvent += SerialUpdate;
-            checkEdit1.CheckState = (cfg.ttt == 1)?CheckState.Checked:CheckState.Unchecked;
-
-            // 
+            Machine2.OutputEvent += machine2tocontroller;
             timerUI.Start();
-            Machine2.OutputEvent += m2func;
+            timerScanInput.Start();
+
+            ViewInit();
+            BindEvent();
         }
 
-        private void m2func(string data)
+
+        private void machine2tocontroller(string data)
         {
-            Console.WriteLine(data);
+            switch (data)
+            { 
+                case "OnEntryOn":
+                    Model.DOS[0][0] = true;
+                    break;
+                case "OnEntryOff":
+                    Model.DOS[0][0] = false;
+                    break;
+                case "OnEntryread":
+                    Model.DOS[0][1] = true;
+                    break;
+                case "OnExitread":
+                    Model.DOS[0][1] = false;
+                    break;
+                case "OnEntrywrite":
+                    Model.DOS[0][2] = true;
+                    break;
+                case "OnExitwrite":
+                    Model.DOS[0][2] = false;
+                    break;
+            }
         }
+
 
         private void SerialUpdate(bool data)
         {
@@ -59,17 +113,11 @@ namespace DXApplication4
         }
 
 
-
         private void buttonEdit2_CheckedChanged(object sender, EventArgs e)
         {
             // Model View窗口采用Visiable控制其可见性
             Model_View_form.showFrom(buttonEdit2.CheckState == CheckState.Checked);
         }
-
-
-
-
-
 
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -105,20 +153,10 @@ namespace DXApplication4
             cfg.ChangeEvent(checkEdit1.CheckState == CheckState.Checked);
         }
 
-
-
-        private void timerUI_Tick(object sender, EventArgs e)
-        {
-            labelControl5.BeginInvoke(new Action(() => { labelControl5.Text = MVC_C2._state.ToString(); }));
-        }
-
         private void simpleButton6_Click(object sender, EventArgs e)
         {
             MVC_C2._machine.Fire(Machine2.Trigger.turn);
         }
-
-
-
 
         private void simpleButton6_Click_1(object sender, EventArgs e)
         {
@@ -137,19 +175,63 @@ namespace DXApplication4
 
         }
 
-        private void timerUI_Tick_1(object sender, EventArgs e)
-        {
-            labelControl5.BeginInvoke(new Action(() => { labelControl5.Text = MVC_C2._state.ToString(); }));
-        }
-
-        private void xtraTabPage1_Paint_1(object sender, PaintEventArgs e)
+        private void xtraTabPage5_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void textEdit1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.textEdit1.Focus();
+                MVC_MT.data_raw = int.Parse(textEdit1.Text);
+                Console.WriteLine(MVC_MT.data_raw);
+            }
 
+        }
 
+        private void xtraTabPage1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void simpleButton4_Click_1(object sender, EventArgs e)
+        {
+            Test2();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MVC_MT.close();
+        }
+
+        private void simpleButton9_Click(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.SimpleButton btn = sender as DevExpress.XtraEditors.SimpleButton;
+            
+            Console.WriteLine(btn.Name);
+            Console.WriteLine(btn.Text);
+        }
+
+        private void checkEdit1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            cfg.ChangeEvent(checkEdit1.CheckState == CheckState.Checked);
+        }
+
+        private void xtraTabPage4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void xtraTabPage3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

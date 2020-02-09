@@ -10,7 +10,9 @@ namespace DXApplication4
 {
     class Cfg
     {
+        // 
         static string filename = @"C:\Users\heli7\Desktop\weld_machine\DXApplication4\DXApplication4\2.cfg";
+
         static Configuration config = Configuration.LoadFromFile(filename);
 
         Section sec = config["General"];
@@ -22,6 +24,7 @@ namespace DXApplication4
             ttt= config["Start"]["IsAutoConnect"].IntValue;
 
         }
+
         ~Cfg()
         {
             config.SaveToFile(filename);

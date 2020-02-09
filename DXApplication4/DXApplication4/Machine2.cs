@@ -14,8 +14,10 @@ namespace DXApplication4
         public delegate void OutputDelegate(string data);
         public static event OutputDelegate OutputEvent;
 
+        /*
         public delegate void Output2Delegate(string data1, int data2);
         public static event Output2Delegate OutputEvent2;
+        */
 
         public enum States { on, off, read, write };
 
