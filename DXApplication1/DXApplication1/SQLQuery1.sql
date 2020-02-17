@@ -1,0 +1,1 @@
+INSERT INTO [test].[dbo].[User] VALUES (10, 'pomelo', '12331')
