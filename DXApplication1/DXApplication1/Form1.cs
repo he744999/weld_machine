@@ -34,6 +34,7 @@ namespace DXApplication1
         public delegate void SendCoilsErrorDelegate3(string data);
         public event SendCoilsErrorDelegate3 Controller2InputHandler1;
 
+
         public Form1()
         {
             InitializeComponent();
@@ -70,11 +71,11 @@ namespace DXApplication1
         private void UpdateSerialComboBox(string[] ports)
         {
             comboBox1.Items.Clear();
-            foreach (string port in model.ports)
+            if(ports.Length !=0)
             {
-                comboBox1.Items.Add(port);
+                comboBox1.Items.AddRange(ports);
+                comboBox1.Text = model.ports[0];
             }
-            comboBox1.Text = model.ports[0];
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -318,5 +319,9 @@ namespace DXApplication1
 
         }
 
+        private void tabFormContentContainer1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

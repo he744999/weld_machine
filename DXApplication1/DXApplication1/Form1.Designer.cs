@@ -128,23 +128,26 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.tabFormPage4 = new DevExpress.XtraBars.TabFormPage();
             this.tabFormContentContainer4 = new DevExpress.XtraBars.TabFormContentContainer();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.testDataSet1 = new DXApplication1.testDataSet1();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colpassword = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton16 = new DevExpress.XtraEditors.SimpleButton();
+            this.tabFormPage5 = new DevExpress.XtraBars.TabFormPage();
+            this.tabFormContentContainer5 = new DevExpress.XtraBars.TabFormContentContainer();
             this.timer_UI_loop = new System.Windows.Forms.Timer(this.components);
             this.timerInput = new System.Windows.Forms.Timer(this.components);
             this.diagramControl1 = new DevExpress.XtraDiagram.DiagramControl();
             this.timerDataUpdate = new System.Windows.Forms.Timer(this.components);
             this.timerVirtual = new System.Windows.Forms.Timer(this.components);
             this.bbiShow = new DevExpress.XtraBars.BarButtonItem();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.testDataSet = new DXApplication1.testDataSet();
             this.testDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testDataSet1 = new DXApplication1.testDataSet1();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userTableAdapter = new DXApplication1.testDataSet1TableAdapters.UserTableAdapter();
-            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colpassword = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.textEdit11 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             this.tabFormContentContainer1.SuspendLayout();
@@ -172,13 +175,14 @@
             this.tabFormContentContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabFormContentContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.diagramControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diagramControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabFormControl1
@@ -195,11 +199,11 @@
             this.tabFormControl1.Pages.Add(this.tabFormPage2);
             this.tabFormControl1.Pages.Add(this.tabFormPage3);
             this.tabFormControl1.Pages.Add(this.tabFormPage4);
-            this.tabFormControl1.SelectedPage = this.tabFormPage4;
+            this.tabFormControl1.Pages.Add(this.tabFormPage5);
+            this.tabFormControl1.SelectedPage = this.tabFormPage1;
             this.tabFormControl1.Size = new System.Drawing.Size(890, 61);
             this.tabFormControl1.TabForm = this;
             this.tabFormControl1.TabIndex = 0;
-            this.tabFormControl1.TabLeftItemLinks.Add(this.barButtonItem2);
             this.tabFormControl1.TabRightItemLinks.Add(this.barButtonItem3);
             this.tabFormControl1.TabStop = false;
             this.tabFormControl1.TitleItemLinks.Add(this.barButtonItem1);
@@ -219,7 +223,7 @@
             // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "No communication";
+            this.barButtonItem3.Caption = "No ";
             this.barButtonItem3.Id = 2;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
@@ -281,6 +285,7 @@
             // 
             // tabFormContentContainer1
             // 
+            this.tabFormContentContainer1.Controls.Add(this.textEdit11);
             this.tabFormContentContainer1.Controls.Add(this.labelControl27);
             this.tabFormContentContainer1.Controls.Add(this.labelControl26);
             this.tabFormContentContainer1.Controls.Add(this.simpleButton33);
@@ -352,6 +357,7 @@
             this.tabFormContentContainer1.Name = "tabFormContentContainer1";
             this.tabFormContentContainer1.Size = new System.Drawing.Size(890, 646);
             this.tabFormContentContainer1.TabIndex = 1;
+            this.tabFormContentContainer1.Click += new System.EventHandler(this.tabFormContentContainer1_Click);
             // 
             // labelControl27
             // 
@@ -1192,6 +1198,70 @@
             this.tabFormContentContainer4.Size = new System.Drawing.Size(890, 646);
             this.tabFormContentContainer4.TabIndex = 4;
             // 
+            // gridControl1
+            // 
+            this.gridControl1.DataSource = this.userBindingSource;
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.tabFormDefaultManager1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(400, 646);
+            this.gridControl1.TabIndex = 1;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataMember = "User";
+            this.userBindingSource.DataSource = this.testDataSet1;
+            // 
+            // testDataSet1
+            // 
+            this.testDataSet1.DataSetName = "testDataSet1";
+            this.testDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colID,
+            this.colName,
+            this.colpassword});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "ID", null, "(ID: Count={0})")});
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            // 
+            // colID
+            // 
+            this.colID.FieldName = "ID";
+            this.colID.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colID.MinWidth = 25;
+            this.colID.Name = "colID";
+            this.colID.Visible = true;
+            this.colID.VisibleIndex = 0;
+            this.colID.Width = 94;
+            // 
+            // colName
+            // 
+            this.colName.FieldName = "Name";
+            this.colName.MinWidth = 25;
+            this.colName.Name = "colName";
+            this.colName.Visible = true;
+            this.colName.VisibleIndex = 1;
+            this.colName.Width = 94;
+            // 
+            // colpassword
+            // 
+            this.colpassword.FieldName = "password";
+            this.colpassword.MinWidth = 25;
+            this.colpassword.Name = "colpassword";
+            this.colpassword.Visible = true;
+            this.colpassword.VisibleIndex = 2;
+            this.colpassword.Width = 94;
+            // 
             // simpleButton16
             // 
             this.simpleButton16.Location = new System.Drawing.Point(719, 60);
@@ -1200,6 +1270,20 @@
             this.simpleButton16.TabIndex = 0;
             this.simpleButton16.Text = "Connect";
             this.simpleButton16.Click += new System.EventHandler(this.simpleButton16_Click);
+            // 
+            // tabFormPage5
+            // 
+            this.tabFormPage5.ContentContainer = this.tabFormContentContainer5;
+            this.tabFormPage5.Name = "tabFormPage5";
+            this.tabFormPage5.Text = "Motion";
+            // 
+            // tabFormContentContainer5
+            // 
+            this.tabFormContentContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabFormContentContainer5.Location = new System.Drawing.Point(0, 61);
+            this.tabFormContentContainer5.Name = "tabFormContentContainer5";
+            this.tabFormContentContainer5.Size = new System.Drawing.Size(890, 646);
+            this.tabFormContentContainer5.TabIndex = 5;
             // 
             // timer_UI_loop
             // 
@@ -1241,28 +1325,6 @@
             this.bbiShow.ImageOptions.ImageUri.Uri = "Show";
             this.bbiShow.Name = "bbiShow";
             // 
-            // gridControl1
-            // 
-            this.gridControl1.DataSource = this.userBindingSource;
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.tabFormDefaultManager1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(400, 646);
-            this.gridControl1.TabIndex = 1;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colID,
-            this.colName,
-            this.colpassword});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            // 
             // testDataSet
             // 
             this.testDataSet.DataSetName = "testDataSet";
@@ -1273,46 +1335,17 @@
             this.testDataSetBindingSource.DataSource = this.testDataSet;
             this.testDataSetBindingSource.Position = 0;
             // 
-            // testDataSet1
-            // 
-            this.testDataSet1.DataSetName = "testDataSet1";
-            this.testDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataMember = "User";
-            this.userBindingSource.DataSource = this.testDataSet1;
-            // 
             // userTableAdapter
             // 
             this.userTableAdapter.ClearBeforeFill = true;
             // 
-            // colID
+            // textEdit11
             // 
-            this.colID.FieldName = "ID";
-            this.colID.MinWidth = 25;
-            this.colID.Name = "colID";
-            this.colID.Visible = true;
-            this.colID.VisibleIndex = 0;
-            this.colID.Width = 94;
-            // 
-            // colName
-            // 
-            this.colName.FieldName = "Name";
-            this.colName.MinWidth = 25;
-            this.colName.Name = "colName";
-            this.colName.Visible = true;
-            this.colName.VisibleIndex = 1;
-            this.colName.Width = 94;
-            // 
-            // colpassword
-            // 
-            this.colpassword.FieldName = "password";
-            this.colpassword.MinWidth = 25;
-            this.colpassword.Name = "colpassword";
-            this.colpassword.Visible = true;
-            this.colpassword.VisibleIndex = 2;
-            this.colpassword.Width = 94;
+            this.textEdit11.Location = new System.Drawing.Point(3, 546);
+            this.textEdit11.MenuManager = this.tabFormDefaultManager1;
+            this.textEdit11.Name = "textEdit11";
+            this.textEdit11.Size = new System.Drawing.Size(125, 24);
+            this.textEdit11.TabIndex = 71;
             // 
             // Form1
             // 
@@ -1323,7 +1356,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Controls.Add(this.tabFormContentContainer4);
+            this.Controls.Add(this.tabFormContentContainer1);
             this.Controls.Add(this.tabFormControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
@@ -1361,13 +1394,14 @@
             this.tabFormContentContainer3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabFormContentContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.diagramControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diagramControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1489,6 +1523,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colID;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colpassword;
+        private DevExpress.XtraBars.TabFormContentContainer tabFormContentContainer5;
+        private DevExpress.XtraBars.TabFormPage tabFormPage5;
+        private DevExpress.XtraEditors.TextEdit textEdit11;
     }
 }
 

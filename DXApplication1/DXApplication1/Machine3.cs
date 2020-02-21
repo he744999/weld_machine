@@ -7,6 +7,10 @@ namespace DXApplication1
 {
     public partial class Machine3
     {
+        /// <summary>
+        /// 这是一个简单配料机控制模型
+        /// </summary>
+        /// <param name="data"></param>
         public delegate void SendMessageDelegate(string data);
         public event SendMessageDelegate SendMessageEvent;
 
@@ -39,7 +43,6 @@ namespace DXApplication1
             thd.IsBackground = true;
             thd.Start();
 
-
             tT = new System.Timers.Timer(1000);
             tK = new System.Timers.Timer(1000);
             tT.Elapsed += TtimeoutEvent;
@@ -48,6 +51,12 @@ namespace DXApplication1
             tK.Elapsed += KtimeoutEvent;
             tK.AutoReset = false;
 
+            MachineConfig();
+
+        }
+
+        private void MachineConfig()
+        {
             // 初始状态buffer -> 系统准备
             _machine = new StateMachine<States, Trigger>(() => _state, s => _state = s);
             _machine.OnUnhandledTrigger((state, trigger) => { });
@@ -77,7 +86,6 @@ namespace DXApplication1
 
             _machine.Configure(States.Okk).Permit(Trigger.REREADY, States.Ready);
         }
-
         private void ThreadWorking()
         {
             Thread.Sleep(3000);

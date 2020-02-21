@@ -8,5 +8,11 @@ namespace DXApplication1
 {
     class Motion
     {
+
+        public Motion()
+        {
+
+        }
+
     }
 }

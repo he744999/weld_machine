@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Data;
 
 namespace DXApplication1
 {
@@ -8,6 +9,7 @@ namespace DXApplication1
         /// <summary>
         /// MVC C控制器：主部分，负责用户动作交互之外的控制
         /// </summary>
+
         public CheckBox turn_sig = new CheckBox();
         CheckBox w_sig = new CheckBox();
         CheckBox r_sig = new CheckBox();
@@ -268,6 +270,7 @@ namespace DXApplication1
         /// <param name="e"></param>
         private void timer_UI_loop_Tick(object sender, EventArgs e)
         {
+            textEdit11.Text = 
             simpleButton10.Text = MVC_C3ALL._state.ToString();
             // Light 状态机 
             simpleButton4.Text = MVC_C2_1._state.ToString();

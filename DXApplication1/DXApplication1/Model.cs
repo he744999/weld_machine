@@ -151,25 +151,53 @@ namespace DXApplication1
         public void SerialRunning()
         {
             Thread.Sleep(2000);
-
+            string Message = "";
             while (isRunning)
             {
                 if (isCommunicating)
                 {
+                    //----------------------------------------------------------------------------
+                    mdb.UnitIdentifier = 202;
+                    DIS[1] = mdb.ReadDiscreteInputs(0x64, 4);
+                    mdb.WriteSingleCoil(0,DOS[0][0]);
+                    //mdb.WriteMultipleCoils(0, DOS[1]);
+                    DOS_COILS[1] = mdb.ReadCoils(0, 4);
+                    //----------------------------------------------------------------------------
+
+
+
+                    //----------------------------------------------------------------------------
                     // 模块1-  DI和DO 及读取线圈状态
+                    /*
                     mdb.UnitIdentifier = 120;
-                    DIS[0] = mdb.ReadDiscreteInputs(0x64, 4);
+                    DIS[0] = mdb.ReadDiscreteInputs(0x64, 4);00 03 40 00 00 01 90 1b
                     mdb.WriteMultipleCoils(0, DOS[0]);
                     DOS_COILS[0] = mdb.ReadCoils(0, 4);
+                    //----------------------------------------------------------------------------
+
+
+
+                    //----------------------------------------------------------------------------
                     // 模块2-  DI和DO 及读取线圈状态
                     mdb.UnitIdentifier = 121;
                     DIS[1] = mdb.ReadDiscreteInputs(0x64, 4);
                     mdb.WriteMultipleCoils(0, DOS[1]);
                     DOS_COILS[1] = mdb.ReadCoils(0, 4);
+                    //----------------------------------------------------------------------------
+
+
+
+
+                    //----------------------------------------------------------------------------
                     // 模块3-  AI
                     mdb.UnitIdentifier = 100;
                     //AIS[0] = mdb.ReadInputRegisters(256, 8);
-                    /*
+                    //----------------------------------------------------------------------------
+
+
+
+
+                    //----------------------------------------------------------------------------
                     // 检查 输出继电器线圈状态是否和输出数组一致，否 ，发送CoilsError事件
                     for (int i = 0; i < DOS.Length; i++)
                     {
@@ -185,23 +213,17 @@ namespace DXApplication1
                         }
                     }
                     */
-                    string temp = Model2ControllerMessageHanlder("communica", "Communicating");
+
+
+                    Message = Model2ControllerMessageHanlder("communica", "Communicating");
                 }else{
-                    string temp = Model2ControllerMessageHanlder("no communica", "No communication");
+                    Message = Model2ControllerMessageHanlder("no communica", "No communication");
                     Thread.Sleep(500);
                 }
-
             }
         }
 
-        public void UpdatePorts()
-        {
-            ports = SerialPort.GetPortNames();
-            if(ports.Length == 0)
-            {
-                ports = new string[] { "no port" };
-            }
-        }
+
         public void thdTest()
         {
             while(true)
@@ -213,16 +235,19 @@ namespace DXApplication1
             }
 
         }
-
-    }
-
-    public class LoginCompletedEventArgs : EventArgs
-    {
-        private readonly string Message;
-        
-        public LoginCompletedEventArgs(string msg)
+        public void UpdatePorts()
         {
-            this.Message = msg;
+            ports = SerialPort.GetPortNames();
+            if (ports.Length == 0)
+            {
+                ports = new string[] { "no port" };
+            }
         }
+
+        public int Remove(out int[] nums)
+        {
+
+        }
+
     }
 }

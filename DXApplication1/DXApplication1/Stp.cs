@@ -8,7 +8,7 @@ namespace DXApplication1
     class Stp
     {
         // 
-        static string filename = @"C:\Users\pomelo\Desktop\project\DXApplication1\DXApplication1\setup.cfg";
+        static string filename = @"C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\setup.cfg";
 
         static Configuration config = Configuration.LoadFromFile(filename);
         public string Guid   { get => config["Start"]["guid"].StringValue; set => config["Start"]["guid"].StringValue= value; }
@@ -23,25 +23,11 @@ namespace DXApplication1
 
         public Stp()
         {
-           
         }
-
         ~Stp()
         {
             config.SaveToFile(filename);
         }
 
-        public void test()
-        {
-            int IsAuto = config["Start"]["IsAutoConnect"].IntValue;
-            Console.WriteLine(IsAuto);
-            ManagementObject searcher = new ManagementObject("SELECT * FROM Win32_PhysicalMedia");
-        }
-
-        public void ChangeEvent(bool p)
-        {
-            config["Start"]["IsAutoConnect"].IntValue = p ? 1 : 0;
-
-        }
     }
 }
