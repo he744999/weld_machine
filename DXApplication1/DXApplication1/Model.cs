@@ -62,6 +62,7 @@ namespace DXApplication1
         public int CurrentWeight2 { get => currentWeight2; set => currentWeight2 = value; }
         public double KValue2 { get => kValue2; set => kValue2 = value; }
         public int OValue2 { get => oValue2; set => oValue2 = value; }
+        public bool HomeSwitch { get => DIS[1][0]; set => DIS[1][0] = value; }
 
         //--------------------------------------------------------------------------
         // Light状态机测试用
@@ -244,10 +245,6 @@ namespace DXApplication1
             }
         }
 
-        public int Remove(out int[] nums)
-        {
-
-        }
 
     }
 }

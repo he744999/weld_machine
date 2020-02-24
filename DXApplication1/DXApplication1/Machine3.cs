@@ -52,7 +52,6 @@ namespace DXApplication1
             tK.AutoReset = false;
 
             MachineConfig();
-
         }
 
         private void MachineConfig()

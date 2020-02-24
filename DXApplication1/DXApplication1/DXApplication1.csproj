@@ -85,6 +85,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Serial.cs" />
+    <Compile Include="Machine4.cs" />
     <Compile Include="Motion.cs" />
     <Compile Include="Stp.cs" />
     <Compile Include="Controller.cs">

@@ -23,6 +23,11 @@ namespace DXApplication1
         Machine3 MVC_C3_1 = new Machine3("machine3_1");
         Machine3 MVC_C3_2 = new Machine3("machine3_2");
 
+        Machine4 MVC_C4_1 = new Machine4("test");
+
+
+
+
         Machine3ALL MVC_C3ALL;
         SqlTest sql = new SqlTest();
 
@@ -46,11 +51,71 @@ namespace DXApplication1
             MVC_C3_1.SendMessageEvent += machine3_1TOController;
             MVC_C3_2.SendMessageEvent += machine3_2TOController;
             MVC_C3ALL.SendMessageEvent += machine3ALL_1TOController;
+            MVC_C4_1.SendMessageEvent += Machine4TOController;
+
             this.Controller2InputHandler1 += intput.test;
 
             intput.InInputFormEvent += input1_TOController;
+
         }
 
+        private void Machine4TOController(string data)
+        {
+            string cmd = "";
+            switch (data)
+            {
+                case "OnEntryOkk":
+                    Reset();
+                    Console.WriteLine("Okkkkk");
+                    break;
+                case "OnEntryFast":
+                    SendCommmand("G90X100");
+                    break;
+                case "OnExitFast":
+                    break;
+                case "OnEntryBack":
+                    Reset();
+                    SendCommmand("G91X5");
+                    SendCommmand("G91X-10");
+                    break;
+                case "OnExitSlowFast":
+                    SendCommmand("!");
+                    SendCommmand(ctrlX);
+                    break;
+            }
+            SendCommmand(cmd);
+        }
+        public void Reset()
+        {
+            SendCommmand("!");
+            Task.Delay(1000).Wait();
+            SendCommmand(ctrlX);
+            Task.Delay(3000).Wait();
+        }
+
+        public bool SendCommmand(string cmd)
+        {
+            bool s = false;
+
+            if (serialPort1.IsOpen)
+            {
+                try
+                {
+                    serialPort1.WriteLine(cmd);
+                    s = true;
+                    Console.WriteLine("send message: " + cmd);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+            else
+            {
+                Console.WriteLine("port not open");
+            }
+            return s;
+        }
 
         void OnOuterFormCreating(object sender, OuterFormCreatingEventArgs e)
         {
@@ -322,6 +387,113 @@ namespace DXApplication1
         private void tabFormContentContainer1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void simpleButton17_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void simpleButton34_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Set the baud rate  to **115200** as 8-N-1 (8-bits, no parity, and 1-stop bit.)
+
+                serialPort1.Open();
+                simpleButton34.Enabled = false;
+                simpleButton35.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        private void simpleButton35_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+                simpleButton35.Enabled = false;
+                simpleButton34.Enabled = true;
+            }
+        }
+
+        private void simpleButton37_Click(object sender, EventArgs e)
+        {
+            SendCommmand("!");
+        }
+
+        private void simpleButton36_Click(object sender, EventArgs e)
+        {
+            SendCommmand("~");
+        }
+        string str = "";
+        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            int count = serialPort1.BytesToRead;
+            // byte[] readbuffer = new byte[count];
+            if (count > 0)
+            {
+                Application.DoEvents();
+                str = serialPort1.ReadTo("\n");
+                str += "\n";
+            }
+
+            textBox1.BeginInvoke(new Action(() => textBox1.Text += str));
+            parseSerialInfo(str);
+        }
+
+        private void parseSerialInfo(string info)
+        {
+            // <Idle|MPos:-43.890,0.000,0.000|FS:0,0|Ov:100,100,100>
+
+            Console.WriteLine("----" + info + "----");
+            string[] infos = info.Split('|');
+            switch (infos[0])
+            {
+                case "<Idle":
+                    Console.WriteLine("idleeeeeeeeeee");
+                    break;
+                case "<Run":
+                    Console.WriteLine("Runnnnnnnnnnnn");
+                    break;
+            }
+            foreach (string i in infos)
+            {
+
+                if (i.StartsWith("MPos:"))
+                {
+                    // Console.WriteLine(i);
+                    string[] mpos = i.Split(',');
+                    string xPos = mpos[0].Split(':')[1].ToString();
+                    string yPos = mpos[1].ToString();
+                    string zPos = mpos[2].ToString();
+                    simpleButton9.BeginInvoke(new Action(() => simpleButton9.Text = xPos));
+                    simpleButton11.BeginInvoke(new Action(() => simpleButton11.Text = yPos));
+                    simpleButton12.BeginInvoke(new Action(() => simpleButton12.Text = zPos));
+                }
+                if (i.StartsWith("FS"))
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+
+        private void simpleButton38_Click(object sender, EventArgs e)
+        {
+            SendCommmand("?");
+        }
+
+        private void simpleButton40_Click(object sender, EventArgs e)
+        {
+            SendCommmand(textBox1.Text);
+        }
+
+        string ctrlX = ((char)24).ToString();
+        private void simpleButton39_Click(object sender, EventArgs e)
+        {
+            SendCommmand(ctrlX);
         }
     }
 }
