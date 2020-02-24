@@ -13,6 +13,8 @@ namespace DXApplication1
         public CheckBox turn_sig = new CheckBox();
         CheckBox w_sig = new CheckBox();
         CheckBox r_sig = new CheckBox();
+        CheckBox h_sig = new CheckBox();
+
         string guid;
         public void ControllerInit()
         {
@@ -26,12 +28,12 @@ namespace DXApplication1
             model.KValue2 = cfg.K2;
             model.OValue2 = cfg.Ovalue2;
 
-            if (cfg.IsAutoConnect == 1)
+            if (cfg.IsAutoConnectMdb== 1)
             {
                 checkEdit1.CheckState = CheckState.Checked;
                 if (comboBox1.Text != "no port")
                 {
-                    if (model.MbsInit(comboBox1.Text))
+                    if (ser.MbsInit(comboBox1.Text))
                     {
                         cfg.LastSerialPort = comboBox1.Text;
                         if (!toggleSwitch5.IsOn) { toggleSwitch5.Toggle(); }
@@ -47,9 +49,31 @@ namespace DXApplication1
                 checkEdit1.CheckState = CheckState.Unchecked;
             }
 
+            if (cfg.IsAutoConnectStepper== 1)
+            {
+                checkEdit2.CheckState = CheckState.Checked;
+                if (comboBox2.Text != "no port")
+                {
+                    if (ser.StepperInit(comboBox2.Text))
+                    {
+                        cfg.LastSerialPort = comboBox2.Text;
+                        if (!toggleSwitch10.IsOn) { toggleSwitch10.Toggle(); }
+                    }
+                    else
+                    {
+                        if (toggleSwitch10.IsOn) { toggleSwitch10.Toggle(); }
+                    }
+                }
+            }
+            else
+            {
+                checkEdit2.CheckState = CheckState.Unchecked;
+            }
+
             turn_sig.Name = "turn_sig";
             w_sig.Name = "w_sig";
             r_sig.Name = "r_sig";
+            h_sig.Name = "h_sig";
 
 
             timerInput.Start();
@@ -59,6 +83,7 @@ namespace DXApplication1
             turn_sig.CheckedChanged += new EventHandler(modelTOController);
             w_sig.CheckedChanged    += new EventHandler(modelTOController);
             r_sig.CheckedChanged    += new EventHandler(modelTOController);
+            h_sig.CheckedChanged    += new EventHandler(modelTOController);
         }
         /// <summary>
         /// 
@@ -203,6 +228,13 @@ namespace DXApplication1
                 case "r_sig":
                     MVC_C2_1._machine.Fire(Machine2.Trigger.R);
                     break;
+                case "h_sig":
+                    if(h_sig.CheckState == CheckState.Checked)
+                    {
+                        MVC_C4_1._machine.Fire(Machine4.Trigger.TOGGLE);
+                        Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
+                    }
+                    break;
             }
 
         }
@@ -254,15 +286,14 @@ namespace DXApplication1
 
             MVC_C3_2.CurrentValue = model.CurrentWeight2;
         }
-        
-        /*
+
         private void timerInput_Tick(object sender, EventArgs e)
         {
             turn_sig.CheckState = model.LightSwitch == true ? CheckState.Checked : CheckState.Unchecked;
-            w_sig.CheckState = model.WriteSwitch == true ? CheckState.Checked : CheckState.Unchecked;
-            r_sig.CheckState = model.ReadSwitch == true ? CheckState.Checked : CheckState.Unchecked;
+            w_sig.CheckState    = model.WriteSwitch == true ? CheckState.Checked : CheckState.Unchecked;
+            r_sig.CheckState    = model.ReadSwitch  == true ? CheckState.Checked : CheckState.Unchecked;
+            h_sig.CheckState    = model.LimitSwitch == true ? CheckState.Checked : CheckState.Unchecked;
         }
-        */
         /// <summary>
         /// timer tick事件更新UI
         /// </summary>
@@ -270,7 +301,7 @@ namespace DXApplication1
         /// <param name="e"></param>
         private void timer_UI_loop_Tick(object sender, EventArgs e)
         {
-            textEdit11.Text = 
+            labelControl34.Text = MVC_C4_1._state.ToString();
             simpleButton10.Text = MVC_C3ALL._state.ToString();
             // Light 状态机 
             simpleButton4.Text = MVC_C2_1._state.ToString();

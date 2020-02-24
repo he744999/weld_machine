@@ -18,14 +18,15 @@ namespace DXApplication1
         /// MVC C控制器：副部分，负责用户动作交互之内的控制, 即自动生成方法部分
         /// </summary>
         Model model = new Model();
+
+        Serial ser = new Serial();
+
         Machine1 MVC_C1 = new Machine1();
         Machine2 MVC_C2_1 = new Machine2("test1");
         Machine3 MVC_C3_1 = new Machine3("machine3_1");
         Machine3 MVC_C3_2 = new Machine3("machine3_2");
 
         Machine4 MVC_C4_1 = new Machine4("test");
-
-
 
 
         Machine3ALL MVC_C3ALL;
@@ -47,7 +48,10 @@ namespace DXApplication1
             MVC_C3ALL = new Machine3ALL(MVC_C3_1, MVC_C3_2);
 
             Machine2.OutputEvent += machine2TOController;
-            Model.Model2ControllerMessageHanlder += model1TOController;
+
+            Serial.Model2ControllerMessageHanlder += model1TOController;
+            // ser.Model2ControllerMessageHanlder += model1TOController;
+
             MVC_C3_1.SendMessageEvent += machine3_1TOController;
             MVC_C3_2.SendMessageEvent += machine3_2TOController;
             MVC_C3ALL.SendMessageEvent += machine3ALL_1TOController;
@@ -61,7 +65,6 @@ namespace DXApplication1
 
         private void Machine4TOController(string data)
         {
-            string cmd = "";
             switch (data)
             {
                 case "OnEntryOkk":
@@ -69,52 +72,27 @@ namespace DXApplication1
                     Console.WriteLine("Okkkkk");
                     break;
                 case "OnEntryFast":
-                    SendCommmand("G90X100");
+                    ser.StepperCmd("G90X100");
                     break;
                 case "OnExitFast":
                     break;
                 case "OnEntryBack":
                     Reset();
-                    SendCommmand("G91X5");
-                    SendCommmand("G91X-10");
+                    ser.StepperCmd("G91X-10");
+                    ser.StepperCmd("G91X10");
                     break;
                 case "OnExitSlowFast":
-                    SendCommmand("!");
-                    SendCommmand(ctrlX);
+                    ser.StepperCmd("!");
+                    ser.StepperCmd(ctrlX);
                     break;
             }
-            SendCommmand(cmd);
         }
         public void Reset()
         {
-            SendCommmand("!");
+            ser.StepperCmd("!"); 
             Task.Delay(1000).Wait();
-            SendCommmand(ctrlX);
+            ser.StepperCmd(ctrlX); 
             Task.Delay(3000).Wait();
-        }
-
-        public bool SendCommmand(string cmd)
-        {
-            bool s = false;
-
-            if (serialPort1.IsOpen)
-            {
-                try
-                {
-                    serialPort1.WriteLine(cmd);
-                    s = true;
-                    Console.WriteLine("send message: " + cmd);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-            }
-            else
-            {
-                Console.WriteLine("port not open");
-            }
-            return s;
         }
 
         void OnOuterFormCreating(object sender, OuterFormCreatingEventArgs e)
@@ -130,16 +108,22 @@ namespace DXApplication1
         {
             // TODO: This line of code loads data into the 'testDataSet1.User' table. You can move, or remove it, as needed.
             this.userTableAdapter.Fill(this.testDataSet1.User);
-            UpdateSerialComboBox(model.ports);
+            UpdateSerialComboBox(ser.ports);
             ControllerInit();
         }
         private void UpdateSerialComboBox(string[] ports)
         {
             comboBox1.Items.Clear();
+            comboBox2.Items.Clear();
             if(ports.Length !=0)
             {
+                // modbus串口选择下拉框
                 comboBox1.Items.AddRange(ports);
-                comboBox1.Text = model.ports[0];
+                comboBox1.Text = ser.ports[0];
+
+                // 步进电机串口选择下拉框 
+                comboBox2.Items.AddRange(ports);
+                comboBox2.Text = ser.ports[0];
             }
         }
 
@@ -168,7 +152,7 @@ namespace DXApplication1
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             MVC_VM.Close();
-            model.Close();
+            ser.Close();
 
             cfg.K1 = model.KValue1;
             cfg.Ovalue1 = model.OValue1;
@@ -180,7 +164,7 @@ namespace DXApplication1
 
         private void checkEdit1_CheckedChanged(object sender, EventArgs e)
         {
-            cfg.IsAutoConnect = checkEdit1.CheckState == CheckState.Checked ? 1:0 ;
+            cfg.IsAutoConnectStepper = checkEdit1.CheckState == CheckState.Checked ? 1:0 ;
 
             // cfg.ChangeEvent(checkEdit1.CheckState == CheckState.Checked);
         }
@@ -191,7 +175,7 @@ namespace DXApplication1
             {
                 if(comboBox1.Text != "no port")
                 {
-                    if(model.MbsInit(comboBox1.Text))
+                    if(ser.MbsInit(comboBox1.Text))
                     {
                         // Console.WriteLine("11111");
                     }
@@ -205,15 +189,15 @@ namespace DXApplication1
                 }
             }else
             {
-                Model.isCommunicating = false;
-                //model.isCommunicating = false;
+                Serial.isCommunicatingMdb = false;
+
             }
         }
 
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-            model.UpdatePorts();
-            UpdateSerialComboBox(model.ports);
+            ser.UpdatePorts();
+            UpdateSerialComboBox(ser.ports);
         }
 
         private void simpleButton9_Click(object sender, EventArgs e)
@@ -374,126 +358,81 @@ namespace DXApplication1
             Console.WriteLine($"this\r\n is {name}");
         }
 
-        private void simpleButton33_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void tabFormContentContainer2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabFormContentContainer1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simpleButton17_Click_1(object sender, EventArgs e)
-        {
-        }
-
-        private void simpleButton34_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Set the baud rate  to **115200** as 8-N-1 (8-bits, no parity, and 1-stop bit.)
-
-                serialPort1.Open();
-                simpleButton34.Enabled = false;
-                simpleButton35.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-        }
-
-        private void simpleButton35_Click(object sender, EventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                serialPort1.Close();
-                simpleButton35.Enabled = false;
-                simpleButton34.Enabled = true;
-            }
-        }
-
+  
         private void simpleButton37_Click(object sender, EventArgs e)
         {
-            SendCommmand("!");
+            ser.StepperCmd("!");
         }
 
         private void simpleButton36_Click(object sender, EventArgs e)
         {
-            SendCommmand("~");
+            ser.StepperCmd("~");
         }
-        string str = "";
-        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
-        {
-            int count = serialPort1.BytesToRead;
-            // byte[] readbuffer = new byte[count];
-            if (count > 0)
-            {
-                Application.DoEvents();
-                str = serialPort1.ReadTo("\n");
-                str += "\n";
-            }
-
-            textBox1.BeginInvoke(new Action(() => textBox1.Text += str));
-            parseSerialInfo(str);
-        }
-
-        private void parseSerialInfo(string info)
-        {
-            // <Idle|MPos:-43.890,0.000,0.000|FS:0,0|Ov:100,100,100>
-
-            Console.WriteLine("----" + info + "----");
-            string[] infos = info.Split('|');
-            switch (infos[0])
-            {
-                case "<Idle":
-                    Console.WriteLine("idleeeeeeeeeee");
-                    break;
-                case "<Run":
-                    Console.WriteLine("Runnnnnnnnnnnn");
-                    break;
-            }
-            foreach (string i in infos)
-            {
-
-                if (i.StartsWith("MPos:"))
-                {
-                    // Console.WriteLine(i);
-                    string[] mpos = i.Split(',');
-                    string xPos = mpos[0].Split(':')[1].ToString();
-                    string yPos = mpos[1].ToString();
-                    string zPos = mpos[2].ToString();
-                    simpleButton9.BeginInvoke(new Action(() => simpleButton9.Text = xPos));
-                    simpleButton11.BeginInvoke(new Action(() => simpleButton11.Text = yPos));
-                    simpleButton12.BeginInvoke(new Action(() => simpleButton12.Text = zPos));
-                }
-                if (i.StartsWith("FS"))
-                {
-                    Console.WriteLine(i);
-                }
-            }
-        }
-
         private void simpleButton38_Click(object sender, EventArgs e)
         {
-            SendCommmand("?");
+            ser.StepperCmd("?");
         }
 
         private void simpleButton40_Click(object sender, EventArgs e)
         {
-            SendCommmand(textBox1.Text);
+            ser.StepperCmd(textBox1.Text);
         }
 
         string ctrlX = ((char)24).ToString();
         private void simpleButton39_Click(object sender, EventArgs e)
         {
-            SendCommmand(ctrlX);
+            ser.StepperCmd(ctrlX);
         }
+
+        private void simpleButton41_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void toggleSwitch10_Toggled(object sender, EventArgs e)
+        {
+            if (toggleSwitch10.IsOn)
+            {
+                if (comboBox2.Text != "no port")
+                {
+                    if (ser.StepperInit(comboBox2.Text))
+                    {
+                        Console.WriteLine("stepper serial init sucess...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("stepper serial init faild...");
+                        toggleSwitch10.Toggle();
+                    }
+                }
+                else
+                {
+                    toggleSwitch10.Toggle();
+                }
+            }
+            else
+            {
+                Serial.isCommunicatingMdb = false;
+
+            }
+        }
+
+
+        private void simpleButton17_Click_1(object sender, EventArgs e)
+        {
+            MVC_C4_1._machine.Fire(Machine4.Trigger.START);
+        }
+
+        private void simpleButton34_Click(object sender, EventArgs e)
+        {
+            MVC_C4_1._machine.Fire(Machine4.Trigger.TOGGLE);
+        }
+
+        private void simpleButton35_Click(object sender, EventArgs e)
+        {
+            MVC_C4_1._machine.Fire(Machine4.Trigger.REREADY);
+        }
+
+
     }
 }

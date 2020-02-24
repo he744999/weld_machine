@@ -18,7 +18,9 @@ namespace DXApplication1
         public double   K2      { get => config["Start"]["k2"].DoubleValue;   set => config["Start"]["k2"].DoubleValue = value; }
         public int      Ovalue2 { get => config["Start"]["0Value2"].IntValue; set => config["Start"]["0Value2"].IntValue = value; }
 
-        public int IsAutoConnect { get => config["Start"]["IsAutoConnect"].IntValue; set => config["Start"]["IsAutoConnect"].IntValue = value; }
+        public int IsAutoConnectMdb { get => config["Start"]["IsAutoConnectMdb"].IntValue; set => config["Start"]["IsAutoConnectMdb"].IntValue = value; }
+        public int IsAutoConnectStepper { get => config["Start"]["IsAutoConnectStepper"].IntValue; set => config["Start"]["IsAutoConnectStepper"].IntValue = value; }
+
         public string LastSerialPort { get => config["Start"]["LastSerialPort"].StringValue; set => config["Start"]["LastSerialPort"].StringValue = value; }
 
         public Stp()

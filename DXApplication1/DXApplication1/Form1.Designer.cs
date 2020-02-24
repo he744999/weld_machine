@@ -110,6 +110,15 @@
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.tabFormPage2 = new DevExpress.XtraBars.TabFormPage();
             this.tabFormContentContainer2 = new DevExpress.XtraBars.TabFormContentContainer();
+            this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton41 = new DevExpress.XtraEditors.SimpleButton();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
+            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
+            this.toggleSwitch10 = new DevExpress.XtraEditors.ToggleSwitch();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
@@ -141,15 +150,17 @@
             this.tabFormContentContainer5 = new DevExpress.XtraBars.TabFormContentContainer();
             this.tabFormPage6 = new DevExpress.XtraBars.TabFormPage();
             this.tabFormContentContainer6 = new DevExpress.XtraBars.TabFormContentContainer();
+            this.simpleButton35 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton34 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton17 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton36 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton37 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton38 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton39 = new DevExpress.XtraEditors.SimpleButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.simpleButton40 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton35 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton34 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton17 = new DevExpress.XtraEditors.SimpleButton();
             this.timer_UI_loop = new System.Windows.Forms.Timer(this.components);
             this.timerInput = new System.Windows.Forms.Timer(this.components);
             this.diagramControl1 = new DevExpress.XtraDiagram.DiagramControl();
@@ -159,7 +170,6 @@
             this.testDataSet = new DXApplication1.testDataSet();
             this.testDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userTableAdapter = new DXApplication1.testDataSet1TableAdapters.UserTableAdapter();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             this.tabFormContentContainer1.SuspendLayout();
@@ -182,6 +192,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.tabFormContentContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch10.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch1.Properties)).BeginInit();
@@ -365,7 +377,6 @@
             this.tabFormContentContainer1.Name = "tabFormContentContainer1";
             this.tabFormContentContainer1.Size = new System.Drawing.Size(1075, 499);
             this.tabFormContentContainer1.TabIndex = 1;
-            this.tabFormContentContainer1.Click += new System.EventHandler(this.tabFormContentContainer1_Click);
             // 
             // textEdit11
             // 
@@ -399,7 +410,6 @@
             this.simpleButton33.Size = new System.Drawing.Size(177, 23);
             this.simpleButton33.TabIndex = 68;
             this.simpleButton33.Text = "料仓2";
-            this.simpleButton33.Click += new System.EventHandler(this.simpleButton33_Click);
             // 
             // simpleButton32
             // 
@@ -963,6 +973,15 @@
             // 
             // tabFormContentContainer2
             // 
+            this.tabFormContentContainer2.Controls.Add(this.labelControl32);
+            this.tabFormContentContainer2.Controls.Add(this.labelControl31);
+            this.tabFormContentContainer2.Controls.Add(this.labelControl28);
+            this.tabFormContentContainer2.Controls.Add(this.labelControl29);
+            this.tabFormContentContainer2.Controls.Add(this.simpleButton41);
+            this.tabFormContentContainer2.Controls.Add(this.comboBox2);
+            this.tabFormContentContainer2.Controls.Add(this.labelControl30);
+            this.tabFormContentContainer2.Controls.Add(this.checkEdit2);
+            this.tabFormContentContainer2.Controls.Add(this.toggleSwitch10);
             this.tabFormContentContainer2.Controls.Add(this.labelControl10);
             this.tabFormContentContainer2.Controls.Add(this.labelControl9);
             this.tabFormContentContainer2.Controls.Add(this.simpleButton6);
@@ -973,11 +992,88 @@
             this.tabFormContentContainer2.Controls.Add(this.labelControl1);
             this.tabFormContentContainer2.Controls.Add(this.toggleSwitch1);
             this.tabFormContentContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabFormContentContainer2.Location = new System.Drawing.Point(0, 61);
+            this.tabFormContentContainer2.Location = new System.Drawing.Point(0, 51);
             this.tabFormContentContainer2.Name = "tabFormContentContainer2";
-            this.tabFormContentContainer2.Size = new System.Drawing.Size(890, 646);
+            this.tabFormContentContainer2.Size = new System.Drawing.Size(1075, 499);
             this.tabFormContentContainer2.TabIndex = 4;
-            this.tabFormContentContainer2.Click += new System.EventHandler(this.tabFormContentContainer2_Click);
+            // 
+            // labelControl32
+            // 
+            this.labelControl32.Location = new System.Drawing.Point(655, 93);
+            this.labelControl32.Name = "labelControl32";
+            this.labelControl32.Size = new System.Drawing.Size(72, 14);
+            this.labelControl32.TabIndex = 19;
+            this.labelControl32.Text = "步进电机串口";
+            // 
+            // labelControl31
+            // 
+            this.labelControl31.Location = new System.Drawing.Point(243, 93);
+            this.labelControl31.Name = "labelControl31";
+            this.labelControl31.Size = new System.Drawing.Size(66, 14);
+            this.labelControl31.TabIndex = 18;
+            this.labelControl31.Text = "Modbus串口";
+            // 
+            // labelControl28
+            // 
+            this.labelControl28.Location = new System.Drawing.Point(629, 222);
+            this.labelControl28.Name = "labelControl28";
+            this.labelControl28.Size = new System.Drawing.Size(101, 14);
+            this.labelControl28.TabIndex = 17;
+            this.labelControl28.Text = "No communication";
+            // 
+            // labelControl29
+            // 
+            this.labelControl29.Location = new System.Drawing.Point(545, 222);
+            this.labelControl29.Name = "labelControl29";
+            this.labelControl29.Size = new System.Drawing.Size(52, 14);
+            this.labelControl29.TabIndex = 16;
+            this.labelControl29.Text = "Serial消息";
+            // 
+            // simpleButton41
+            // 
+            this.simpleButton41.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton41.ImageOptions.Image")));
+            this.simpleButton41.Location = new System.Drawing.Point(748, 123);
+            this.simpleButton41.Name = "simpleButton41";
+            this.simpleButton41.Size = new System.Drawing.Size(68, 22);
+            this.simpleButton41.TabIndex = 15;
+            this.simpleButton41.Text = "刷新";
+            this.simpleButton41.Click += new System.EventHandler(this.simpleButton6_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(621, 123);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 20);
+            this.comboBox2.TabIndex = 14;
+            // 
+            // labelControl30
+            // 
+            this.labelControl30.Location = new System.Drawing.Point(545, 186);
+            this.labelControl30.Name = "labelControl30";
+            this.labelControl30.Size = new System.Drawing.Size(52, 14);
+            this.labelControl30.TabIndex = 13;
+            this.labelControl30.Text = "Serial状态";
+            // 
+            // checkEdit2
+            // 
+            this.checkEdit2.Location = new System.Drawing.Point(622, 156);
+            this.checkEdit2.MenuManager = this.tabFormDefaultManager1;
+            this.checkEdit2.Name = "checkEdit2";
+            this.checkEdit2.Properties.Caption = "自动连接";
+            this.checkEdit2.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit2.TabIndex = 12;
+            // 
+            // toggleSwitch10
+            // 
+            this.toggleSwitch10.Location = new System.Drawing.Point(622, 181);
+            this.toggleSwitch10.MenuManager = this.tabFormDefaultManager1;
+            this.toggleSwitch10.Name = "toggleSwitch10";
+            this.toggleSwitch10.Properties.OffText = "Off";
+            this.toggleSwitch10.Properties.OnText = "On";
+            this.toggleSwitch10.Size = new System.Drawing.Size(95, 25);
+            this.toggleSwitch10.TabIndex = 11;
+            this.toggleSwitch10.Toggled += new System.EventHandler(this.toggleSwitch10_Toggled);
             // 
             // labelControl10
             // 
@@ -1232,9 +1328,9 @@
             // tabFormContentContainer5
             // 
             this.tabFormContentContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabFormContentContainer5.Location = new System.Drawing.Point(0, 61);
+            this.tabFormContentContainer5.Location = new System.Drawing.Point(0, 51);
             this.tabFormContentContainer5.Name = "tabFormContentContainer5";
-            this.tabFormContentContainer5.Size = new System.Drawing.Size(890, 646);
+            this.tabFormContentContainer5.Size = new System.Drawing.Size(1075, 499);
             this.tabFormContentContainer5.TabIndex = 5;
             // 
             // tabFormPage6
@@ -1245,20 +1341,65 @@
             // 
             // tabFormContentContainer6
             // 
+            this.tabFormContentContainer6.Controls.Add(this.simpleButton35);
+            this.tabFormContentContainer6.Controls.Add(this.simpleButton34);
+            this.tabFormContentContainer6.Controls.Add(this.simpleButton17);
+            this.tabFormContentContainer6.Controls.Add(this.labelControl34);
+            this.tabFormContentContainer6.Controls.Add(this.labelControl33);
             this.tabFormContentContainer6.Controls.Add(this.simpleButton36);
             this.tabFormContentContainer6.Controls.Add(this.simpleButton37);
             this.tabFormContentContainer6.Controls.Add(this.simpleButton38);
             this.tabFormContentContainer6.Controls.Add(this.simpleButton39);
             this.tabFormContentContainer6.Controls.Add(this.textBox1);
             this.tabFormContentContainer6.Controls.Add(this.simpleButton40);
-            this.tabFormContentContainer6.Controls.Add(this.simpleButton35);
-            this.tabFormContentContainer6.Controls.Add(this.simpleButton34);
-            this.tabFormContentContainer6.Controls.Add(this.simpleButton17);
             this.tabFormContentContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabFormContentContainer6.Location = new System.Drawing.Point(0, 51);
             this.tabFormContentContainer6.Name = "tabFormContentContainer6";
             this.tabFormContentContainer6.Size = new System.Drawing.Size(1075, 499);
             this.tabFormContentContainer6.TabIndex = 4;
+            // 
+            // simpleButton35
+            // 
+            this.simpleButton35.Location = new System.Drawing.Point(500, 325);
+            this.simpleButton35.Name = "simpleButton35";
+            this.simpleButton35.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton35.TabIndex = 44;
+            this.simpleButton35.Text = "REREADY";
+            this.simpleButton35.Click += new System.EventHandler(this.simpleButton35_Click);
+            // 
+            // simpleButton34
+            // 
+            this.simpleButton34.Location = new System.Drawing.Point(500, 285);
+            this.simpleButton34.Name = "simpleButton34";
+            this.simpleButton34.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton34.TabIndex = 43;
+            this.simpleButton34.Text = "TOGGLE";
+            this.simpleButton34.Click += new System.EventHandler(this.simpleButton34_Click);
+            // 
+            // simpleButton17
+            // 
+            this.simpleButton17.Location = new System.Drawing.Point(500, 238);
+            this.simpleButton17.Name = "simpleButton17";
+            this.simpleButton17.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton17.TabIndex = 42;
+            this.simpleButton17.Text = "START";
+            this.simpleButton17.Click += new System.EventHandler(this.simpleButton17_Click_1);
+            // 
+            // labelControl34
+            // 
+            this.labelControl34.Location = new System.Drawing.Point(768, 105);
+            this.labelControl34.Name = "labelControl34";
+            this.labelControl34.Size = new System.Drawing.Size(12, 14);
+            this.labelControl34.TabIndex = 41;
+            this.labelControl34.Text = "---";
+            // 
+            // labelControl33
+            // 
+            this.labelControl33.Location = new System.Drawing.Point(678, 108);
+            this.labelControl33.Name = "labelControl33";
+            this.labelControl33.Size = new System.Drawing.Size(48, 14);
+            this.labelControl33.TabIndex = 40;
+            this.labelControl33.Text = "当前状态";
             // 
             // simpleButton36
             // 
@@ -1313,37 +1454,14 @@
             this.simpleButton40.Text = "Send";
             this.simpleButton40.Click += new System.EventHandler(this.simpleButton40_Click);
             // 
-            // simpleButton35
-            // 
-            this.simpleButton35.Location = new System.Drawing.Point(489, 36);
-            this.simpleButton35.Name = "simpleButton35";
-            this.simpleButton35.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton35.TabIndex = 2;
-            this.simpleButton35.Text = "disconnect";
-            this.simpleButton35.Click += new System.EventHandler(this.simpleButton35_Click);
-            // 
-            // simpleButton34
-            // 
-            this.simpleButton34.Location = new System.Drawing.Point(402, 36);
-            this.simpleButton34.Name = "simpleButton34";
-            this.simpleButton34.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton34.TabIndex = 1;
-            this.simpleButton34.Text = "connect";
-            this.simpleButton34.Click += new System.EventHandler(this.simpleButton34_Click);
-            // 
-            // simpleButton17
-            // 
-            this.simpleButton17.Location = new System.Drawing.Point(602, 55);
-            this.simpleButton17.Name = "simpleButton17";
-            this.simpleButton17.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton17.TabIndex = 0;
-            this.simpleButton17.Text = "TURN";
-            this.simpleButton17.Click += new System.EventHandler(this.simpleButton17_Click_1);
-            // 
             // timer_UI_loop
             // 
             this.timer_UI_loop.Interval = 10;
             this.timer_UI_loop.Tick += new System.EventHandler(this.timer_UI_loop_Tick);
+            // 
+            // timerInput
+            // 
+            this.timerInput.Tick += new System.EventHandler(this.timerInput_Tick);
             // 
             // diagramControl1
             // 
@@ -1394,11 +1512,6 @@
             // 
             this.userTableAdapter.ClearBeforeFill = true;
             // 
-            // serialPort1
-            // 
-            this.serialPort1.BaudRate = 115200;
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1439,6 +1552,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.tabFormContentContainer2.ResumeLayout(false);
             this.tabFormContentContainer2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch10.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch1.Properties)).EndInit();
@@ -1581,16 +1696,26 @@
         private DevExpress.XtraEditors.TextEdit textEdit11;
         private DevExpress.XtraBars.TabFormContentContainer tabFormContentContainer6;
         private DevExpress.XtraBars.TabFormPage tabFormPage6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton17;
-        private System.IO.Ports.SerialPort serialPort1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton35;
-        private DevExpress.XtraEditors.SimpleButton simpleButton34;
         private DevExpress.XtraEditors.SimpleButton simpleButton36;
         private DevExpress.XtraEditors.SimpleButton simpleButton37;
         private DevExpress.XtraEditors.SimpleButton simpleButton38;
         private DevExpress.XtraEditors.SimpleButton simpleButton39;
         private System.Windows.Forms.TextBox textBox1;
         private DevExpress.XtraEditors.SimpleButton simpleButton40;
+        private DevExpress.XtraEditors.LabelControl labelControl32;
+        private DevExpress.XtraEditors.LabelControl labelControl31;
+        private DevExpress.XtraEditors.LabelControl labelControl28;
+        private DevExpress.XtraEditors.LabelControl labelControl29;
+        private DevExpress.XtraEditors.SimpleButton simpleButton41;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private DevExpress.XtraEditors.LabelControl labelControl30;
+        private DevExpress.XtraEditors.CheckEdit checkEdit2;
+        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch10;
+        private DevExpress.XtraEditors.LabelControl labelControl34;
+        private DevExpress.XtraEditors.LabelControl labelControl33;
+        private DevExpress.XtraEditors.SimpleButton simpleButton35;
+        private DevExpress.XtraEditors.SimpleButton simpleButton34;
+        private DevExpress.XtraEditors.SimpleButton simpleButton17;
     }
 }
 
