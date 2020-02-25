@@ -67,9 +67,10 @@ namespace DXApplication1
                 str = StepperSerial.ReadTo("\n");
                 str += "\n";
             }
-
-            // textBox1.BeginInvoke(new Action(() => textBox1.Text += str));
             parseSerialInfo(str);
+
+
+            str = "";
         }
         private void parseSerialInfo(string info)
         {
@@ -132,7 +133,6 @@ namespace DXApplication1
             return isCommunicatingMdb;
         }
 
-
         public bool StepperInit(string port)
         {
             StepperSerial.PortName = port;
@@ -173,7 +173,7 @@ namespace DXApplication1
                 if (isCommunicatingMdb)
                 {
                     //----------------------------------------------------------------------------
-                    mdb.UnitIdentifier = 202;
+                    mdb.UnitIdentifier = 202; // HEX = 0xCA
                     Model.DIS[1] = mdb.ReadDiscreteInputs(0x64, 4);
                     mdb.WriteSingleCoil(0, Model.DOS[0][0]);
                     mdb.WriteSingleCoil(1, Model.DOS[0][1]);
