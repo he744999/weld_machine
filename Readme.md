@@ -1,4 +1,4 @@
-# Stateless 项目 Readme 个人中文翻译
+# Stateless 项目 翻译
 
 *这是一个基于.NET实现状态机理论的库,可直接嵌入你的项目中*
 
