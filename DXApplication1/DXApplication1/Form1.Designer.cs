@@ -150,6 +150,7 @@
             this.tabFormContentContainer5 = new DevExpress.XtraBars.TabFormContentContainer();
             this.tabFormPage6 = new DevExpress.XtraBars.TabFormPage();
             this.tabFormContentContainer6 = new DevExpress.XtraBars.TabFormContentContainer();
+            this.simpleButton42 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton35 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton34 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton17 = new DevExpress.XtraEditors.SimpleButton();
@@ -165,7 +166,6 @@
             this.timerInput = new System.Windows.Forms.Timer(this.components);
             this.diagramControl1 = new DevExpress.XtraDiagram.DiagramControl();
             this.timerDataUpdate = new System.Windows.Forms.Timer(this.components);
-            this.timerVirtual = new System.Windows.Forms.Timer(this.components);
             this.bbiShow = new DevExpress.XtraBars.BarButtonItem();
             this.testDataSet = new DXApplication1.testDataSet();
             this.testDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -1341,6 +1341,7 @@
             // 
             // tabFormContentContainer6
             // 
+            this.tabFormContentContainer6.Controls.Add(this.simpleButton42);
             this.tabFormContentContainer6.Controls.Add(this.simpleButton35);
             this.tabFormContentContainer6.Controls.Add(this.simpleButton34);
             this.tabFormContentContainer6.Controls.Add(this.simpleButton17);
@@ -1357,6 +1358,15 @@
             this.tabFormContentContainer6.Name = "tabFormContentContainer6";
             this.tabFormContentContainer6.Size = new System.Drawing.Size(1075, 499);
             this.tabFormContentContainer6.TabIndex = 4;
+            // 
+            // simpleButton42
+            // 
+            this.simpleButton42.Location = new System.Drawing.Point(239, 225);
+            this.simpleButton42.Name = "simpleButton42";
+            this.simpleButton42.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton42.TabIndex = 45;
+            this.simpleButton42.Text = "START";
+            this.simpleButton42.Click += new System.EventHandler(this.simpleButton42_Click);
             // 
             // simpleButton35
             // 
@@ -1486,10 +1496,6 @@
             // 
             this.timerDataUpdate.Interval = 10;
             this.timerDataUpdate.Tick += new System.EventHandler(this.timerDataUpdate_Tick);
-            // 
-            // timerVirtual
-            // 
-            this.timerVirtual.Tick += new System.EventHandler(this.timerVirtual_Tick);
             // 
             // bbiShow
             // 
@@ -1670,7 +1676,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton29;
         private DevExpress.XtraEditors.SimpleButton simpleButton30;
         private DevExpress.XtraEditors.SimpleButton simpleButton31;
-        private System.Windows.Forms.Timer timerVirtual;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch9;
         private DevExpress.XtraEditors.LabelControl labelControl24;
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
@@ -1716,6 +1721,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton35;
         private DevExpress.XtraEditors.SimpleButton simpleButton34;
         private DevExpress.XtraEditors.SimpleButton simpleButton17;
+        private DevExpress.XtraEditors.SimpleButton simpleButton42;
     }
 }
 

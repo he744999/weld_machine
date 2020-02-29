@@ -18,6 +18,8 @@ namespace DXApplication1
         /// MVC C控制器：副部分，负责用户动作交互之内的控制, 即自动生成方法部分
         /// </summary>
         Model model = new Model();
+        ModelTemp modelTemp= new ModelTemp();
+
 
         Serial ser = new Serial();
 
@@ -50,7 +52,6 @@ namespace DXApplication1
             Machine2.OutputEvent += machine2TOController;
 
             Serial.Model2ControllerMessageHanlder += model1TOController;
-            // ser.Model2ControllerMessageHanlder += model1TOController;
 
             MVC_C3_1.SendMessageEvent += machine3_1TOController;
             MVC_C3_2.SendMessageEvent += machine3_2TOController;
@@ -154,11 +155,11 @@ namespace DXApplication1
             MVC_VM.Close();
             ser.Close();
 
-            cfg.K1 = model.KValue1;
-            cfg.Ovalue1 = model.OValue1;
+            cfg.K1 = modelTemp.KValue1;
+            cfg.Ovalue1 = modelTemp.OValue1;
 
-            cfg.K2 = model.KValue2;
-            cfg.Ovalue2 = model.OValue2;
+            cfg.K2 = modelTemp.KValue2;
+            cfg.Ovalue2 = modelTemp.OValue2;
         }
 
 
@@ -202,16 +203,13 @@ namespace DXApplication1
 
         private void simpleButton9_Click(object sender, EventArgs e)
         {
-            int delta = model.RawValue1 - model.OValue1;
-            double deltb = Convert.ToDouble(delta);
-
-            double deltc = Convert.ToDouble(model.OValue1);
-            model.KValue1 = Math.Round( deltb/deltc, 2);
+            float delta = modelTemp.RawValue1 - modelTemp.OValue1;
+            modelTemp.KValue1 = delta/ modelTemp.OValue1;
         }
 
         private void simpleButton8_Click(object sender, EventArgs e)
         {
-            model.OValue1 = model.RawValue1;
+            modelTemp.OValue1 = modelTemp.RawValue1;
         }
 
 
@@ -332,16 +330,13 @@ namespace DXApplication1
 
         private void simpleButton27_Click(object sender, EventArgs e)
         {
-            model.OValue2 = model.RawValue2;
+            modelTemp.OValue2 = modelTemp.RawValue2;
         }
 
         private void simpleButton26_Click(object sender, EventArgs e)
         {
-            int delta = model.RawValue2 - model.OValue2;
-            double deltb = Convert.ToDouble(delta);
-
-            double deltc = Convert.ToDouble(model.OValue2);
-            model.KValue2 = Math.Round(deltb / deltc, 2);
+            float delta = modelTemp.RawValue2 - modelTemp.OValue2;
+            modelTemp.KValue2 = delta / modelTemp.OValue2;
         }
 
  
@@ -433,6 +428,15 @@ namespace DXApplication1
             MVC_C4_1._machine.Fire(Machine4.Trigger.REREADY);
         }
 
+        private void simpleButton42_Click(object sender, EventArgs e)
+        {
 
+            Console.WriteLine(modelTemp.KValue1);
+            Console.WriteLine(modelTemp.KValue2);
+            Console.WriteLine(modelTemp.OValue1);
+            Console.WriteLine(modelTemp.OValue2);
+
+
+        }
     }
 }

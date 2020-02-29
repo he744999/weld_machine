@@ -14,7 +14,6 @@ namespace DXApplication1
         CheckBox w_sig = new CheckBox();
         CheckBox r_sig = new CheckBox();
         CheckBox h_sig = new CheckBox();
-
         string guid;
         public void ControllerInit()
         {
@@ -22,13 +21,13 @@ namespace DXApplication1
             Console.WriteLine($"This Computer Guid is {guid}");
             cfg.Guid = guid;
 
-            model.KValue1 = cfg.K1;
-            model.OValue1 = cfg.Ovalue1;
+            modelTemp.KValue1 = cfg.K1;
+            modelTemp.OValue1 = cfg.Ovalue1;
 
-            model.KValue2 = cfg.K2;
-            model.OValue2 = cfg.Ovalue2;
+            modelTemp.KValue2 = cfg.K2;
+            modelTemp.OValue2 = cfg.Ovalue2;
 
-            if (cfg.IsAutoConnectMdb== 1)
+            if (cfg.IsAutoConnectMdb == 1)
             {
                 checkEdit1.CheckState = CheckState.Checked;
                 if (comboBox1.Text != "no port")
@@ -49,7 +48,7 @@ namespace DXApplication1
                 checkEdit1.CheckState = CheckState.Unchecked;
             }
 
-            if (cfg.IsAutoConnectStepper== 1)
+            if (cfg.IsAutoConnectStepper == 1)
             {
                 checkEdit2.CheckState = CheckState.Checked;
                 if (comboBox2.Text != "no port")
@@ -81,9 +80,9 @@ namespace DXApplication1
             timerDataUpdate.Start();
 
             turn_sig.CheckedChanged += new EventHandler(modelTOController);
-            w_sig.CheckedChanged    += new EventHandler(modelTOController);
-            r_sig.CheckedChanged    += new EventHandler(modelTOController);
-            h_sig.CheckedChanged    += new EventHandler(modelTOController);
+            w_sig.CheckedChanged += new EventHandler(modelTOController);
+            r_sig.CheckedChanged += new EventHandler(modelTOController);
+            h_sig.CheckedChanged += new EventHandler(modelTOController);
         }
         /// <summary>
         /// 
@@ -137,7 +136,7 @@ namespace DXApplication1
         public void input1_TOController(string s)
         {
             Console.WriteLine(s + "-----machine3all");
-            switch(s)
+            switch (s)
             {
                 case "INIT":
                     MVC_C3ALL._machine.Fire(Machine3ALL.Trigger.INIT);
@@ -161,7 +160,7 @@ namespace DXApplication1
             }
             // labelControl10.BeginInvoke(new Action(() => labelControl10.Text = s));
         }
-        
+
         public string model1TOController(object sender, string info)
         {
             barButtonItem3.Caption = info;
@@ -229,7 +228,7 @@ namespace DXApplication1
                     MVC_C2_1._machine.Fire(Machine2.Trigger.R);
                     break;
                 case "h_sig":
-                    if(h_sig.CheckState == CheckState.Checked)
+                    if (h_sig.CheckState == CheckState.Checked)
                     {
                         MVC_C4_1._machine.Fire(Machine4.Trigger.TOGGLE);
                         Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
@@ -282,17 +281,17 @@ namespace DXApplication1
         private void timerDataUpdate_Tick(object sender, EventArgs e)
         {
             // model 当前称值 到 状态机当前值
-            MVC_C3_1.CurrentValue = model.CurrentWeight1;
+            MVC_C3_1.CurrentValue = modelTemp.currentWeight1;
 
-            MVC_C3_2.CurrentValue = model.CurrentWeight2;
+            MVC_C3_2.CurrentValue = modelTemp.currentWeight2;
         }
 
         private void timerInput_Tick(object sender, EventArgs e)
         {
             turn_sig.CheckState = model.LightSwitch == true ? CheckState.Checked : CheckState.Unchecked;
-            w_sig.CheckState    = model.WriteSwitch == true ? CheckState.Checked : CheckState.Unchecked;
-            r_sig.CheckState    = model.ReadSwitch  == true ? CheckState.Checked : CheckState.Unchecked;
-            h_sig.CheckState    = model.LimitSwitch == true ? CheckState.Checked : CheckState.Unchecked;
+            w_sig.CheckState = model.WriteSwitch == true ? CheckState.Checked : CheckState.Unchecked;
+            r_sig.CheckState = model.ReadSwitch == true ? CheckState.Checked : CheckState.Unchecked;
+            h_sig.CheckState = model.LimitSwitch == true ? CheckState.Checked : CheckState.Unchecked;
         }
         /// <summary>
         /// timer tick事件更新UI
@@ -309,14 +308,14 @@ namespace DXApplication1
             // ------------------------------------------------------------------------------
             // 一号配料机更新
             // 原始值显示
-            textEdit2.Text = model.RawValue1.ToString();
+            textEdit2.Text = modelTemp.RawValue1.ToString();
             // k值显示
-            textEdit3.Text = model.KValue1.ToString();
+            textEdit3.Text = modelTemp.KValue1.ToString();
             // 0值显示
-            textEdit4.Text = model.OValue1.ToString();
+            textEdit4.Text = modelTemp.OValue1.ToString();
 
             // 称示数
-            simpleButton5.Text = model.CurrentWeight1.ToString();
+            simpleButton5.Text = modelTemp.RawValue2.ToString();
 
             // machine3 当前状态
             simpleButton11.Text = MVC_C3_1._state.ToString();
@@ -376,12 +375,12 @@ namespace DXApplication1
             // 原始值显示
             textEdit10.Text = model.RawValue2.ToString();
             // k值显示
-            textEdit9.Text = model.KValue2.ToString();
+            textEdit9.Text = modelTemp.KValue2.ToString();
             // 0值显示
-            textEdit8.Text = model.OValue2.ToString();
+            textEdit8.Text = modelTemp.OValue2.ToString();
 
             // 称示数
-            simpleButton24.Text = model.CurrentWeight2.ToString();
+            simpleButton24.Text = modelTemp.RawValue2.ToString();
 
             // machine3 当前状态
             simpleButton22.Text = MVC_C3_2._state.ToString();
@@ -441,6 +440,7 @@ namespace DXApplication1
         {
 
         }
+
     }
 }
 
