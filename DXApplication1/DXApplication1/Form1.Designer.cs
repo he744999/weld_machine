@@ -170,6 +170,7 @@
             this.testDataSet = new DXApplication1.testDataSet();
             this.testDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userTableAdapter = new DXApplication1.testDataSet1TableAdapters.UserTableAdapter();
+            this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             this.tabFormContentContainer1.SuspendLayout();
@@ -225,7 +226,7 @@
             this.tabFormControl1.Pages.Add(this.tabFormPage4);
             this.tabFormControl1.Pages.Add(this.tabFormPage5);
             this.tabFormControl1.Pages.Add(this.tabFormPage6);
-            this.tabFormControl1.SelectedPage = this.tabFormPage6;
+            this.tabFormControl1.SelectedPage = this.tabFormPage3;
             this.tabFormControl1.Size = new System.Drawing.Size(1075, 51);
             this.tabFormControl1.TabForm = this;
             this.tabFormControl1.TabIndex = 0;
@@ -1165,6 +1166,7 @@
             // 
             // tabFormContentContainer3
             // 
+            this.tabFormContentContainer3.Controls.Add(this.labelControl35);
             this.tabFormContentContainer3.Controls.Add(this.labelControl14);
             this.tabFormContentContainer3.Controls.Add(this.pictureBox1);
             this.tabFormContentContainer3.Controls.Add(this.simpleButton4);
@@ -1172,9 +1174,9 @@
             this.tabFormContentContainer3.Controls.Add(this.simpleButton2);
             this.tabFormContentContainer3.Controls.Add(this.simpleButton1);
             this.tabFormContentContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabFormContentContainer3.Location = new System.Drawing.Point(0, 61);
+            this.tabFormContentContainer3.Location = new System.Drawing.Point(0, 51);
             this.tabFormContentContainer3.Name = "tabFormContentContainer3";
-            this.tabFormContentContainer3.Size = new System.Drawing.Size(890, 646);
+            this.tabFormContentContainer3.Size = new System.Drawing.Size(1075, 499);
             this.tabFormContentContainer3.TabIndex = 5;
             // 
             // labelControl14
@@ -1197,11 +1199,12 @@
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(108, 122);
+            this.simpleButton4.Location = new System.Drawing.Point(12, 177);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(60, 31);
             this.simpleButton4.TabIndex = 6;
             this.simpleButton4.Text = "turn";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // simpleButton3
             // 
@@ -1451,7 +1454,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(191, 117);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 22);
+            this.textBox1.Size = new System.Drawing.Size(149, 21);
             this.textBox1.TabIndex = 35;
             this.textBox1.Text = "?";
             // 
@@ -1518,6 +1521,14 @@
             // 
             this.userTableAdapter.ClearBeforeFill = true;
             // 
+            // labelControl35
+            // 
+            this.labelControl35.Location = new System.Drawing.Point(127, 130);
+            this.labelControl35.Name = "labelControl35";
+            this.labelControl35.Size = new System.Drawing.Size(12, 14);
+            this.labelControl35.TabIndex = 18;
+            this.labelControl35.Text = "---";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1527,7 +1538,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Controls.Add(this.tabFormContentContainer6);
+            this.Controls.Add(this.tabFormContentContainer3);
             this.Controls.Add(this.tabFormControl1);
             this.Name = "Form1";
             this.TabFormControl = this.tabFormControl1;
@@ -1722,6 +1733,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton34;
         private DevExpress.XtraEditors.SimpleButton simpleButton17;
         private DevExpress.XtraEditors.SimpleButton simpleButton42;
+        private DevExpress.XtraEditors.LabelControl labelControl35;
     }
 }
 

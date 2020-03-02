@@ -303,7 +303,7 @@ namespace DXApplication1
             labelControl34.Text = MVC_C4_1._state.ToString();
             simpleButton10.Text = MVC_C3ALL._state.ToString();
             // Light 状态机 
-            simpleButton4.Text = MVC_C2_1._state.ToString();
+            labelControl35.Text = MVC_C2_1._state.ToString();
 
             // ------------------------------------------------------------------------------
             // 一号配料机更新

@@ -14,29 +14,21 @@ namespace DXApplication1
 
         public enum States { On, Off, Read, Write };
 
-        public enum Trigger { TURN, W, R };
+        public enum Trigger { TURN, W, R, TIMEOUT };
 
         public States _state = States.Off;
         public StateMachine<States, Trigger> _machine;
 
-        public string _id { get; set; }
+        public string _id { get; private set; }
 
 
-        Timer t1 = new Timer();
-        Timer t2 = new Timer();
+        Task tWithDelay;
         Random r = new Random();
 
         public Machine2(string id)
         {
             // 配料机标识符
             _id = id;
-
-
-            t1.Interval = 500;
-            t1.AutoReset = true;
-
-            t2.Interval = 100;
-            t2.AutoReset = false;
 
             _machine = new StateMachine<States, Trigger>(() => _state, s => _state = s);
             _machine.OnUnhandledTrigger((state, trigger) => { });
@@ -61,6 +53,9 @@ namespace DXApplication1
                 .OnEntry(t => OnEntryread())
                 .OnExit(t => OnExitread());
 
+            _machine.Configure(States.Read).Permit(Trigger.TIMEOUT, States.Write);
+            _machine.Configure(States.Write).Permit(Trigger.TIMEOUT, States.Read);
+
             _machine.Configure(States.Write).Permit(Trigger.R, States.Read)
                 .SubstateOf(States.On)
                 .OnEntry(t => OnEntrywrite())
@@ -77,14 +72,19 @@ namespace DXApplication1
             OutputEvent("OnEntryOn");
         }
 
-        private void OnEntryread()
+        private async void OnEntryread()
         {
             OutputEvent("OnEntryread");
+            await Task.Delay(1000);
+            _machine.Fire(Trigger.TIMEOUT);
+
         }
 
-        private void OnEntrywrite()
+        private async void OnEntrywrite()
         {
             OutputEvent("OnEntrywrite");
+            await Task.Delay(1000);
+            _machine.Fire(Trigger.TIMEOUT);
         }
         private void OnExitOff()
         {

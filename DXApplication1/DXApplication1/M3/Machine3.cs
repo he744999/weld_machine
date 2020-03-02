@@ -1,7 +1,6 @@
-﻿using System;
-using Stateless;
-using System.Timers;
+﻿using Stateless;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace DXApplication1
 {
@@ -20,8 +19,6 @@ namespace DXApplication1
         public States _state = States.Easy;
         public StateMachine<States, Trigger> _machine;
         private string id = null;
-        System.Timers.Timer tT;
-        System.Timers.Timer tK;
         Thread thd = null;
 
         private double slowValue = 20.0;
@@ -42,14 +39,6 @@ namespace DXApplication1
             thd.Name = name + " thread";
             thd.IsBackground = true;
             thd.Start();
-
-            tT = new System.Timers.Timer(1000);
-            tK = new System.Timers.Timer(1000);
-            tT.Elapsed += TtimeoutEvent;
-            tT.AutoReset = false;
-
-            tK.Elapsed += KtimeoutEvent;
-            tK.AutoReset = false;
 
             MachineConfig();
         }
@@ -126,16 +115,18 @@ namespace DXApplication1
             _machine.Fire(Trigger.TIMEOUT);
         }
 
-        private void OnEntrySlowK(string v)
+        private async void OnEntrySlowK(string v)
         {
             SendMessageEvent(v);
-            tK.Start();
+            await Task.Delay(1000);
+            _machine.Fire(Trigger.TIMEOUT);
         }
 
-        private void OnEntrySlowT(string v)
+        private async void OnEntrySlowT(string v)
         {
             SendMessageEvent(v);
-            tT.Start();
+            await Task.Delay(1000);
+            _machine.Fire(Trigger.TIMEOUT);
         }
     }
 }
