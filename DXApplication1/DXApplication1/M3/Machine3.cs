@@ -105,15 +105,6 @@ namespace DXApplication1
             }
         }
 
-        private void KtimeoutEvent(object sender, ElapsedEventArgs e)
-        {
-            _machine.Fire(Trigger.TIMEOUT);
-        }
-
-        private void TtimeoutEvent(object sender, ElapsedEventArgs e)
-        {
-            _machine.Fire(Trigger.TIMEOUT);
-        }
 
         private async void OnEntrySlowK(string v)
         {

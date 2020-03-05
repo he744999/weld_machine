@@ -22,7 +22,6 @@ namespace DXApplication1
         public string _id { get; private set; }
 
 
-        Task tWithDelay;
         Random r = new Random();
 
         public Machine2(string id)

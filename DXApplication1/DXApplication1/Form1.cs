@@ -57,12 +57,15 @@ namespace DXApplication1
             MVC_C3_2.SendMessageEvent += machine3_2TOController;
             MVC_C3ALL.SendMessageEvent += machine3ALL_1TOController;
             MVC_C4_1.SendMessageEvent += Machine4TOController;
+            modelTemp.SendInputEvent += modelTemp2Controller;
 
             this.Controller2InputHandler1 += intput.test;
 
             intput.InInputFormEvent += input1_TOController;
 
         }
+
+
 
         private void Machine4TOController(string data)
         {
@@ -320,7 +323,7 @@ namespace DXApplication1
             {
                 case Keys.Enter:
                     int raw = int.Parse(textEdit6.Text);
-                    model.RawValue1 = raw;
+                    modelTemp.RawValue1 = raw;
                     break;
                 case Keys.Back:
                     textEdit6.Text = "";

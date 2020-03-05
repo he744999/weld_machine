@@ -10,10 +10,6 @@ namespace DXApplication1
         /// MVC C控制器：主部分，负责用户动作交互之外的控制
         /// </summary>
 
-        public CheckBox turn_sig = new CheckBox();
-        CheckBox w_sig = new CheckBox();
-        CheckBox r_sig = new CheckBox();
-        CheckBox h_sig = new CheckBox();
         string guid;
         public void ControllerInit()
         {
@@ -69,20 +65,11 @@ namespace DXApplication1
                 checkEdit2.CheckState = CheckState.Unchecked;
             }
 
-            turn_sig.Name = "turn_sig";
-            w_sig.Name = "w_sig";
-            r_sig.Name = "r_sig";
-            h_sig.Name = "h_sig";
-
 
             timerInput.Start();
             timer_UI_loop.Start();
             timerDataUpdate.Start();
 
-            turn_sig.CheckedChanged += new EventHandler(modelTOController);
-            w_sig.CheckedChanged += new EventHandler(modelTOController);
-            r_sig.CheckedChanged += new EventHandler(modelTOController);
-            h_sig.CheckedChanged += new EventHandler(modelTOController);
         }
         /// <summary>
         /// 
@@ -117,6 +104,57 @@ namespace DXApplication1
                     model.WeightDoor2 = false;
                     model.BigDoor2 = false;
                     model.SmallDoor2 = false;
+                    break;
+            }
+        }
+
+        string commands;
+        string[] cmds;
+        string name;
+        string value;
+        private void modelTemp2Controller(object sender, EventArgs e)
+        {
+            commands = sender as string;
+            cmds = commands.Split('-');
+            name  = cmds[0];
+            value = cmds[1];
+            switch(name)
+            {
+                case "LightSwitch":
+                    MVC_C2_1._machine.Fire(Machine2.Trigger.TURN);
+                    switch(value)
+                    {
+                        case "False":
+                            Console.WriteLine("false");
+                            break;
+                        case "True":
+                            Console.WriteLine("true");
+                            break;
+                    }
+                    break;
+                case "WriteSwitch":
+                    switch (value)
+                    {
+                        case "False":
+                            Console.WriteLine("false");
+                            break;
+                        case "True":
+                            MVC_C2_1._machine.Fire(Machine2.Trigger.W);
+                            Console.WriteLine("true");
+                            break;
+                    }
+                    break;
+                case "ReadSwitch":
+                    switch (value)
+                    {
+                        case "False":
+                            Console.WriteLine("false");
+                            break;
+                        case "True":
+                            MVC_C2_1._machine.Fire(Machine2.Trigger.R);
+                            Console.WriteLine("true");
+                            break;
+                    }
                     break;
             }
         }
@@ -227,13 +265,6 @@ namespace DXApplication1
                 case "r_sig":
                     MVC_C2_1._machine.Fire(Machine2.Trigger.R);
                     break;
-                case "h_sig":
-                    if (h_sig.CheckState == CheckState.Checked)
-                    {
-                        MVC_C4_1._machine.Fire(Machine4.Trigger.TOGGLE);
-                        Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
-                    }
-                    break;
             }
 
         }
@@ -288,10 +319,12 @@ namespace DXApplication1
 
         private void timerInput_Tick(object sender, EventArgs e)
         {
+            /*
             turn_sig.CheckState = model.LightSwitch == true ? CheckState.Checked : CheckState.Unchecked;
             w_sig.CheckState = model.WriteSwitch == true ? CheckState.Checked : CheckState.Unchecked;
             r_sig.CheckState = model.ReadSwitch == true ? CheckState.Checked : CheckState.Unchecked;
             h_sig.CheckState = model.LimitSwitch == true ? CheckState.Checked : CheckState.Unchecked;
+            */
         }
         /// <summary>
         /// timer tick事件更新UI
