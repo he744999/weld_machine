@@ -140,3 +140,4 @@ C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\obj\Debug\DXApplication1
 C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\obj\Debug\DXApplication1.exe
 C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\obj\Debug\DXApplication1.pdb
 C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\obj\Debug\DXApplication1.csprojAssemblyReference.cache
+C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\obj\Debug\DXApplication1.Form2.resources

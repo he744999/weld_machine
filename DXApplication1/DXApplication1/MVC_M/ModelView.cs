@@ -26,6 +26,7 @@ namespace DXApplication1
 
         private void ModelView_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Console.WriteLine("------------");
         }
 
         private void timer_Model_view_Tick(object sender, EventArgs e)

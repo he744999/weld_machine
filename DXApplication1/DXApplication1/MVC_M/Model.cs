@@ -7,14 +7,14 @@ namespace DXApplication1
 {
     public partial class Model
     {
-
         //--------------------------------------------------------------------------
         // 全局输入/出模型
         public volatile static bool[][] DIS       = new bool[3][];
         public volatile static bool[][] DOS       = new bool[3][];
         public volatile static bool[][] DOS_COILS = new bool[3][];
         public volatile static int[][]  AIS       = new int[3][];
-        public Model()
+
+        static Model()
         {
             DIS[0] = new bool[] { false, false, false, false };
             DIS[1] = new bool[] { false, false, false, false };
@@ -30,6 +30,10 @@ namespace DXApplication1
 
             AIS[0] = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
             AIS[1] = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+        }
+        public Model()
+        {
+
         }
     }
 }

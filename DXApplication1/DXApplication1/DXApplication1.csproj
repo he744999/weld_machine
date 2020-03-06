@@ -89,17 +89,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller.cs">
+    <Compile Include="CFG\SetupParagram1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CFG\SetupParagram1.Designer.cs">
+      <DependentUpon>SetupParagram1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MVC_C\Controller.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MVC_M\ModelTemp.cs" />
     <Compile Include="MVC_M\Serial.cs" />
     <Compile Include="M4\Machine4.cs" />
     <Compile Include="CFG\Stp.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MVC_C\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="MVC_C\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1Input1.cs">
@@ -132,7 +138,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>testDataSet1.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="CFG\SetupParagram1.resx">
+      <DependentUpon>SetupParagram1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MVC_C\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1Input1.resx">
@@ -191,6 +200,7 @@
     <None Include="Resources\SM_of_Blinky.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Basic_Batch_SFC.jpg" />
     <Content Include="SQLQuery1.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

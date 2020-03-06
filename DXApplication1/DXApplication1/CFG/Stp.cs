@@ -15,9 +15,13 @@ namespace DXApplication1
 
         public float K1      { get => config["cheng1"]["k"].FloatValue;   set => config["cheng1"]["k"].FloatValue= value; }
         public int Ovalue1 { get => config["cheng1"]["0Value"].IntValue; set => config["cheng1"]["0Value"].IntValue = value; }
+        public int TOpen1   { get => config["cheng1"]["Topen"].IntValue; set => config["cheng1"]["Topen"].IntValue = value; }
+        public int TClose1 { get => config["cheng1"]["Tclose"].IntValue; set => config["cheng1"]["Tclose"].IntValue = value; }
 
         public float K2      { get => config["cheng2"]["k"].FloatValue;   set => config["cheng2"]["k"].FloatValue= value; }
         public int Ovalue2 { get => config["cheng2"]["0Value"].IntValue; set => config["cheng2"]["0Value"].IntValue = value; }
+        public int TOpen2 { get => config["cheng2"]["Topen"].IntValue; set => config["cheng2"]["Topen"].IntValue = value; }
+        public int TClose2 { get => config["cheng2"]["Tclose"].IntValue; set => config["cheng2"]["Tclose"].IntValue = value; }
 
         public int IsAutoConnectMdb { get => config["Start"]["IsAutoConnectMdb"].IntValue; set => config["Start"]["IsAutoConnectMdb"].IntValue = value; }
         public int IsAutoConnectStepper { get => config["Start"]["IsAutoConnectStepper"].IntValue; set => config["Start"]["IsAutoConnectStepper"].IntValue = value; }
