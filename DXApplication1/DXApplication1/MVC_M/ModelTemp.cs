@@ -8,6 +8,20 @@ namespace DXApplication1
 {
     public class ModelTemp
     {
+        public bool BigDoor1 { get => Model.DOS[1][0]; set => Model.DOS[1][0] = value; }
+        public bool SmallDoor1 { get => Model.DOS[1][1]; set => Model.DOS[1][1] = value; }
+        public bool WeightDoor1 { get => Model.DOS[1][2]; set => Model.DOS[1][2] = value; }
+
+
+        //--------------------------------------------------------------------------
+        // 二号配料机
+
+
+        public bool BigDoor2 { get => Model.DOS[2][0]; set => Model.DOS[2][0] = value; }
+        public bool SmallDoor2 { get => Model.DOS[2][1]; set => Model.DOS[2][1] = value; }
+        public bool WeightDoor2 { get => Model.DOS[2][2]; set => Model.DOS[2][2] = value; }
+
+
 
         //--------------------------------------------------------------------------
         // 全局输入/出模型
@@ -32,9 +46,20 @@ namespace DXApplication1
         private volatile float kValue2 = 0.0000000f;
         private volatile int oValue2 = 300;
 
-        public int RawValue2 { get => Model.AIS[0][1]; }
+        public int RawValue2 { get => Model.AIS[0][1]; set => Model.AIS[0][1] = value; }
         public float KValue2 { get => kValue2; set => kValue2 = value; }
         public int OValue2 { get => oValue2; set => oValue2 = value; }
+
+
+
+
+
+        //--------------------------------------------------------------------------
+        // Light状态机测试用
+        public bool Light { get => Model.DOS[0][0]; set => Model.DOS[0][0] = value; }
+        public bool WriteAction { get => Model.DOS[0][1]; set => Model.DOS[0][1] = value; }
+        public bool ReadAction { get => Model.DOS[0][2]; set => Model.DOS[0][2] = value; }
+
 
         private Thread thd;
         private Thread thd2;

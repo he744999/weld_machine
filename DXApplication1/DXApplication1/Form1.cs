@@ -17,7 +17,6 @@ namespace DXApplication1
         /// <summary>
         /// MVC C控制器：副部分，负责用户动作交互之内的控制, 即自动生成方法部分
         /// </summary>
-        Model model = new Model();
         ModelTemp modelTemp= new ModelTemp();
 
 
@@ -29,8 +28,6 @@ namespace DXApplication1
         Machine3 MVC_C3_2 = new Machine3("machine3_2");
 
         Machine4 MVC_C4_1 = new Machine4("test");
-
-
         Machine3ALL MVC_C3ALL;
         SqlTest sql = new SqlTest();
 
@@ -50,7 +47,6 @@ namespace DXApplication1
             MVC_C3ALL = new Machine3ALL(MVC_C3_1, MVC_C3_2);
 
             Machine2.OutputEvent += machine2TOController;
-
             Serial.Model2ControllerMessageHanlder += model1TOController;
 
             MVC_C3_1.SendMessageEvent += machine3_1TOController;
@@ -312,10 +308,9 @@ namespace DXApplication1
             if(e.KeyCode == Keys.Enter)
             {
                 int raw = int.Parse(textEdit7.Text);
-                model.RawValue2 = raw;
+                modelTemp.RawValue2 = raw;
             }
         }
-
 
         private void textEdit6_KeyUp(object sender, KeyEventArgs e)
         {

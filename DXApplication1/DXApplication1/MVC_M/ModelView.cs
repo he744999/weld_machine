@@ -13,7 +13,6 @@ namespace DXApplication1
 {
     public partial class ModelView : DevExpress.XtraEditors.XtraForm
     {
-        Model model = new Model();
         public ModelView()
         {
             InitializeComponent();
@@ -41,7 +40,6 @@ namespace DXApplication1
             simpleButton7.Text = Model.DOS[1][2].ToString();
             simpleButton8.Text = Model.DOS[1][3].ToString();
 
-
             simpleButton9.Text  = Model.DIS[0][0].ToString();
             simpleButton10.Text = Model.DIS[0][1].ToString();
             simpleButton11.Text = Model.DIS[0][2].ToString();
@@ -51,7 +49,6 @@ namespace DXApplication1
             simpleButton14.Text = Model.DIS[1][1].ToString();
             simpleButton15.Text = Model.DIS[1][2].ToString();
             simpleButton16.Text = Model.DIS[1][3].ToString();
-
 
             simpleButton17.Text = Model.AIS[0][0].ToString();
             simpleButton18.Text = Model.AIS[0][1].ToString();
@@ -71,13 +68,13 @@ namespace DXApplication1
             switch(name)
             {
                 case "simpleButton9":
-                    model.LightSwitch= !model.LightSwitch;
+                    Model.DIS[0][0] = !Model.DIS[0][0];
                     break;
                 case "simpleButton10":
-                    model.ReadSwitch= !model.ReadSwitch;
+                    Model.DIS[0][1] = !Model.DIS[0][1];
                     break;
                 case "simpleButton11":
-                    model.WriteSwitch= !model.WriteSwitch;
+                    Model.DIS[0][2] = !Model.DIS[0][2];
                     break;
             }
         }

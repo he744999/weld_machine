@@ -81,29 +81,29 @@ namespace DXApplication1
             switch (data)
             {
                 case "OnEntryFaster":
-                    model.WeightDoor2 = false;
-                    model.BigDoor2 = true;
-                    model.SmallDoor2 = true;
+                    modelTemp.WeightDoor2 = false;
+                    modelTemp.BigDoor2 = true;
+                    modelTemp.SmallDoor2 = true;
                     break;
                 case "OnEntryReady":
-                    model.WeightDoor2 = false;
-                    model.BigDoor2 = false;
-                    model.SmallDoor2 = false;
+                    modelTemp.WeightDoor2 = false;
+                    modelTemp.BigDoor2 = false;
+                    modelTemp.SmallDoor2 = false;
                     break;
                 case "OnEntrySlowT":
-                    model.WeightDoor2 = false;
-                    model.BigDoor2 = true;
-                    model.SmallDoor2 = false;
+                    modelTemp.WeightDoor2 = false;
+                    modelTemp.BigDoor2 = true;
+                    modelTemp.SmallDoor2 = false;
                     break;
                 case "OnEntrySlowK":
-                    model.WeightDoor2 = false;
-                    model.BigDoor2 = true;
-                    model.SmallDoor2 = true;
+                    modelTemp.WeightDoor2 = false;
+                    modelTemp.BigDoor2 = true;
+                    modelTemp.SmallDoor2 = true;
                     break;
                 case "OnEntryOkk":
-                    model.WeightDoor2 = false;
-                    model.BigDoor2 = false;
-                    model.SmallDoor2 = false;
+                    modelTemp.WeightDoor2 = false;
+                    modelTemp.BigDoor2 = false;
+                    modelTemp.SmallDoor2 = false;
                     break;
             }
         }
@@ -217,29 +217,29 @@ namespace DXApplication1
             switch (data)
             {
                 case "OnEntryFaster":
-                    model.WeightDoor1 = false;
-                    model.BigDoor1 = true;
-                    model.SmallDoor1 = true;
+                    modelTemp.WeightDoor1 = false;
+                    modelTemp.BigDoor1 = true;
+                    modelTemp.SmallDoor1 = true;
                     break;
                 case "OnEntryReady":
-                    model.WeightDoor1 = false;
-                    model.BigDoor1 = false;
-                    model.SmallDoor1 = false;
+                    modelTemp.WeightDoor1 = false;
+                    modelTemp.BigDoor1 = false;
+                    modelTemp.SmallDoor1 = false;
                     break;
                 case "OnEntrySlowT":
-                    model.WeightDoor1 = false;
-                    model.BigDoor1 = true;
-                    model.SmallDoor1 = false;
+                    modelTemp.WeightDoor1 = false;
+                    modelTemp.BigDoor1 = true;
+                    modelTemp.SmallDoor1 = false;
                     break;
                 case "OnEntrySlowK":
-                    model.WeightDoor1 = false;
-                    model.BigDoor1 = true;
-                    model.SmallDoor1 = true;
+                    modelTemp.WeightDoor1 = false;
+                    modelTemp.BigDoor1 = true;
+                    modelTemp.SmallDoor1 = true;
                     break;
                 case "OnEntryOkk":
-                    model.WeightDoor1 = false;
-                    model.BigDoor1 = false;
-                    model.SmallDoor1 = false;
+                    modelTemp.WeightDoor1 = false;
+                    modelTemp.BigDoor1 = false;
+                    modelTemp.SmallDoor1 = false;
                     break;
             }
         }
@@ -279,24 +279,24 @@ namespace DXApplication1
             switch (data)
             {
                 case "OnEntryOn":
-                    model.Light = true;
+                    modelTemp.Light = true;
                     break;
                 case "OnExitOn":
-                    model.Light = false;
+                    modelTemp.Light = false;
                     break;
 
                 case "OnExitwrite":
-                    model.WriteAction = false;
+                    modelTemp.WriteAction = false;
                     break;
                 case "OnEntrywrite":
-                    model.WriteAction = true;
+                    modelTemp.WriteAction = true;
                     break;
 
                 case "OnEntryread":
-                    model.ReadAction = true;
+                    modelTemp.ReadAction = true;
                     break;
                 case "OnExitread":
-                    model.ReadAction = false;
+                    modelTemp.ReadAction = false;
                     break;
 
 
@@ -357,7 +357,7 @@ namespace DXApplication1
             if (MVC_C3_1._state != Machine3.States.Easy)
             {
                 // 称门
-                if (model.WeightDoor1)
+                if (modelTemp.WeightDoor1)
                 {
                     if (!toggleSwitch2.IsOn)
                     {
@@ -372,7 +372,7 @@ namespace DXApplication1
                     }
                 }
                 // 仓小门
-                if (model.SmallDoor1)
+                if (modelTemp.SmallDoor1)
                 {
                     if (!toggleSwitch3.IsOn)
                     {
@@ -387,7 +387,7 @@ namespace DXApplication1
                     }
                 }
                 // 仓大门
-                if (model.BigDoor1)
+                if (modelTemp.BigDoor1)
                 {
                     if (!toggleSwitch4.IsOn)
                     {
@@ -406,7 +406,7 @@ namespace DXApplication1
             // ------------------------------------------------------------------------------
             // 二号配料机更新
             // 原始值显示
-            textEdit10.Text = model.RawValue2.ToString();
+            textEdit10.Text = modelTemp.RawValue2.ToString();
             // k值显示
             textEdit9.Text = modelTemp.KValue2.ToString();
             // 0值显示
@@ -422,7 +422,7 @@ namespace DXApplication1
             if (MVC_C3_2._state != Machine3.States.Easy)
             {
                 // 称门
-                if (model.WeightDoor2)
+                if (modelTemp.WeightDoor2)
                 {
                     if (!toggleSwitch8.IsOn)
                     {
@@ -437,7 +437,7 @@ namespace DXApplication1
                     }
                 }
                 // 仓小门
-                if (model.SmallDoor2)
+                if (modelTemp.SmallDoor2)
                 {
                     if (!toggleSwitch7.IsOn)
                     {
@@ -452,7 +452,7 @@ namespace DXApplication1
                     }
                 }
                 // 仓大门
-                if (model.BigDoor2)
+                if (modelTemp.BigDoor2)
                 {
                     if (!toggleSwitch6.IsOn)
                     {
