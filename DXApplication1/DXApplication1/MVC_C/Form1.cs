@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 using NLog;
 
 namespace DXApplication1
@@ -37,6 +38,10 @@ namespace DXApplication1
 
         Stp cfg = new Stp();
 
+        string workPath = Directory.GetCurrentDirectory();
+        Logger logF = LogManager.GetLogger("logfile");
+        Logger logC = LogManager.GetLogger("fileConsole");
+
         public delegate void SendCoilsErrorDelegate3(string data);
         public event SendCoilsErrorDelegate3 Controller2InputHandler1;
 
@@ -44,8 +49,8 @@ namespace DXApplication1
         public Form1()
         {
             InitializeComponent();
-
-            MVC_C3ALL = new Machine3ALL(MVC_C3_1, MVC_C3_2);
+            LogConfig();
+            MVC_C3ALL = new Machine3ALL("MVC_C3all", MVC_C3_1, MVC_C3_2);
 
             Machine2.OutputEvent += machine2TOController;
             Serial.Model2ControllerMessageHanlder += model1TOController;
@@ -62,7 +67,31 @@ namespace DXApplication1
 
         }
 
+        private void LogConfig()
+        {
+            var config = new NLog.Config.LoggingConfiguration();
 
+            string fileName = string.Format("{0}-{1}-{2}.log", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            string fileNameWithPath = string.Concat(workPath, "\\Log\\", fileName);
+            var logfile = new NLog.Targets.FileTarget()
+            {
+                Name = "logfile",
+                FileName = fileNameWithPath,
+                Layout = "-------------- ${level} (${longdate}) --------------${newline}" +
+                "${newline}" +
+                "Call Site: ${callsite}${newline}" +
+                "Exception Type: ${exception:format=Type}${newline}" +
+                "Exception Message: ${exception:format=Message}${newline}" +
+                "Stack Trace: ${exception:format=StackTrace}${newline}" +
+                "Additional Info: ${message}${newline}"
+            };
+            var logconsole = new NLog.Targets.ConsoleTarget() { Name = "logconsole" };
+
+            config.LoggingRules.Add(new NLog.Config.LoggingRule("*", LogLevel.Info, logconsole));
+            config.LoggingRules.Add(new NLog.Config.LoggingRule("*", LogLevel.Debug, logfile));
+
+            NLog.LogManager.Configuration = config;
+        }
 
         private void Machine4TOController(string data)
         {
@@ -289,10 +318,10 @@ namespace DXApplication1
         {
 
             MVC_C3_1._machine.Fire(Machine3.Trigger.BEGIN);
-            MVC_C3_1.TargetValue = int.Parse(textEdit1.Text);
+            MVC_C3_1.TargetValue = int.Parse(textEdit_target1.Text);
 
             MVC_C3_2._machine.Fire(Machine3.Trigger.BEGIN);
-            MVC_C3_2.TargetValue = int.Parse(textEdit5.Text);
+            MVC_C3_2.TargetValue = int.Parse(textEdit_target2.Text);
         }
 
         private void simpleButton30_Click(object sender, EventArgs e)
@@ -324,9 +353,6 @@ namespace DXApplication1
             intput.Visible = !intput.Visible;
         }
 
-
-        Logger logF = LogManager.GetLogger("fileLogger");
-        Logger logC = LogManager.GetLogger("fileConsole");
 
         private void simpleButton25_Click_1(object sender, EventArgs e)
         {
@@ -416,29 +442,28 @@ namespace DXApplication1
         }
 
 
-        private void simpleButton24_DoubleClick(object sender, EventArgs e)
+
+        private void toggleSwitch_ShowModel_Toggled(object sender, EventArgs e)
         {
-          
+            MVC_VM.Visible = !MVC_VM.Visible;
         }
 
-        private void simpleButton24_Click(object sender, EventArgs e)
-        {
-
-        }
         Form2 f2;
-        private void simpleButton5_DoubleClick(object sender, EventArgs e)
+        private void simpleButton_Cheng1_DoubleClick(object sender, EventArgs e)
         {
+            f2.Id = "1";
             f2.ShowDialog();
         }
 
-        private void simpleButton5_Click(object sender, EventArgs e)
+        private void simpleButton_Cheng2_DoubleClick(object sender, EventArgs e)
         {
-
+            f2.Id = "2";
+            f2.ShowDialog();
         }
 
-        private void toggleSwitch1_Toggled_1(object sender, EventArgs e)
+        private void simpleButton_Cheng2_Click(object sender, EventArgs e)
         {
-            MVC_VM.Visible = !MVC_VM.Visible;
+
         }
     }
 }

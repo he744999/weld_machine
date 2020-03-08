@@ -100,6 +100,7 @@
     <Compile Include="CFG\SetupParagram1.Designer.cs">
       <DependentUpon>SetupParagram1.cs</DependentUpon>
     </Compile>
+    <Compile Include="M3\Machine3C.cs" />
     <Compile Include="MVC_C\Controller.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,12 +168,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="NLog.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

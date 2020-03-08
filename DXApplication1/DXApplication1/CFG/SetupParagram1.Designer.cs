@@ -32,37 +32,36 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit_TOpen = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit_TClose = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton_xiaocheng = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_zero = new DevExpress.XtraEditors.SimpleButton();
+            this.textEdit_OValue = new DevExpress.XtraEditors.TextEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit_K = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit_RawValue = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton31 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton28 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton29 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton30 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton27 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton26 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton25 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
+            this.timer_UI = new System.Windows.Forms.Timer(this.components);
+            this.simpleButton_to0 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_sub1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_sub10 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_sub100 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_add1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_add10 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_add100 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_add50 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_sub50 = new DevExpress.XtraEditors.SimpleButton();
+            this.textEdit_targetWeight = new DevExpress.XtraEditors.TextEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_TOpen.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_TClose.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_OValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_K.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_RawValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_targetWeight.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -90,57 +89,47 @@
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "点关时间";
             // 
-            // textEdit1
+            // textEdit_TOpen
             // 
-            this.textEdit1.Location = new System.Drawing.Point(592, 215);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(100, 20);
-            this.textEdit1.TabIndex = 4;
+            this.textEdit_TOpen.Location = new System.Drawing.Point(592, 215);
+            this.textEdit_TOpen.Name = "textEdit_TOpen";
+            this.textEdit_TOpen.Size = new System.Drawing.Size(100, 20);
+            this.textEdit_TOpen.TabIndex = 4;
             // 
-            // textEdit2
+            // textEdit_TClose
             // 
-            this.textEdit2.Location = new System.Drawing.Point(592, 250);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(100, 20);
-            this.textEdit2.TabIndex = 5;
+            this.textEdit_TClose.Location = new System.Drawing.Point(592, 250);
+            this.textEdit_TClose.Name = "textEdit_TClose";
+            this.textEdit_TClose.Size = new System.Drawing.Size(100, 20);
+            this.textEdit_TClose.TabIndex = 5;
             // 
-            // textEdit6
+            // simpleButton_xiaocheng
             // 
-            this.textEdit6.EditValue = "";
-            this.textEdit6.Location = new System.Drawing.Point(279, 75);
-            this.textEdit6.Name = "textEdit6";
-            this.textEdit6.Properties.Mask.EditMask = "d";
-            this.textEdit6.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit6.Size = new System.Drawing.Size(100, 20);
-            this.textEdit6.TabIndex = 33;
+            this.simpleButton_xiaocheng.Location = new System.Drawing.Point(385, 109);
+            this.simpleButton_xiaocheng.Name = "simpleButton_xiaocheng";
+            this.simpleButton_xiaocheng.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton_xiaocheng.TabIndex = 32;
+            this.simpleButton_xiaocheng.Text = "校称";
+            this.simpleButton_xiaocheng.Click += new System.EventHandler(this.simpleButton_xiaocheng_Click);
             // 
-            // simpleButton9
+            // simpleButton_zero
             // 
-            this.simpleButton9.Location = new System.Drawing.Point(279, 109);
-            this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton9.TabIndex = 32;
-            this.simpleButton9.Text = "校称";
-            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
+            this.simpleButton_zero.Location = new System.Drawing.Point(279, 143);
+            this.simpleButton_zero.Name = "simpleButton_zero";
+            this.simpleButton_zero.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton_zero.TabIndex = 31;
+            this.simpleButton_zero.Text = "调零";
+            this.simpleButton_zero.Click += new System.EventHandler(this.simpleButton_zero_Click);
             // 
-            // simpleButton8
+            // textEdit_OValue
             // 
-            this.simpleButton8.Location = new System.Drawing.Point(279, 143);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton8.TabIndex = 31;
-            this.simpleButton8.Text = "调零";
-            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
-            // 
-            // textEdit4
-            // 
-            this.textEdit4.Location = new System.Drawing.Point(173, 146);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Properties.Mask.EditMask = "d";
-            this.textEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit4.Properties.ReadOnly = true;
-            this.textEdit4.Size = new System.Drawing.Size(100, 20);
-            this.textEdit4.TabIndex = 30;
+            this.textEdit_OValue.Location = new System.Drawing.Point(173, 146);
+            this.textEdit_OValue.Name = "textEdit_OValue";
+            this.textEdit_OValue.Properties.Mask.EditMask = "d";
+            this.textEdit_OValue.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEdit_OValue.Properties.ReadOnly = true;
+            this.textEdit_OValue.Size = new System.Drawing.Size(100, 20);
+            this.textEdit_OValue.TabIndex = 30;
             // 
             // labelControl12
             // 
@@ -150,15 +139,15 @@
             this.labelControl12.TabIndex = 29;
             this.labelControl12.Text = "0值";
             // 
-            // textEdit3
+            // textEdit_K
             // 
-            this.textEdit3.Location = new System.Drawing.Point(173, 110);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Properties.Mask.EditMask = "n";
-            this.textEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit3.Properties.ReadOnly = true;
-            this.textEdit3.Size = new System.Drawing.Size(100, 20);
-            this.textEdit3.TabIndex = 28;
+            this.textEdit_K.Location = new System.Drawing.Point(173, 110);
+            this.textEdit_K.Name = "textEdit_K";
+            this.textEdit_K.Properties.Mask.EditMask = "n";
+            this.textEdit_K.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEdit_K.Properties.ReadOnly = true;
+            this.textEdit_K.Size = new System.Drawing.Size(100, 20);
+            this.textEdit_K.TabIndex = 28;
             // 
             // labelControl11
             // 
@@ -168,15 +157,15 @@
             this.labelControl11.TabIndex = 27;
             this.labelControl11.Text = "K值";
             // 
-            // textEdit5
+            // textEdit_RawValue
             // 
-            this.textEdit5.Location = new System.Drawing.Point(173, 75);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Properties.Mask.EditMask = "d";
-            this.textEdit5.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit5.Properties.ReadOnly = true;
-            this.textEdit5.Size = new System.Drawing.Size(100, 20);
-            this.textEdit5.TabIndex = 26;
+            this.textEdit_RawValue.Location = new System.Drawing.Point(173, 75);
+            this.textEdit_RawValue.Name = "textEdit_RawValue";
+            this.textEdit_RawValue.Properties.Mask.EditMask = "d";
+            this.textEdit_RawValue.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEdit_RawValue.Properties.ReadOnly = true;
+            this.textEdit_RawValue.Size = new System.Drawing.Size(100, 20);
+            this.textEdit_RawValue.TabIndex = 26;
             // 
             // labelControl7
             // 
@@ -203,140 +192,141 @@
             this.textEdit7.Size = new System.Drawing.Size(100, 20);
             this.textEdit7.TabIndex = 35;
             // 
-            // timer1
+            // timer_UI
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer_UI.Tick += new System.EventHandler(this.timer_UI_Tick);
             // 
-            // simpleButton2
+            // simpleButton_to0
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(425, 209);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 36;
-            this.simpleButton2.Text = "调零";
+            this.simpleButton_to0.Location = new System.Drawing.Point(43, 268);
+            this.simpleButton_to0.Name = "simpleButton_to0";
+            this.simpleButton_to0.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton_to0.TabIndex = 75;
+            this.simpleButton_to0.Text = "归零";
+            this.simpleButton_to0.Click += new System.EventHandler(this.simpleButton_to0_Click);
             // 
-            // simpleButton31
+            // simpleButton_sub1
             // 
-            this.simpleButton31.Location = new System.Drawing.Point(43, 268);
-            this.simpleButton31.Name = "simpleButton31";
-            this.simpleButton31.Size = new System.Drawing.Size(42, 23);
-            this.simpleButton31.TabIndex = 75;
-            this.simpleButton31.Text = "归零";
-            this.simpleButton31.Click += new System.EventHandler(this.simpleButton31_Click);
+            this.simpleButton_sub1.Location = new System.Drawing.Point(43, 297);
+            this.simpleButton_sub1.Name = "simpleButton_sub1";
+            this.simpleButton_sub1.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton_sub1.TabIndex = 74;
+            this.simpleButton_sub1.Text = "-1";
+            this.simpleButton_sub1.Click += new System.EventHandler(this.simpleButton_sub1_Click);
             // 
-            // simpleButton28
+            // simpleButton_sub10
             // 
-            this.simpleButton28.Location = new System.Drawing.Point(43, 297);
-            this.simpleButton28.Name = "simpleButton28";
-            this.simpleButton28.Size = new System.Drawing.Size(42, 23);
-            this.simpleButton28.TabIndex = 74;
-            this.simpleButton28.Text = "-1";
-            this.simpleButton28.Click += new System.EventHandler(this.simpleButton28_Click);
+            this.simpleButton_sub10.Location = new System.Drawing.Point(43, 326);
+            this.simpleButton_sub10.Name = "simpleButton_sub10";
+            this.simpleButton_sub10.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton_sub10.TabIndex = 73;
+            this.simpleButton_sub10.Text = "-10";
+            this.simpleButton_sub10.Click += new System.EventHandler(this.simpleButton_sub10_Click);
             // 
-            // simpleButton29
+            // simpleButton_sub100
             // 
-            this.simpleButton29.Location = new System.Drawing.Point(43, 326);
-            this.simpleButton29.Name = "simpleButton29";
-            this.simpleButton29.Size = new System.Drawing.Size(42, 23);
-            this.simpleButton29.TabIndex = 73;
-            this.simpleButton29.Text = "-10";
-            this.simpleButton29.Click += new System.EventHandler(this.simpleButton29_Click);
+            this.simpleButton_sub100.Location = new System.Drawing.Point(41, 383);
+            this.simpleButton_sub100.Name = "simpleButton_sub100";
+            this.simpleButton_sub100.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton_sub100.TabIndex = 72;
+            this.simpleButton_sub100.Text = "-100";
+            this.simpleButton_sub100.Click += new System.EventHandler(this.simpleButton_sub100_Click);
             // 
-            // simpleButton30
+            // simpleButton_add1
             // 
-            this.simpleButton30.Location = new System.Drawing.Point(41, 383);
-            this.simpleButton30.Name = "simpleButton30";
-            this.simpleButton30.Size = new System.Drawing.Size(42, 23);
-            this.simpleButton30.TabIndex = 72;
-            this.simpleButton30.Text = "-100";
-            this.simpleButton30.Click += new System.EventHandler(this.simpleButton30_Click);
+            this.simpleButton_add1.Location = new System.Drawing.Point(43, 237);
+            this.simpleButton_add1.Name = "simpleButton_add1";
+            this.simpleButton_add1.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton_add1.TabIndex = 71;
+            this.simpleButton_add1.Text = "+1";
+            this.simpleButton_add1.Click += new System.EventHandler(this.simpleButton_add1_Click);
             // 
-            // simpleButton27
+            // simpleButton_add10
             // 
-            this.simpleButton27.Location = new System.Drawing.Point(43, 237);
-            this.simpleButton27.Name = "simpleButton27";
-            this.simpleButton27.Size = new System.Drawing.Size(42, 23);
-            this.simpleButton27.TabIndex = 71;
-            this.simpleButton27.Text = "+1";
-            this.simpleButton27.Click += new System.EventHandler(this.simpleButton27_Click);
+            this.simpleButton_add10.Location = new System.Drawing.Point(43, 208);
+            this.simpleButton_add10.Name = "simpleButton_add10";
+            this.simpleButton_add10.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton_add10.TabIndex = 70;
+            this.simpleButton_add10.Text = "+10";
+            this.simpleButton_add10.Click += new System.EventHandler(this.simpleButton_add10_Click);
             // 
-            // simpleButton26
+            // simpleButton_add100
             // 
-            this.simpleButton26.Location = new System.Drawing.Point(43, 208);
-            this.simpleButton26.Name = "simpleButton26";
-            this.simpleButton26.Size = new System.Drawing.Size(42, 23);
-            this.simpleButton26.TabIndex = 70;
-            this.simpleButton26.Text = "+10";
-            this.simpleButton26.Click += new System.EventHandler(this.simpleButton26_Click);
+            this.simpleButton_add100.Location = new System.Drawing.Point(43, 145);
+            this.simpleButton_add100.Name = "simpleButton_add100";
+            this.simpleButton_add100.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton_add100.TabIndex = 69;
+            this.simpleButton_add100.Text = "+100";
+            this.simpleButton_add100.Click += new System.EventHandler(this.simpleButton_add100_Click);
             // 
-            // simpleButton25
+            // simpleButton_add50
             // 
-            this.simpleButton25.Location = new System.Drawing.Point(43, 145);
-            this.simpleButton25.Name = "simpleButton25";
-            this.simpleButton25.Size = new System.Drawing.Size(42, 23);
-            this.simpleButton25.TabIndex = 69;
-            this.simpleButton25.Text = "+100";
-            this.simpleButton25.Click += new System.EventHandler(this.simpleButton25_Click);
+            this.simpleButton_add50.Location = new System.Drawing.Point(43, 179);
+            this.simpleButton_add50.Name = "simpleButton_add50";
+            this.simpleButton_add50.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton_add50.TabIndex = 76;
+            this.simpleButton_add50.Text = "+50";
+            this.simpleButton_add50.Click += new System.EventHandler(this.simpleButton_add50_Click);
             // 
-            // simpleButton3
+            // simpleButton_sub50
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(43, 179);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(42, 23);
-            this.simpleButton3.TabIndex = 76;
-            this.simpleButton3.Text = "+50";
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            this.simpleButton_sub50.Location = new System.Drawing.Point(43, 355);
+            this.simpleButton_sub50.Name = "simpleButton_sub50";
+            this.simpleButton_sub50.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton_sub50.TabIndex = 77;
+            this.simpleButton_sub50.Text = "-50";
+            this.simpleButton_sub50.Click += new System.EventHandler(this.simpleButton_sub50_Click);
             // 
-            // simpleButton4
+            // textEdit_targetWeight
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(43, 355);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(42, 23);
-            this.simpleButton4.TabIndex = 77;
-            this.simpleButton4.Text = "-50";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            this.textEdit_targetWeight.EditValue = "";
+            this.textEdit_targetWeight.Location = new System.Drawing.Point(279, 110);
+            this.textEdit_targetWeight.Name = "textEdit_targetWeight";
+            this.textEdit_targetWeight.Properties.Mask.EditMask = "d";
+            this.textEdit_targetWeight.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEdit_targetWeight.Size = new System.Drawing.Size(100, 20);
+            this.textEdit_targetWeight.TabIndex = 78;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.simpleButton4);
-            this.Controls.Add(this.simpleButton3);
-            this.Controls.Add(this.simpleButton31);
-            this.Controls.Add(this.simpleButton28);
-            this.Controls.Add(this.simpleButton29);
-            this.Controls.Add(this.simpleButton30);
-            this.Controls.Add(this.simpleButton27);
-            this.Controls.Add(this.simpleButton26);
-            this.Controls.Add(this.simpleButton25);
-            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.textEdit_targetWeight);
+            this.Controls.Add(this.simpleButton_sub50);
+            this.Controls.Add(this.simpleButton_add50);
+            this.Controls.Add(this.simpleButton_to0);
+            this.Controls.Add(this.simpleButton_sub1);
+            this.Controls.Add(this.simpleButton_sub10);
+            this.Controls.Add(this.simpleButton_sub100);
+            this.Controls.Add(this.simpleButton_add1);
+            this.Controls.Add(this.simpleButton_add10);
+            this.Controls.Add(this.simpleButton_add100);
             this.Controls.Add(this.textEdit7);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.textEdit6);
-            this.Controls.Add(this.simpleButton9);
-            this.Controls.Add(this.simpleButton8);
-            this.Controls.Add(this.textEdit4);
+            this.Controls.Add(this.simpleButton_xiaocheng);
+            this.Controls.Add(this.simpleButton_zero);
+            this.Controls.Add(this.textEdit_OValue);
             this.Controls.Add(this.labelControl12);
-            this.Controls.Add(this.textEdit3);
+            this.Controls.Add(this.textEdit_K);
             this.Controls.Add(this.labelControl11);
-            this.Controls.Add(this.textEdit5);
+            this.Controls.Add(this.textEdit_RawValue);
             this.Controls.Add(this.labelControl7);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEdit1);
+            this.Controls.Add(this.textEdit_TClose);
+            this.Controls.Add(this.textEdit_TOpen);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.simpleButton1);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_TOpen.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_TClose.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_OValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_K.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_RawValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_targetWeight.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,29 +336,28 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton9;
-        private DevExpress.XtraEditors.SimpleButton simpleButton8;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
+        private DevExpress.XtraEditors.TextEdit textEdit_TOpen;
+        private DevExpress.XtraEditors.TextEdit textEdit_TClose;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_xiaocheng;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_zero;
+        private DevExpress.XtraEditors.TextEdit textEdit_OValue;
         private DevExpress.XtraEditors.LabelControl labelControl12;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.TextEdit textEdit_K;
         private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
+        private DevExpress.XtraEditors.TextEdit textEdit_RawValue;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit textEdit7;
-        private System.Windows.Forms.Timer timer1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton31;
-        private DevExpress.XtraEditors.SimpleButton simpleButton28;
-        private DevExpress.XtraEditors.SimpleButton simpleButton29;
-        private DevExpress.XtraEditors.SimpleButton simpleButton30;
-        private DevExpress.XtraEditors.SimpleButton simpleButton27;
-        private DevExpress.XtraEditors.SimpleButton simpleButton26;
-        private DevExpress.XtraEditors.SimpleButton simpleButton25;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private System.Windows.Forms.Timer timer_UI;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_to0;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_sub1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_sub10;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_sub100;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_add1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_add10;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_add100;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_add50;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_sub50;
+        private DevExpress.XtraEditors.TextEdit textEdit_targetWeight;
     }
 }

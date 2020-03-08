@@ -166,9 +166,9 @@ namespace DXApplication1
         private void machine3ALL_1TOController(string data)
         {
             Console.WriteLine(data + "--------machine3all_1");
-            MVC_C3_1.TargetValue = int.Parse(textEdit1.Text);
+            MVC_C3_1.TargetValue = int.Parse(textEdit_target1.Text);
 
-            MVC_C3_2.TargetValue = int.Parse(textEdit5.Text);
+            MVC_C3_2.TargetValue = int.Parse(textEdit_target2.Text);
         }
 
         public void input1_TOController(string s)
@@ -348,7 +348,7 @@ namespace DXApplication1
             //textEdit4.Text = modelTemp.OValue1.ToString();
 
             // 称示数
-            simpleButton5.Text = modelTemp.currentWeight1.ToString();
+            simpleButton_Cheng1.Text = modelTemp.currentWeight1.ToString();
 
             // machine3 当前状态
             simpleButton11.Text = MVC_C3_1._state.ToString();
@@ -359,61 +359,55 @@ namespace DXApplication1
                 // 称门
                 if (modelTemp.WeightDoor1)
                 {
-                    if (!toggleSwitch2.IsOn)
+                    if (!toggleSwitch_Cheng1Door.IsOn)
                     {
-                        toggleSwitch2.Toggle();
+                        toggleSwitch_Cheng1Door.Toggle();
                     }
                 }
                 else
                 {
-                    if (toggleSwitch2.IsOn)
+                    if (toggleSwitch_Cheng1Door.IsOn)
                     {
-                        toggleSwitch2.Toggle();
+                        toggleSwitch_Cheng1Door.Toggle();
                     }
                 }
                 // 仓小门
                 if (modelTemp.SmallDoor1)
                 {
-                    if (!toggleSwitch3.IsOn)
+                    if (!toggleSwitch_Cang1SmallDoor.IsOn)
                     {
-                        toggleSwitch3.Toggle();
+                        toggleSwitch_Cang1SmallDoor.Toggle();
                     }
                 }
                 else
                 {
-                    if (toggleSwitch3.IsOn)
+                    if (toggleSwitch_Cang1SmallDoor.IsOn)
                     {
-                        toggleSwitch3.Toggle();
+                        toggleSwitch_Cang1SmallDoor.Toggle();
                     }
                 }
                 // 仓大门
                 if (modelTemp.BigDoor1)
                 {
-                    if (!toggleSwitch4.IsOn)
+                    if (!toggleSwitch_Cang1BigDoor.IsOn)
                     {
-                        toggleSwitch4.Toggle();
+                        toggleSwitch_Cang1BigDoor.Toggle();
                     }
                 }
                 else
                 {
-                    if (toggleSwitch4.IsOn)
+                    if (toggleSwitch_Cang1BigDoor.IsOn)
                     {
-                        toggleSwitch4.Toggle();
+                        toggleSwitch_Cang1BigDoor.Toggle();
                     }
                 }
             }
 
             // ------------------------------------------------------------------------------
             // 二号配料机更新
-            // 原始值显示
-            //textEdit10.Text = modelTemp.RawValue2.ToString();
-            // k值显示
-            //textEdit9.Text = modelTemp.KValue2.ToString();
-            // 0值显示
-            //textEdit8.Text = modelTemp.OValue2.ToString();
 
             // 称示数
-            simpleButton24.Text = modelTemp.currentWeight2.ToString();
+            simpleButton_Cheng2.Text = modelTemp.currentWeight2.ToString();
 
             // machine3 当前状态
             simpleButton22.Text = MVC_C3_2._state.ToString();
@@ -424,46 +418,46 @@ namespace DXApplication1
                 // 称门
                 if (modelTemp.WeightDoor2)
                 {
-                    if (!toggleSwitch8.IsOn)
+                    if (!toggleSwitch_Cheng2Door.IsOn)
                     {
-                        toggleSwitch8.Toggle();
+                        toggleSwitch_Cheng2Door.Toggle();
                     }
                 }
                 else
                 {
-                    if (toggleSwitch8.IsOn)
+                    if (toggleSwitch_Cheng2Door.IsOn)
                     {
-                        toggleSwitch8.Toggle();
+                        toggleSwitch_Cheng2Door.Toggle();
                     }
                 }
                 // 仓小门
                 if (modelTemp.SmallDoor2)
                 {
-                    if (!toggleSwitch7.IsOn)
+                    if (!toggleSwitch_Cang2SmallDoor.IsOn)
                     {
-                        toggleSwitch7.Toggle();
+                        toggleSwitch_Cang2SmallDoor.Toggle();
                     }
                 }
                 else
                 {
-                    if (toggleSwitch7.IsOn)
+                    if (toggleSwitch_Cang2SmallDoor.IsOn)
                     {
-                        toggleSwitch7.Toggle();
+                        toggleSwitch_Cang2SmallDoor.Toggle();
                     }
                 }
                 // 仓大门
                 if (modelTemp.BigDoor2)
                 {
-                    if (!toggleSwitch6.IsOn)
+                    if (!toggleSwitch_Cang2BigDoor.IsOn)
                     {
-                        toggleSwitch6.Toggle();
+                        toggleSwitch_Cang2BigDoor.Toggle();
                     }
                 }
                 else
                 {
-                    if (toggleSwitch6.IsOn)
+                    if (toggleSwitch_Cang2BigDoor.IsOn)
                     {
-                        toggleSwitch6.Toggle();
+                        toggleSwitch_Cang2BigDoor.Toggle();
                     }
                 }
             }

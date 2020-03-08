@@ -1,4 +1,5 @@
 ﻿using Stateless;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace DXApplication1
 
         public States _state = States.Easy;
         public StateMachine<States, Trigger> _machine;
-        private string id = null;
+        private string name = null;
         Thread thd = null;
 
         private double slowValue = 20.0;
@@ -32,11 +33,11 @@ namespace DXApplication1
         public double OkValue { get => okValue; set => okValue = value; }
         public double SlowValue { get => slowValue; set => slowValue = value; }
 
-        public Machine3(string name)
+        public Machine3(string name_)
         {
-            id = name + " Machine";
+            name = name_ + " Machine";
             thd = new Thread(new ThreadStart(ThreadWorking));
-            thd.Name = name + " thread";
+            thd.Name = name_ + " thread";
             thd.IsBackground = true;
             thd.Start();
 
@@ -73,6 +74,9 @@ namespace DXApplication1
                 .OnEntry(t => SendMessageEvent("OnEntryOkk"));
 
             _machine.Configure(States.Okk).Permit(Trigger.REREADY, States.Ready);
+
+            _machine.OnTransitioned(t => Console.WriteLine($"{name} OnTransitioned: {t.Source} -> {t.Destination} via {t.Trigger}({string.Join(", ", t.Parameters)})"));
+
         }
         private void ThreadWorking()
         {

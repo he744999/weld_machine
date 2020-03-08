@@ -15,15 +15,17 @@ namespace DXApplication1
         public States _state = States.Ready;
         public StateMachine<States, Trigger> _machine;
 
-        public string title { get; set; }
+        public string Name { get; set; }
 
         Timer t = new Timer();
         Machine3 m1;
         Machine3 m2;
 
 
-        public Machine3ALL(Machine3 m1_, Machine3 m2_)
+        public Machine3ALL(string name_, Machine3 m1_, Machine3 m2_)
         {
+            Name = name_;
+
             m1 = m1_;
             m2 = m2_;
             t.Elapsed += new ElapsedEventHandler(timerEvent);
@@ -57,6 +59,7 @@ namespace DXApplication1
                 .Permit(Trigger.RESTART, States.Ready)
                 .OnExit(() => OnExitOkk())
                 .OnEntry(() => OnEntryOkk());
+            _machine.OnTransitioned(t => Console.WriteLine($"{Name} OnTransitioned: {t.Source} -> {t.Destination} via {t.Trigger}({string.Join(", ", t.Parameters)})"));
 
         }
 

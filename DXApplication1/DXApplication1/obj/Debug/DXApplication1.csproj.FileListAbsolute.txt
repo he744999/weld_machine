@@ -141,6 +141,5 @@ C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\obj\Debug\DXApplication1
 C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\obj\Debug\DXApplication1.csproj.CopyComplete
 C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\obj\Debug\DXApplication1.exe
 C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\obj\Debug\DXApplication1.pdb
-C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\bin\Debug\NLog.config
 C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\bin\Debug\NLog.dll
 C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\bin\Debug\NLog.xml
