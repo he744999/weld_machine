@@ -341,14 +341,14 @@ namespace DXApplication1
             // ------------------------------------------------------------------------------
             // 一号配料机更新
             // 原始值显示
-            textEdit2.Text = modelTemp.RawValue1.ToString();
+            //textEdit2.Text = modelTemp.RawValue1.ToString();
             // k值显示
-            textEdit3.Text = modelTemp.KValue1.ToString();
+            //textEdit3.Text = modelTemp.KValue1.ToString();
             // 0值显示
-            textEdit4.Text = modelTemp.OValue1.ToString();
+            //textEdit4.Text = modelTemp.OValue1.ToString();
 
             // 称示数
-            simpleButton5.Text = modelTemp.RawValue2.ToString();
+            simpleButton5.Text = modelTemp.currentWeight1.ToString();
 
             // machine3 当前状态
             simpleButton11.Text = MVC_C3_1._state.ToString();
@@ -406,14 +406,14 @@ namespace DXApplication1
             // ------------------------------------------------------------------------------
             // 二号配料机更新
             // 原始值显示
-            textEdit10.Text = modelTemp.RawValue2.ToString();
+            //textEdit10.Text = modelTemp.RawValue2.ToString();
             // k值显示
-            textEdit9.Text = modelTemp.KValue2.ToString();
+            //textEdit9.Text = modelTemp.KValue2.ToString();
             // 0值显示
-            textEdit8.Text = modelTemp.OValue2.ToString();
+            //textEdit8.Text = modelTemp.OValue2.ToString();
 
             // 称示数
-            simpleButton24.Text = modelTemp.RawValue2.ToString();
+            simpleButton24.Text = modelTemp.currentWeight2.ToString();
 
             // machine3 当前状态
             simpleButton22.Text = MVC_C3_2._state.ToString();
@@ -469,10 +469,6 @@ namespace DXApplication1
             }
         }
 
-        private void timerVirtual_Tick(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }

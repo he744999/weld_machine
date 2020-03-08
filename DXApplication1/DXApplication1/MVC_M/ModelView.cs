@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
@@ -78,6 +71,43 @@ namespace DXApplication1
                     Model.DIS[0][2] = !Model.DIS[0][2];
                     break;
             }
+        }
+
+
+        Random ran = new Random();
+        private void simpleButton25_Click(object sender, EventArgs e)
+        {
+            Model.AIS[0][0] += ran.Next(1, 100);
+        }
+
+        private void simpleButton26_Click(object sender, EventArgs e)
+        {
+            Model.AIS[0][0] += ran.Next(1, 10);
+        }
+
+        private void simpleButton27_Click(object sender, EventArgs e)
+        {
+            Model.AIS[0][0] += 1;
+        }
+
+        private void simpleButton28_Click(object sender, EventArgs e)
+        {
+            Model.AIS[0][0] -= 1;
+        }
+
+        private void simpleButton29_Click(object sender, EventArgs e)
+        {
+            Model.AIS[0][0] -= ran.Next(1, 10);
+        }
+
+        private void simpleButton30_Click(object sender, EventArgs e)
+        {
+            Model.AIS[0][0] -= ran.Next(1, 100);
+        }
+
+        private void simpleButton31_Click(object sender, EventArgs e)
+        {
+            Model.AIS[0][0] = 0;
         }
     }
 }

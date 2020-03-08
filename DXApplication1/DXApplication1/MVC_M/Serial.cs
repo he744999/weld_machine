@@ -12,15 +12,6 @@ using System.IO.Ports;
 namespace DXApplication1
 {
 
-    class DataThread
-    {
-        public DataThread()
-        {
-
-        }
-    }
-
-
 
     class Serial
     {
@@ -112,9 +103,6 @@ namespace DXApplication1
                     string xPos = mpos[0].Split(':')[1].ToString();
                     string yPos = mpos[1].ToString();
                     string zPos = mpos[2].ToString();
-                    // simpleButton9.BeginInvoke(new Action(() => simpleButton9.Text = xPos));
-                    // simpleButton11.BeginInvoke(new Action(() => simpleButton11.Text = yPos));
-                    // simpleButton12.BeginInvoke(new Action(() => simpleButton12.Text = zPos));
                 }
                 if (i.StartsWith("FS"))
                 {
@@ -139,7 +127,6 @@ namespace DXApplication1
                     thdMdb.Start();
                     isRunningMdb = true;
                 }
-
             }
             catch
             {
@@ -257,12 +244,8 @@ namespace DXApplication1
         {
             while (true)
             {
-                // Console.WriteLine("thdTest");
-                //currentWeight1 = Convert.ToInt32((RawValue1 - OValue1) * KValue1);
-                //currentWeight2 = Convert.ToInt32((RawValue2 - OValue2) * KValue2);
                 Thread.Sleep(100);
             }
-
         }
         public bool StepperCmd(string cmd)
         {
@@ -281,7 +264,6 @@ namespace DXApplication1
                 Console.WriteLine(ex);
 
             }
-
             return status;
         }
         public void UpdatePorts()

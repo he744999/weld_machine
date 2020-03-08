@@ -5,7 +5,7 @@ using System.Management;
 
 namespace DXApplication1
 {
-    class Stp
+    public class Stp
     {
         // 
         static string filename = @"C:\Users\pomelo\Desktop\t\DXApplication1\DXApplication1\CFG\setup.cfg";

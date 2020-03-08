@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -44,6 +45,17 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton31 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton28 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton29 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton30 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton27 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton26 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton25 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).BeginInit();
@@ -178,9 +190,9 @@
             // 
             this.labelControl3.Location = new System.Drawing.Point(109, 47);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(36, 14);
+            this.labelControl3.Size = new System.Drawing.Size(24, 14);
             this.labelControl3.TabIndex = 34;
-            this.labelControl3.Text = "称通道";
+            this.labelControl3.Text = "仓位";
             // 
             // textEdit7
             // 
@@ -191,11 +203,114 @@
             this.textEdit7.Size = new System.Drawing.Size(100, 20);
             this.textEdit7.TabIndex = 35;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(425, 209);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 36;
+            this.simpleButton2.Text = "调零";
+            // 
+            // simpleButton31
+            // 
+            this.simpleButton31.Location = new System.Drawing.Point(43, 268);
+            this.simpleButton31.Name = "simpleButton31";
+            this.simpleButton31.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton31.TabIndex = 75;
+            this.simpleButton31.Text = "归零";
+            this.simpleButton31.Click += new System.EventHandler(this.simpleButton31_Click);
+            // 
+            // simpleButton28
+            // 
+            this.simpleButton28.Location = new System.Drawing.Point(43, 297);
+            this.simpleButton28.Name = "simpleButton28";
+            this.simpleButton28.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton28.TabIndex = 74;
+            this.simpleButton28.Text = "-1";
+            this.simpleButton28.Click += new System.EventHandler(this.simpleButton28_Click);
+            // 
+            // simpleButton29
+            // 
+            this.simpleButton29.Location = new System.Drawing.Point(43, 326);
+            this.simpleButton29.Name = "simpleButton29";
+            this.simpleButton29.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton29.TabIndex = 73;
+            this.simpleButton29.Text = "-10";
+            this.simpleButton29.Click += new System.EventHandler(this.simpleButton29_Click);
+            // 
+            // simpleButton30
+            // 
+            this.simpleButton30.Location = new System.Drawing.Point(41, 383);
+            this.simpleButton30.Name = "simpleButton30";
+            this.simpleButton30.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton30.TabIndex = 72;
+            this.simpleButton30.Text = "-100";
+            this.simpleButton30.Click += new System.EventHandler(this.simpleButton30_Click);
+            // 
+            // simpleButton27
+            // 
+            this.simpleButton27.Location = new System.Drawing.Point(43, 237);
+            this.simpleButton27.Name = "simpleButton27";
+            this.simpleButton27.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton27.TabIndex = 71;
+            this.simpleButton27.Text = "+1";
+            this.simpleButton27.Click += new System.EventHandler(this.simpleButton27_Click);
+            // 
+            // simpleButton26
+            // 
+            this.simpleButton26.Location = new System.Drawing.Point(43, 208);
+            this.simpleButton26.Name = "simpleButton26";
+            this.simpleButton26.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton26.TabIndex = 70;
+            this.simpleButton26.Text = "+10";
+            this.simpleButton26.Click += new System.EventHandler(this.simpleButton26_Click);
+            // 
+            // simpleButton25
+            // 
+            this.simpleButton25.Location = new System.Drawing.Point(43, 145);
+            this.simpleButton25.Name = "simpleButton25";
+            this.simpleButton25.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton25.TabIndex = 69;
+            this.simpleButton25.Text = "+100";
+            this.simpleButton25.Click += new System.EventHandler(this.simpleButton25_Click);
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Location = new System.Drawing.Point(43, 179);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton3.TabIndex = 76;
+            this.simpleButton3.Text = "+50";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(43, 355);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(42, 23);
+            this.simpleButton4.TabIndex = 77;
+            this.simpleButton4.Text = "-50";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.simpleButton4);
+            this.Controls.Add(this.simpleButton3);
+            this.Controls.Add(this.simpleButton31);
+            this.Controls.Add(this.simpleButton28);
+            this.Controls.Add(this.simpleButton29);
+            this.Controls.Add(this.simpleButton30);
+            this.Controls.Add(this.simpleButton27);
+            this.Controls.Add(this.simpleButton26);
+            this.Controls.Add(this.simpleButton25);
+            this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.textEdit7);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.textEdit6);
@@ -244,5 +359,16 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit textEdit7;
+        private System.Windows.Forms.Timer timer1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton31;
+        private DevExpress.XtraEditors.SimpleButton simpleButton28;
+        private DevExpress.XtraEditors.SimpleButton simpleButton29;
+        private DevExpress.XtraEditors.SimpleButton simpleButton30;
+        private DevExpress.XtraEditors.SimpleButton simpleButton27;
+        private DevExpress.XtraEditors.SimpleButton simpleButton26;
+        private DevExpress.XtraEditors.SimpleButton simpleButton25;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
     }
 }

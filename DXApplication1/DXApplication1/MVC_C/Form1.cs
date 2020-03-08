@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using NLog;
 
 namespace DXApplication1
 {
@@ -110,6 +111,7 @@ namespace DXApplication1
             this.userTableAdapter.Fill(this.testDataSet1.User);
             UpdateSerialComboBox(ser.ports);
             ControllerInit();
+            f2 = new Form2(cfg, modelTemp);
         }
         private void UpdateSerialComboBox(string[] ports)
         {
@@ -147,7 +149,7 @@ namespace DXApplication1
         private void toggleSwitch1_Toggled(object sender, EventArgs e)
         {
      
-            MVC_VM.Visible = !MVC_VM.Visible;
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -304,28 +306,6 @@ namespace DXApplication1
 
         }
 
-        private void textEdit7_KeyUp(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                int raw = int.Parse(textEdit7.Text);
-                modelTemp.RawValue2 = raw;
-            }
-        }
-
-        private void textEdit6_KeyUp(object sender, KeyEventArgs e)
-        {
-            switch(e.KeyCode)
-            {
-                case Keys.Enter:
-                    int raw = int.Parse(textEdit6.Text);
-                    modelTemp.RawValue1 = raw;
-                    break;
-                case Keys.Back:
-                    textEdit6.Text = "";
-                    break;
-            }
-        }
 
         private void simpleButton27_Click(object sender, EventArgs e)
         {
@@ -344,12 +324,14 @@ namespace DXApplication1
             intput.Visible = !intput.Visible;
         }
 
+
+        Logger logF = LogManager.GetLogger("fileLogger");
+        Logger logC = LogManager.GetLogger("fileConsole");
+
         private void simpleButton25_Click_1(object sender, EventArgs e)
         {
-            Controller2InputHandler1("111111111111111111");
-            DevExpress.XtraEditors.SimpleButton btn = sender as DevExpress.XtraEditors.SimpleButton;
-            string name = btn.Name;
-            Console.WriteLine($"this\r\n is {name}");
+            logF.Info("111111111111111");
+            logC.Info("1111111111");
         }
 
 
@@ -433,10 +415,31 @@ namespace DXApplication1
             Console.WriteLine(modelTemp.OValue2);
         }
 
-        Form2 f2 = new Form2();
+
         private void simpleButton24_DoubleClick(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void simpleButton24_Click(object sender, EventArgs e)
+        {
+
+        }
+        Form2 f2;
+        private void simpleButton5_DoubleClick(object sender, EventArgs e)
         {
             f2.ShowDialog();
         }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toggleSwitch1_Toggled_1(object sender, EventArgs e)
+        {
+            MVC_VM.Visible = !MVC_VM.Visible;
+        }
     }
 }
+

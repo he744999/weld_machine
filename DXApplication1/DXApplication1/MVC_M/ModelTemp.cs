@@ -1,6 +1,7 @@
 ﻿using System;
 using EasyModbus;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO.Ports;
 using MathNet.Numerics;
 
@@ -12,16 +13,12 @@ namespace DXApplication1
         public bool SmallDoor1 { get => Model.DOS[1][1]; set => Model.DOS[1][1] = value; }
         public bool WeightDoor1 { get => Model.DOS[1][2]; set => Model.DOS[1][2] = value; }
 
-
         //--------------------------------------------------------------------------
         // 二号配料机
-
 
         public bool BigDoor2 { get => Model.DOS[2][0]; set => Model.DOS[2][0] = value; }
         public bool SmallDoor2 { get => Model.DOS[2][1]; set => Model.DOS[2][1] = value; }
         public bool WeightDoor2 { get => Model.DOS[2][2]; set => Model.DOS[2][2] = value; }
-
-
 
         //--------------------------------------------------------------------------
         // 全局输入/出模型
@@ -49,10 +46,6 @@ namespace DXApplication1
         public int RawValue2 { get => Model.AIS[0][1]; set => Model.AIS[0][1] = value; }
         public float KValue2 { get => kValue2; set => kValue2 = value; }
         public int OValue2 { get => oValue2; set => oValue2 = value; }
-
-
-
-
 
         //--------------------------------------------------------------------------
         // Light状态机测试用
@@ -91,19 +84,20 @@ namespace DXApplication1
                     {
                         if (DIS_OLD[i][j] != Model.DIS[i][j])
                         {
-                            if(i ==0 && j == 0)
+                            string line = string.Format($"{i}-{j}");
+                            switch(line)
                             {
-                                SendInputEvent($"LightSwitch-{Model.DIS[i][j]}", EventArgs.Empty);
+                                case "0-0":
+                                    SendInputEvent($"LightSwitch-{Model.DIS[i][j]}", EventArgs.Empty);
+                                    break;
+                                case "0-1":
+                                    SendInputEvent($"WriteSwitch-{Model.DIS[i][j]}", EventArgs.Empty);
+                                    break;
+                                case "0-2":
+                                    SendInputEvent($"ReadSwitch-{Model.DIS[i][j]}", EventArgs.Empty);
+                                    break;
                             }
-                            if (i == 0 && j == 1)
-                            {
-                                SendInputEvent($"WriteSwitch-{Model.DIS[i][j]}", EventArgs.Empty);
-                            }
-                            if (i == 0 && j == 2)
-                            {
-                                SendInputEvent($"ReadSwitch-{Model.DIS[i][j]}", EventArgs.Empty);
-                            }
-                            DIS_OLD[i][j] = Model.DIS[i][j];
+                             DIS_OLD[i][j] = Model.DIS[i][j];
                         }
                     }
                 }
@@ -119,7 +113,8 @@ namespace DXApplication1
 
                 currentWeight2 = (((float)RawValue2 - oValue2)) * KValue2;
 
-                Thread.Sleep(500);
+                Task.Delay(500).Wait();
+
             }
         }
     }

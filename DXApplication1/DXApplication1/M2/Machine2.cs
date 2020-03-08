@@ -71,19 +71,19 @@ namespace DXApplication1
             OutputEvent("OnEntryOn");
         }
 
-        private async void OnEntryread()
+        private void OnEntryread()
         {
             OutputEvent("OnEntryread");
-            await Task.Delay(1000);
-            _machine.Fire(Trigger.TIMEOUT);
+            //await Task.Delay(1000);
+            //_machine.Fire(Trigger.TIMEOUT);
 
         }
 
-        private async void OnEntrywrite()
+        private void OnEntrywrite()
         {
             OutputEvent("OnEntrywrite");
-            await Task.Delay(1000);
-            _machine.Fire(Trigger.TIMEOUT);
+            //await Task.Delay(1000);
+            //_machine.Fire(Trigger.TIMEOUT);
         }
         private void OnExitOff()
         {
