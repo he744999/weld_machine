@@ -52,12 +52,13 @@ namespace DXApplication1
             _machine.OnUnhandledTrigger((state, trigger) => { });
 
             _machine.Configure(States.Idle)
-                .OnEntryFrom(WriteSomething, text => OnAssigned(text), "Caller number to call")
                 .OnEntry(t => SendMessageEvent("onEntryIdle"))
+                .OnExit(t => SendMessageEvent("onExitIdle"))
                 .Permit(Trigger.INIT, States.Ready);
 
 
             _machine.Configure(States.Ready).Permit(Trigger.START, States.Round)
+                .OnEntryFrom(WriteSomething, text => OnAssigned(text), "Caller number to call")
                 .OnEntry(t => SendMessageEvent("onEntryReady"));
 
             _machine.Configure(States.Round)

@@ -8,7 +8,6 @@ namespace DXApplication1
         public delegate void SendCoilsErrorDelegate(string data);
         public event SendCoilsErrorDelegate InInputFormEvent;
     
-        // Form1.SendCoilsErrorDelegate3 new EventHandler(test);
         public Form1Input1()
         {
             InitializeComponent();
@@ -47,6 +46,36 @@ namespace DXApplication1
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             InInputFormEvent("RESTART");
+        }
+
+        private void simpleButton11_Click(object sender, EventArgs e)
+        {
+            InInputFormEvent("m3INIT");
+        }
+
+        private void simpleButton10_Click(object sender, EventArgs e)
+        {
+            InInputFormEvent("m3START");
+        }
+
+        private void simpleButton9_Click(object sender, EventArgs e)
+        {
+            InInputFormEvent("m3NEXT");
+        }
+
+        private void simpleButton8_Click(object sender, EventArgs e)
+        {
+            InInputFormEvent("m3OK");
+        }
+
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            InInputFormEvent("m3RESTART");
+        }
+
+        private void simpleButton12_Click(object sender, EventArgs e)
+        {
+            InInputFormEvent("M3DOT");
         }
     }
 }

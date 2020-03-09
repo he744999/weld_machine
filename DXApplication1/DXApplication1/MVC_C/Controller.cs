@@ -86,9 +86,7 @@ namespace DXApplication1
                     modelTemp.SmallDoor2 = true;
                     break;
                 case "OnEntryReady":
-                    modelTemp.WeightDoor2 = false;
-                    modelTemp.BigDoor2 = false;
-                    modelTemp.SmallDoor2 = false;
+                    textEdit_targ2.Text = textEdit_target2.Text;
                     break;
                 case "OnEntrySlowT":
                     modelTemp.WeightDoor2 = false;
@@ -173,7 +171,7 @@ namespace DXApplication1
 
         public void input1_TOController(string s)
         {
-            Console.WriteLine(s + "-----machine3all");
+            // Console.WriteLine(s + "-----machine3all");
             switch (s)
             {
                 case "INIT":
@@ -187,13 +185,24 @@ namespace DXApplication1
                 case "CHECK":
                     MVC_C3ALL._machine.Fire(Machine3ALL.Trigger.CHECK);
                     break;
-
                 case "OK":
                     MVC_C3ALL._machine.Fire(Machine3ALL.Trigger.OK);
                     break;
 
-                case "RESTART":
-                    MVC_C3ALL._machine.Fire(Machine3ALL.Trigger.RESTART);
+                case "m3RESTART":
+                    MVC_C_0.Restart();
+                    break;
+                case "m3NEXT":
+                    MVC_C_0.Next();
+                    break;
+                case "m3INIT":
+                    MVC_C_0.MachineInit(2);
+                    break;
+                case "m3START":
+                    MVC_C_0.Init();
+                    break;
+                case "M3DOT":
+                    Console.WriteLine(MVC_C3_1.ToDOTGraph());
                     break;
             }
             // labelControl10.BeginInvoke(new Action(() => labelControl10.Text = s));
@@ -216,15 +225,13 @@ namespace DXApplication1
             Console.WriteLine(data);
             switch (data)
             {
+                case "OnEntryReady":
+                    textEdit_targ1.Text = textEdit_target1.Text;
+                    break;
                 case "OnEntryFaster":
                     modelTemp.WeightDoor1 = false;
                     modelTemp.BigDoor1 = true;
                     modelTemp.SmallDoor1 = true;
-                    break;
-                case "OnEntryReady":
-                    modelTemp.WeightDoor1 = false;
-                    modelTemp.BigDoor1 = false;
-                    modelTemp.SmallDoor1 = false;
                     break;
                 case "OnEntrySlowT":
                     modelTemp.WeightDoor1 = false;
@@ -333,6 +340,9 @@ namespace DXApplication1
         /// <param name="e"></param>
         private void timer_UI_loop_Tick(object sender, EventArgs e)
         {
+            // MVC_C0 当前状态
+            simpleButton_m3State.Text = MVC_C_0.GetStates();
+
             labelControl34.Text = MVC_C4_1._state.ToString();
             simpleButton10.Text = MVC_C3ALL._state.ToString();
             // Light 状态机 
@@ -340,21 +350,15 @@ namespace DXApplication1
 
             // ------------------------------------------------------------------------------
             // 一号配料机更新
-            // 原始值显示
-            //textEdit2.Text = modelTemp.RawValue1.ToString();
-            // k值显示
-            //textEdit3.Text = modelTemp.KValue1.ToString();
-            // 0值显示
-            //textEdit4.Text = modelTemp.OValue1.ToString();
 
             // 称示数
             simpleButton_Cheng1.Text = modelTemp.currentWeight1.ToString();
 
             // machine3 当前状态
-            simpleButton11.Text = MVC_C3_1._state.ToString();
+            simpleButton_m3cang1.Text = MVC_C3_1._state.ToString();
 
             // 称门, 在easy状态下，仓称门可自由开关
-            if (MVC_C3_1._state != Machine3.States.Easy)
+            if (MVC_C3_1._state != Machine3.States.Idle)
             {
                 // 称门
                 if (modelTemp.WeightDoor1)
@@ -410,10 +414,10 @@ namespace DXApplication1
             simpleButton_Cheng2.Text = modelTemp.currentWeight2.ToString();
 
             // machine3 当前状态
-            simpleButton22.Text = MVC_C3_2._state.ToString();
+            simpleButton_m3cang2.Text = MVC_C3_2._state.ToString();
 
             // 称门, 在easy状态下，仓称门可自由开关
-            if (MVC_C3_2._state != Machine3.States.Easy)
+            if (MVC_C3_2._state != Machine3.States.Idle)
             {
                 // 称门
                 if (modelTemp.WeightDoor2)

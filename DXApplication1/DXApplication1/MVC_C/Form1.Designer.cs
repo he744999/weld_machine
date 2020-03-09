@@ -42,6 +42,10 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.tabFormPage_Run = new DevExpress.XtraBars.TabFormPage();
             this.tabFormContentContainer1 = new DevExpress.XtraBars.TabFormContentContainer();
+            this.textEdit_AllPans = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl_zsd = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton_m3State = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.toggleSwitch_ShowModel = new DevExpress.XtraEditors.ToggleSwitch();
             this.textEdit11 = new DevExpress.XtraEditors.TextEdit();
@@ -53,7 +57,7 @@
             this.toggleSwitch9 = new DevExpress.XtraEditors.ToggleSwitch();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton22 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_m3cang2 = new DevExpress.XtraEditors.SimpleButton();
             this.toggleSwitch_Cang2BigDoor = new DevExpress.XtraEditors.ToggleSwitch();
             this.toggleSwitch_Cang2SmallDoor = new DevExpress.XtraEditors.ToggleSwitch();
             this.toggleSwitch_Cheng2Door = new DevExpress.XtraEditors.ToggleSwitch();
@@ -65,7 +69,7 @@
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton_Cheng2 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_m3cang1 = new DevExpress.XtraEditors.SimpleButton();
             this.toggleSwitch_Cang1BigDoor = new DevExpress.XtraEditors.ToggleSwitch();
             this.toggleSwitch_Cang1SmallDoor = new DevExpress.XtraEditors.ToggleSwitch();
             this.toggleSwitch_Cheng1Door = new DevExpress.XtraEditors.ToggleSwitch();
@@ -135,9 +139,12 @@
             this.testDataSet = new DXApplication1.testDataSet();
             this.testDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userTableAdapter = new DXApplication1.testDataSet1TableAdapters.UserTableAdapter();
+            this.textEdit_targ1 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit_targ2 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             this.tabFormContentContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_AllPans.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_ShowModel.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch9.Properties)).BeginInit();
@@ -165,6 +172,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.diagramControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_targ1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_targ2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabFormControl1
@@ -263,6 +272,12 @@
             // 
             // tabFormContentContainer1
             // 
+            this.tabFormContentContainer1.Controls.Add(this.textEdit_targ2);
+            this.tabFormContentContainer1.Controls.Add(this.textEdit_targ1);
+            this.tabFormContentContainer1.Controls.Add(this.textEdit_AllPans);
+            this.tabFormContentContainer1.Controls.Add(this.labelControl11);
+            this.tabFormContentContainer1.Controls.Add(this.labelControl_zsd);
+            this.tabFormContentContainer1.Controls.Add(this.simpleButton_m3State);
             this.tabFormContentContainer1.Controls.Add(this.labelControl1);
             this.tabFormContentContainer1.Controls.Add(this.toggleSwitch_ShowModel);
             this.tabFormContentContainer1.Controls.Add(this.textEdit11);
@@ -274,7 +289,7 @@
             this.tabFormContentContainer1.Controls.Add(this.toggleSwitch9);
             this.tabFormContentContainer1.Controls.Add(this.labelControl24);
             this.tabFormContentContainer1.Controls.Add(this.labelControl15);
-            this.tabFormContentContainer1.Controls.Add(this.simpleButton22);
+            this.tabFormContentContainer1.Controls.Add(this.simpleButton_m3cang2);
             this.tabFormContentContainer1.Controls.Add(this.toggleSwitch_Cang2BigDoor);
             this.tabFormContentContainer1.Controls.Add(this.toggleSwitch_Cang2SmallDoor);
             this.tabFormContentContainer1.Controls.Add(this.toggleSwitch_Cheng2Door);
@@ -286,7 +301,7 @@
             this.tabFormContentContainer1.Controls.Add(this.labelControl20);
             this.tabFormContentContainer1.Controls.Add(this.simpleButton_Cheng2);
             this.tabFormContentContainer1.Controls.Add(this.labelControl13);
-            this.tabFormContentContainer1.Controls.Add(this.simpleButton11);
+            this.tabFormContentContainer1.Controls.Add(this.simpleButton_m3cang1);
             this.tabFormContentContainer1.Controls.Add(this.toggleSwitch_Cang1BigDoor);
             this.tabFormContentContainer1.Controls.Add(this.toggleSwitch_Cang1SmallDoor);
             this.tabFormContentContainer1.Controls.Add(this.toggleSwitch_Cheng1Door);
@@ -302,6 +317,42 @@
             this.tabFormContentContainer1.Name = "tabFormContentContainer1";
             this.tabFormContentContainer1.Size = new System.Drawing.Size(1075, 499);
             this.tabFormContentContainer1.TabIndex = 1;
+            // 
+            // textEdit_AllPans
+            // 
+            this.textEdit_AllPans.EditValue = "100";
+            this.textEdit_AllPans.Location = new System.Drawing.Point(259, 289);
+            this.textEdit_AllPans.MenuManager = this.tabFormDefaultManager1;
+            this.textEdit_AllPans.Name = "textEdit_AllPans";
+            this.textEdit_AllPans.Properties.Mask.EditMask = "d";
+            this.textEdit_AllPans.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEdit_AllPans.Size = new System.Drawing.Size(100, 20);
+            this.textEdit_AllPans.TabIndex = 77;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(194, 290);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(36, 14);
+            this.labelControl11.TabIndex = 76;
+            this.labelControl11.Text = "目标值";
+            // 
+            // labelControl_zsd
+            // 
+            this.labelControl_zsd.Location = new System.Drawing.Point(756, 44);
+            this.labelControl_zsd.Name = "labelControl_zsd";
+            this.labelControl_zsd.Size = new System.Drawing.Size(48, 14);
+            this.labelControl_zsd.TabIndex = 75;
+            this.labelControl_zsd.Text = "当前状态";
+            // 
+            // simpleButton_m3State
+            // 
+            this.simpleButton_m3State.Location = new System.Drawing.Point(822, 40);
+            this.simpleButton_m3State.Name = "simpleButton_m3State";
+            this.simpleButton_m3State.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton_m3State.TabIndex = 74;
+            this.simpleButton_m3State.Text = "-----";
+            this.simpleButton_m3State.Click += new System.EventHandler(this.simpleButton_m3State_Click);
             // 
             // labelControl1
             // 
@@ -399,13 +450,13 @@
             this.labelControl15.TabIndex = 43;
             this.labelControl15.Text = "当前状态";
             // 
-            // simpleButton22
+            // simpleButton_m3cang2
             // 
-            this.simpleButton22.Location = new System.Drawing.Point(617, 122);
-            this.simpleButton22.Name = "simpleButton22";
-            this.simpleButton22.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton22.TabIndex = 42;
-            this.simpleButton22.Text = "begin";
+            this.simpleButton_m3cang2.Location = new System.Drawing.Point(617, 122);
+            this.simpleButton_m3cang2.Name = "simpleButton_m3cang2";
+            this.simpleButton_m3cang2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton_m3cang2.TabIndex = 42;
+            this.simpleButton_m3cang2.Text = "-----";
             // 
             // toggleSwitch_Cang2BigDoor
             // 
@@ -440,7 +491,7 @@
             // textEdit_target2
             // 
             this.textEdit_target2.EditValue = "200";
-            this.textEdit_target2.Location = new System.Drawing.Point(457, 157);
+            this.textEdit_target2.Location = new System.Drawing.Point(577, 154);
             this.textEdit_target2.MenuManager = this.tabFormDefaultManager1;
             this.textEdit_target2.Name = "textEdit_target2";
             this.textEdit_target2.Properties.Mask.EditMask = "d";
@@ -490,7 +541,7 @@
             // 
             // simpleButton_Cheng2
             // 
-            this.simpleButton_Cheng2.Location = new System.Drawing.Point(457, 183);
+            this.simpleButton_Cheng2.Location = new System.Drawing.Point(455, 185);
             this.simpleButton_Cheng2.Name = "simpleButton_Cheng2";
             this.simpleButton_Cheng2.Size = new System.Drawing.Size(85, 26);
             this.simpleButton_Cheng2.TabIndex = 31;
@@ -506,13 +557,13 @@
             this.labelControl13.TabIndex = 26;
             this.labelControl13.Text = "当前状态";
             // 
-            // simpleButton11
+            // simpleButton_m3cang1
             // 
-            this.simpleButton11.Location = new System.Drawing.Point(258, 116);
-            this.simpleButton11.Name = "simpleButton11";
-            this.simpleButton11.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton11.TabIndex = 25;
-            this.simpleButton11.Text = "begin";
+            this.simpleButton_m3cang1.Location = new System.Drawing.Point(258, 116);
+            this.simpleButton_m3cang1.Name = "simpleButton_m3cang1";
+            this.simpleButton_m3cang1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton_m3cang1.TabIndex = 25;
+            this.simpleButton_m3cang1.Text = "-----";
             // 
             // toggleSwitch_Cang1BigDoor
             // 
@@ -547,7 +598,7 @@
             // textEdit_target1
             // 
             this.textEdit_target1.EditValue = "100";
-            this.textEdit_target1.Location = new System.Drawing.Point(98, 157);
+            this.textEdit_target1.Location = new System.Drawing.Point(233, 155);
             this.textEdit_target1.MenuManager = this.tabFormDefaultManager1;
             this.textEdit_target1.Name = "textEdit_target1";
             this.textEdit_target1.Properties.Mask.EditMask = "d";
@@ -557,7 +608,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(33, 158);
+            this.labelControl6.Location = new System.Drawing.Point(33, 152);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(36, 14);
             this.labelControl6.TabIndex = 8;
@@ -1135,6 +1186,28 @@
             // 
             this.userTableAdapter.ClearBeforeFill = true;
             // 
+            // textEdit_targ1
+            // 
+            this.textEdit_targ1.EditValue = "----";
+            this.textEdit_targ1.Location = new System.Drawing.Point(98, 154);
+            this.textEdit_targ1.MenuManager = this.tabFormDefaultManager1;
+            this.textEdit_targ1.Name = "textEdit_targ1";
+            this.textEdit_targ1.Properties.Mask.EditMask = "d";
+            this.textEdit_targ1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEdit_targ1.Size = new System.Drawing.Size(100, 20);
+            this.textEdit_targ1.TabIndex = 78;
+            // 
+            // textEdit_targ2
+            // 
+            this.textEdit_targ2.EditValue = "----";
+            this.textEdit_targ2.Location = new System.Drawing.Point(455, 154);
+            this.textEdit_targ2.MenuManager = this.tabFormDefaultManager1;
+            this.textEdit_targ2.Name = "textEdit_targ2";
+            this.textEdit_targ2.Properties.Mask.EditMask = "d";
+            this.textEdit_targ2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.textEdit_targ2.Size = new System.Drawing.Size(100, 20);
+            this.textEdit_targ2.TabIndex = 79;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -1155,6 +1228,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).EndInit();
             this.tabFormContentContainer1.ResumeLayout(false);
             this.tabFormContentContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_AllPans.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_ShowModel.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch9.Properties)).EndInit();
@@ -1185,6 +1259,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.diagramControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_targ1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit_targ2.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1232,7 +1308,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraEditors.LabelControl labelControl13;
-        private DevExpress.XtraEditors.SimpleButton simpleButton11;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_m3cang1;
         private System.Windows.Forms.Timer timerDataUpdate;
         private DevExpress.XtraBars.TabFormContentContainer tabFormContentContainer4;
         private DevExpress.XtraBars.TabFormPage tabFormPage_Sql;
@@ -1240,7 +1316,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LabelControl labelControl15;
-        private DevExpress.XtraEditors.SimpleButton simpleButton22;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_m3cang2;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_Cang2BigDoor;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_Cang2SmallDoor;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_Cheng2Door;
@@ -1296,6 +1372,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl35;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_ShowModel;
+        private DevExpress.XtraEditors.TextEdit textEdit_AllPans;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.LabelControl labelControl_zsd;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_m3State;
+        private DevExpress.XtraEditors.TextEdit textEdit_targ1;
+        private DevExpress.XtraEditors.TextEdit textEdit_targ2;
     }
 }
 

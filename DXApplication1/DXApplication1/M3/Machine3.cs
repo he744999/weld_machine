@@ -1,4 +1,5 @@
 ﻿using Stateless;
+using Stateless.Graph;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,10 +15,10 @@ namespace DXApplication1
         public delegate void SendMessageDelegate(string data);
         public event SendMessageDelegate SendMessageEvent;
 
-        public enum States { Easy, Ready, Faster, SlowT, SlowK, Okk , LostOver,  empty};
+        public enum States { Idle, Ready, Faster, SlowT, SlowK, Okk , LostOver,  empty};
         public enum Trigger {BEGIN,  TIMEOUT, START, OVER, SLOWLY, OK, REREADY, RESTART};
 
-        public States _state = States.Easy;
+        public States _state = States.Idle;
         public StateMachine<States, Trigger> _machine;
         private string name = null;
         Thread thd = null;
@@ -40,9 +41,9 @@ namespace DXApplication1
             thd.Name = name_ + " thread";
             thd.IsBackground = true;
             thd.Start();
-
             MachineConfig();
         }
+
 
         private void MachineConfig()
         {
@@ -50,7 +51,7 @@ namespace DXApplication1
             _machine = new StateMachine<States, Trigger>(() => _state, s => _state = s);
             _machine.OnUnhandledTrigger((state, trigger) => { });
 
-            _machine.Configure(States.Easy).Permit(Trigger.BEGIN, States.Ready)
+            _machine.Configure(States.Idle).Permit(Trigger.BEGIN, States.Ready)
                 .OnEntry(t => SendMessageEvent("OnEntryEasy"));
 
             _machine.Configure(States.Ready).Permit(Trigger.START, States.Faster)
@@ -70,7 +71,7 @@ namespace DXApplication1
             _machine.Configure(States.SlowK).Permit(Trigger.OK, States.Okk);
             _machine.Configure(States.SlowT).Permit(Trigger.OK, States.Okk);
 
-            _machine.Configure(States.Okk).Permit(Trigger.RESTART, States.Easy)
+            _machine.Configure(States.Okk).Permit(Trigger.RESTART, States.Idle)
                 .OnEntry(t => SendMessageEvent("OnEntryOkk"));
 
             _machine.Configure(States.Okk).Permit(Trigger.REREADY, States.Ready);
@@ -83,7 +84,7 @@ namespace DXApplication1
             Thread.Sleep(3000);
             while(true)
             {
-                if(_state != States.Easy)
+                if(_state != States.Idle)
                 {
                     double delta = targetValue - currentValue;
 
@@ -109,7 +110,6 @@ namespace DXApplication1
             }
         }
 
-
         private async void OnEntrySlowK(string v)
         {
             SendMessageEvent(v);
@@ -122,6 +122,11 @@ namespace DXApplication1
             SendMessageEvent(v);
             await Task.Delay(1000);
             _machine.Fire(Trigger.TIMEOUT);
+        }
+
+        public string ToDOTGraph()
+        {
+                return UmlDotGraph.Format(_machine.GetInfo());
         }
     }
 }

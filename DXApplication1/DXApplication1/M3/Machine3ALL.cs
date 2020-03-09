@@ -9,10 +9,10 @@ namespace DXApplication1
         public delegate void SendMessageDelegate(string data);
         public event SendMessageDelegate SendMessageEvent;
 
-        public enum States { Ready, Initial, Begin, Wait, Okk };
+        public enum States { Idle, Initial, Begin, Wait, Okk };
         public enum Trigger { TIMEOUT, INIT, START, CHECK, OK, RESTART };
 
-        public States _state = States.Ready;
+        public States _state = States.Idle;
         public StateMachine<States, Trigger> _machine;
 
         public string Name { get; set; }
@@ -36,13 +36,13 @@ namespace DXApplication1
             _machine = new StateMachine<States, Trigger>(() => _state, s => _state = s);
             _machine.OnUnhandledTrigger((state, trigger) => { });
 
-            _machine.Configure(States.Ready)
-                // .Permit(Trigger.INIT, States.Initial)
+            _machine.Configure(States.Idle)
                 .PermitIf(Trigger.INIT, States.Initial, new Func<bool>(() => StateTest()))
                 .OnEntry(() => OnEntryReady());
 
             _machine.Configure(States.Initial)
                 .Permit(Trigger.START, States.Begin)
+                .OnExit(()  => OnExitInitial())
                 .OnEntry(() => OnEntryInitial());
 
             _machine.Configure(States.Begin)
@@ -56,7 +56,7 @@ namespace DXApplication1
                 .OnEntry(() => OnEntryWait());
 
             _machine.Configure(States.Okk)
-                .Permit(Trigger.RESTART, States.Ready)
+                .Permit(Trigger.RESTART, States.Idle)
                 .OnExit(() => OnExitOkk())
                 .OnEntry(() => OnEntryOkk());
             _machine.OnTransitioned(t => Console.WriteLine($"{Name} OnTransitioned: {t.Source} -> {t.Destination} via {t.Trigger}({string.Join(", ", t.Parameters)})"));
@@ -69,6 +69,12 @@ namespace DXApplication1
             m1._machine.Fire(Machine3.Trigger.REREADY);
             m2._machine.Fire(Machine3.Trigger.REREADY);
         }
+        private void OnExitInitial()
+        {
+            SendMessageEvent("OnExitOkk");
+            m1._machine.Fire(Machine3.Trigger.BEGIN);
+            m2._machine.Fire(Machine3.Trigger.BEGIN);
+        }
 
         private void OnEntryOkk()
         {
@@ -78,7 +84,7 @@ namespace DXApplication1
         private bool StateTest()
         {
             bool s;
-            if (m1._state == Machine3.States.Easy && m2._state == Machine3.States.Easy)
+            if (m1._state == Machine3.States.Idle && m2._state == Machine3.States.Idle)
             {
                 s = true;
             }else
@@ -92,8 +98,6 @@ namespace DXApplication1
         {
             SendMessageEvent("OnEntryInitial");
             _machine.Fire(Trigger.START);
-            m1._machine.Fire(Machine3.Trigger.BEGIN);
-            m2._machine.Fire(Machine3.Trigger.BEGIN);
         }
         private void OnEntryBegin()
         {

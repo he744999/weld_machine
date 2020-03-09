@@ -28,9 +28,10 @@ namespace DXApplication1
         Machine2 MVC_C2_1 = new Machine2("test1");
         Machine3 MVC_C3_1 = new Machine3("machine3_1");
         Machine3 MVC_C3_2 = new Machine3("machine3_2");
+        Machine3ALL MVC_C3ALL;
+        Machine3C MVC_C_0 = new Machine3C("machine3c");
 
         Machine4 MVC_C4_1 = new Machine4("test");
-        Machine3ALL MVC_C3ALL;
         SqlTest sql = new SqlTest();
 
         ModelView MVC_VM = new ModelView();
@@ -58,13 +59,25 @@ namespace DXApplication1
             MVC_C3_1.SendMessageEvent += machine3_1TOController;
             MVC_C3_2.SendMessageEvent += machine3_2TOController;
             MVC_C3ALL.SendMessageEvent += machine3ALL_1TOController;
+            MVC_C_0.SendMessageEvent += machine3C_TOController;
             MVC_C4_1.SendMessageEvent += Machine4TOController;
             modelTemp.SendInputEvent += modelTemp2Controller;
 
             this.Controller2InputHandler1 += intput.test;
 
             intput.InInputFormEvent += input1_TOController;
+            
 
+        }
+
+        private void machine3C_TOController(string info)
+        {
+            switch(info)
+            {
+                case "onExitIdle":
+                    MVC_C3ALL._machine.Fire(Machine3ALL.Trigger.INIT);
+                    break;
+            }
         }
 
         private void LogConfig()
@@ -462,6 +475,11 @@ namespace DXApplication1
         }
 
         private void simpleButton_Cheng2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton_m3State_Click(object sender, EventArgs e)
         {
 
         }
